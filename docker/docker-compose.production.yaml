@@ -1,0 +1,153 @@
+---
+
+services:
+  zaparthotels-frontend:
+    image: ghcr.io/zaparthotels/zaparthotels.fr/frontend:latest
+    networks:
+      zaparthotels-backend:
+      traefik_traefik:
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
+      replicas: 1
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.zaparthotelsfr-frontend_production.entrypoints=websecure
+        - traefik.http.routers.zaparthotelsfr-frontend_production.rule=Host(`zapart.fr`)
+        - traefik.http.services.zaparthotelsfr-frontend_production.loadbalancer.server.port=3000
+        - traefik.http.routers.zaparthotelsfr-frontend_production.tls=true
+        - traefik.http.routers.zaparthotelsfr-frontend_production.tls.certresolver=letsencrypt
+    environment:
+      - BACKEND_HOST=zaparthotels-backend
+
+  zaparthotels-backend:
+    image: ghcr.io/zaparthotels/zaparthotels.fr/backend:latest
+    networks:
+      zaparthotels-backend:
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
+      replicas: 1
+    environment:
+      - REDIS_HOSTNAME=valkey-backend
+      - REDIS_PORT=6379
+
+  mariadb-backend:
+    image: mariadb:11.5.2
+    networks:
+        zaparthotels-backend:
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
+      replicas: 1
+    environment:
+      - MYSQL_ROOT_PASSWORD=${BACKEND_DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${BACKEND_DB_NAME}
+      - MYSQL_USER=${BACKEND_DB_USER}
+      - MYSQL_PASSWORD=${BACKEND_DB_PASSWORD}
+    volumes:
+      - mariadb-backend:/var/lib/mysql
+
+  valkey-backend:
+    image: valkey/valkey:8.0.1
+    networks:
+      zaparthotels-backend:
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
+      replicas: 1
+    volumes:
+      - valkey-directus:/data
+
+  directus:
+    build:
+      context: ../
+      dockerfile: ./tools/directus/Dockerfile
+    pull_policy: build
+    networks:
+      directus:
+      traefik_traefik:
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
+      replicas: 1
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.zaparthotelsfr-directus_production.entrypoints=websecure
+        - traefik.http.routers.zaparthotelsfr-directus_production.rule=Host(`directus.zapart.fr`)
+        - traefik.http.services.zaparthotelsfr-directus_production.loadbalancer.server.port=8055
+        - traefik.http.routers.zaparthotelsfr-directus_production.tls=true
+        - traefik.http.routers.zaparthotelsfr-directus_production.tls.certresolver=letsencrypt
+    depends_on:
+      - postgresql-directus
+      - valkey-directus
+    environment:
+      - SECRET=${DIRECTUS_SECRET}
+      - DB_USER=${DIRECTUS_DB_USER}
+      - DB_DATABASE=${DIRECTUS_DB_NAME}
+      - DB_PASSWORD=${DIRECTUS_DB_PASSWORD}
+      - DB_CLIENT=pg
+      - DB_HOST=postgresql-directus
+      - DB_PORT=5432
+      - CACHE_ENABLED=true
+      - CACHE_AUTO_PURGE=true
+      - CACHE_STORE=redis
+      - PUBLIC_URL=${DIRECTUS_PUBLIC_URL}
+      - REDIS=redis://valkey-directus:6379
+      - ADMIN_EMAIL=${DIRECTUS_ADMIN_EMAIL}
+      - ADMIN_PASSWORD=${DIRECTUS_ADMIN_PASSWORD}
+      - ADMIN_TOKEN=${DIRECTUS_ADMIN_TOKEN}
+      - EMAIL_TRANSPORT=smtp
+      - EMAIL_FROM=${DIRECTUS_EMAIL_FROM}
+      - EMAIL_SMTP_HOST=${DIRECTUS_EMAIL_SMTP_HOST}
+      - EMAIL_SMTP_PORT=${DIRECTUS_EMAIL_SMTP_PORT}
+      - EMAIL_SMTP_USER=${DIRECTUS_EMAIL_SMTP_USER}
+      - EMAIL_SMTP_PASSWORD=${DIRECTUS_EMAIL_SMTP_PASSWORD}
+      - SCHEMA_SYNC=IMPORT
+    volumes:
+      - directus-uploads:/directus/uploads
+
+  valkey-directus:
+    image: valkey/valkey:8.0.1
+    networks:
+      directus:
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
+      replicas: 1
+    volumes:
+      - valkey-directus:/data
+
+  postgresql-directus:
+    image: postgres:13.16
+    networks:
+      directus:
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
+      replicas: 1
+    environment:
+      - POSTGRES_USER=${DIRECTUS_DB_USER}
+      - POSTGRES_DB=${DIRECTUS_DB_NAME}
+      - POSTGRES_PASSWORD=${DIRECTUS_DB_PASSWORD}
+    volumes:
+      - postgresql-directus:/var/lib/postgresql/data
+
+volumes:
+  postgresql-directus:
+  directus-uploads:
+  valkey-directus:
+  mariadb-backend:
+
+networks:
+  directus:
+  zaparthotels-backend:
+  traefik_traefik:
+    external: true

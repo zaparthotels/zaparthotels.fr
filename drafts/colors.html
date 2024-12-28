@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tokens to SVG</title>
+</head>
+<body>
+  <h1>Convertisseur JSON Tokens -> SVG</h1>
+  <textarea id="tokenInput" rows="10" cols="50" placeholder="Collez vos tokens JSON ici..."></textarea>
+  <br>
+  <button id="generateSvg">Générer SVG</button>
+  <button id="copySvg" disabled>Copier SVG</button>
+  <br><br>
+  <pre id="svgOutput" style="background: #f0f0f0; padding: 10px;"></pre>
+
+  <script>
+    document.getElementById("generateSvg").addEventListener("click", () => {
+      const input = document.getElementById("tokenInput").value;
+      try {
+        const tokens = JSON.parse(input);
+        const colors = tokens.color;
+        if (!colors) throw new Error("Format JSON invalide.");
+
+        // Taille des carrés et espacement
+        const squareSize = 128;
+        const spacing = 32;
+
+        // Génération des rectangles
+        let svgContent = '';
+        let x = 0, y = 0;
+
+        Object.keys(colors).forEach((key, index) => {
+          const color = colors[key].value;
+          svgContent += `<rect x="${x}" y="${y}" width="${squareSize}" height="${squareSize}" fill="${color}" />\n`;
+          x += squareSize + spacing;
+        });
+
+        // Construction du SVG
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${x}" height="${squareSize}">
+  ${svgContent}</svg>`;
+
+        // Affichage du résultat
+        const output = document.getElementById("svgOutput");
+        output.textContent = svg;
+
+        // Activation du bouton de copie
+        const copyButton = document.getElementById("copySvg");
+        copyButton.disabled = false;
+
+        // Événement de copie
+        copyButton.addEventListener("click", () => {
+          navigator.clipboard.writeText(svg).then(() => {
+            alert("SVG copié !");
+          }).catch(err => {
+            alert("Erreur lors de la copie : " + err);
+          });
+        });
+      } catch (error) {
+        alert("Erreur de génération SVG : " + error.message);
+      }
+    });
+  </script>
+</body>
+</html>

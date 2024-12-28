@@ -1,0 +1,46 @@
+:root {
+  /* COLOR */
+
+  /* TYPOGRAPHY */
+
+  /* scale */
+  --bnb-typography-scale-400: 1rem;
+  --bnb-typography-scale-500: 1.25rem;
+  --bnb-typography-scale-600: 1.85rem;
+  --bnb-typography-scale-700: 3rem;
+  --bnb-typography-scale-800: 5rem;
+  --bnb-typography-scale-900: 8rem;
+
+  /* weight */
+  --bnb-typography-weight-100: 100;
+  --bnb-typography-weight-200: 200;
+  --bnb-typography-weight-300: 300;
+  --bnb-typography-weight-400: 400;
+  --bnb-typography-weight-500: 500;
+  --bnb-typography-weight-600: 600;
+  --bnb-typography-weight-700: 700;
+  --bnb-typography-weight-800: 800;
+  --bnb-typography-weight-900: 900;
+
+  /* SIZES */
+
+  /* space */
+  --bnb-space-50: 0.125rem;
+  --bnb-space-100: 0.25rem;
+  --bnb-space-150: 0.375rem;
+  --bnb-space-200: 0.5rem;
+  --bnb-space-300: 0.75rem;
+  --bnb-space-400: 1rem;
+  --bnb-space-600: 1.5rem;
+  --bnb-space-800: 2rem;
+  --bnb-space-1200: 3rem;
+  --bnb-space-1600: 4rem;
+  --bnb-space-2400: 6rem;
+  --bnb-space-4000: 10rem;
+
+  /* radius */
+  --bnb-radius-100: 0.25rem;
+  --bnb-radius-200: 0.5rem;
+  --bnb-radius-400: 1rem;
+  --bnb-radius-full: 999rem;
+}

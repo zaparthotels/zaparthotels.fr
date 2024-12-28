@@ -1,0 +1,21 @@
+name: Check PR Source Branch
+
+on:
+  pull_request:
+    branches:
+      - main
+      - staging
+
+jobs:
+  check-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if source branch is allowed
+        run: |
+          if [[ "${{ github.event.pull_request.base.ref }}" == "main" && "${{ github.event.pull_request.head.ref }}" != "staging" ]]; then
+            echo "PRs to 'main' can only be created from the 'staging' branch."
+            exit 1
+          elif [[ "${{ github.event.pull_request.base.ref }}" == "staging" && "${{ github.event.pull_request.head.ref }}" != "develop" ]]; then
+            echo "PRs to 'staging' can only be created from the 'develop' branch."
+            exit 1
+          fi

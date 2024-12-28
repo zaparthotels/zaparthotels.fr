@@ -1,0 +1,96 @@
+---
+
+services:
+  mariadb:
+    image: mariadb:11.5.2
+    environment:
+      - MYSQL_ROOT_PASSWORD=${BACKEND_DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${BACKEND_DB_NAME}
+      - MYSQL_USER=${BACKEND_DB_USER}
+      - MYSQL_PASSWORD=${BACKEND_DB_PASSWORD}
+    volumes:
+      - mariadb-backend:/var/lib/mysql
+    ports:
+      - 3003:3306
+  
+  valkey-backend:
+    image: valkey/valkey:8.0.1
+    networks:
+      directus:
+    volumes:
+      - valkey-directus:/data
+    ports:
+      - 3004:6379
+
+  directus:
+    build:
+      context: ../
+      dockerfile: ./tools/directus/Dockerfile
+    pull_policy: build
+    networks:
+      directus:
+    depends_on:
+      - postgresql-directus
+      - valkey-directus
+    environment:
+      - SECRET=${DIRECTUS_SECRET}
+      - DB_USER=${DIRECTUS_DB_USER}
+      - DB_DATABASE=${DIRECTUS_DB_NAME}
+      - DB_PASSWORD=${DIRECTUS_DB_PASSWORD}
+      - DB_CLIENT=pg
+      - DB_HOST=postgresql-directus
+      - DB_PORT=5432
+      - CACHE_ENABLED=true
+      - CACHE_AUTO_PURGE=true
+      - CACHE_STORE=redis
+      - PUBLIC_URL=${DIRECTUS_PUBLIC_URL}
+      - REDIS=redis://valkey-directus:6379
+      - ADMIN_EMAIL=${DIRECTUS_ADMIN_EMAIL}
+      - ADMIN_PASSWORD=${DIRECTUS_ADMIN_PASSWORD}
+      - ADMIN_TOKEN=${DIRECTUS_ADMIN_TOKEN}
+      - EMAIL_TRANSPORT=smtp
+      - EMAIL_FROM=${DIRECTUS_EMAIL_FROM}
+      - EMAIL_SMTP_HOST=${DIRECTUS_EMAIL_SMTP_HOST}
+      - EMAIL_SMTP_PORT=${DIRECTUS_EMAIL_SMTP_PORT}
+      - EMAIL_SMTP_USER=${DIRECTUS_EMAIL_SMTP_USER}
+      - EMAIL_SMTP_PASSWORD=${DIRECTUS_EMAIL_SMTP_PASSWORD}
+      - SCHEMA_SYNC=BOTH
+    volumes:
+      - directus-uploads:/directus/uploads
+      - ../tools/directus/schema-sync:/directus/schema-sync
+    ports:
+      - 3002:8055
+
+  valkey-directus:
+    image: valkey/valkey:8.0.1
+    networks:
+      directus:
+    volumes:
+      - valkey-directus:/data
+
+  postgresql-directus:
+    image: postgres:13.16
+    networks:
+      directus:
+    environment:
+      - POSTGRES_USER=${DIRECTUS_DB_USER}
+      - POSTGRES_DB=${DIRECTUS_DB_NAME}
+      - POSTGRES_PASSWORD=${DIRECTUS_DB_PASSWORD}
+    volumes:
+      - postgresql-directus:/var/lib/postgresql/data
+  
+  adminer:
+    image: adminer
+    networks:
+      directus:
+    ports:
+      - 3100:8080
+
+volumes:
+  mariadb-backend:
+  directus-uploads:
+  valkey-directus:
+  postgresql-directus:
+
+networks:
+  directus:

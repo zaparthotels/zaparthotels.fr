@@ -1,0 +1,11 @@
+{
+  "name": "@zaparthotels/backend",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start:dev": "symfony server:start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
