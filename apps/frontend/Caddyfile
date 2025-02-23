@@ -1,6 +1,0 @@
-:3000 {
-	templates
-	root * /app/apps/frontend/dist
-	file_server
-	try_files {path} /index.html
-}

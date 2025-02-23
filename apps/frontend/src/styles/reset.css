@@ -1,11 +1,11 @@
 html {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+	box-sizing: inherit;
 }
 
 html,
@@ -90,11 +90,11 @@ mark,
 audio,
 video,
 input {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  vertical-align: baseline;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
 }
 
 article,
@@ -108,39 +108,39 @@ hgroup,
 menu,
 nav,
 section {
-  display: block;
+	display: block;
 }
 
 body {
-  line-height: 1;
+	line-height: 1;
 }
 
 ol,
 ul,
 menu {
-  list-style: none;
+	list-style: none;
 }
 
 blockquote,
 q {
-  quotes: none;
+	quotes: none;
 }
 
 blockquote::before,
 blockquote::after,
 q::before,
 q::after {
-  content: "";
-  content: none;
+	content: "";
+	content: none;
 }
 
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
 a {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 button,
@@ -149,36 +149,36 @@ optgroup,
 select,
 textarea,
 [role="button"] {
-  padding: 0;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: 100%;
-  line-height: 1;
-  margin: 0;
+	padding: 0;
+	cursor: pointer;
+	font-family: inherit;
+	font-size: 100%;
+	line-height: 1;
+	margin: 0;
 }
 
 button,
 input {
-  overflow: visible;
+	overflow: visible;
 }
 
 button,
 select {
-  text-transform: none;
+	text-transform: none;
 }
 
 button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-  appearance: none;
-  border: 0;
+	appearance: none;
+	border: 0;
 }
 
 input[type="number"] {
-  appearance: textfield;
+	appearance: textfield;
 }
 
 summary {
-  list-style: none;
+	list-style: none;
 }

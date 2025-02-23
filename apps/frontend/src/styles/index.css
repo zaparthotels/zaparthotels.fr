@@ -1,10 +1,6 @@
 @import "reset.css";
 @import "fonts.css";
-
-/* Auto generated tokens */
 @import "tokens.css";
 @import "tokens-theme-dark.css";
-
-@import "tokens-custom.css";
 @import "accessibility.css";
 @import "main.css";

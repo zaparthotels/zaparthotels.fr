@@ -1,5 +1,5 @@
 {
-  "name": "@tousinclus/backend",
+  "name": "@zaparthotels/backend",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -28,7 +28,7 @@
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/platform-socket.io": "^10.4.12",
     "@nestjs/websockets": "^10.4.12",
-    "@tousinclus/types": "workspace:^",
+    "@zaparthotels/types": "workspace:^",
     "cache-manager": "^6.4.0",
     "class-validator": "^0.14.1",
     "ioredis": "^5.4.1",

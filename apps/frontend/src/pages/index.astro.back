@@ -1,0 +1,159 @@
+---
+import Base from "../Base.astro";
+---
+<Base title="Accueil">
+	<h1>CV de Léo PLANUS</h1>
+
+	<section class="career">
+		<div class="nav-map">
+			<article>
+
+				<article>
+					<div class="time-group">
+						<time datetime="2025">2025</time>
+						<div class="point"></div>
+					</div>
+					<div class="content">
+						<h2>Mon entrée à ESIEE ?</h2>
+					</div>
+				</article>
+
+				<article>
+					<div class="time-group">
+						<time datetime="2025">2025</time>
+						<div class="point"></div>
+					</div>
+					<div class="content">
+						<h2>Mon entrée à ESIEE ?</h2>
+						<p>Informatique, design, architecture et développement.</p>
+					</div>
+				</article>
+
+				<article>
+					<div class="time-group">
+						<time datetime="2025">2025</time>
+						<div class="point"></div>
+					</div>
+					<div class="content">
+						<h2>BUT MMI</h2>
+					</div>
+				</article>
+
+			</article>
+			<article>
+
+				<article>
+					<div class="time-group">
+						<time datetime="2025">2025</time>
+						<div class="point"></div>
+					</div>
+					<div class="content">
+						<h2>Mon entrée à ESIEE ?</h2>
+						<p>Informatique, design, architecture et développement.</p>
+					</div>
+				</article>
+
+				<article>
+					<div class="time-group">
+						<time datetime="2025">2025</time>
+						<div class="point"></div>
+					</div>
+					<div class="content">
+						<h2>Mon entrée à ESIEE ?</h2>
+						<p>Informatique, design, architecture et développement.</p>
+					</div>
+				</article>
+
+			</article>
+			<article>
+
+				<article>
+					<div class="time-group">
+						<time datetime="2025">2025</time>
+						<div class="point"></div>
+					</div>
+					<div class="content">
+						<h2>Mon entrée à ESIEE ?</h2>
+						<p>Informatique, design, architecture et développement.</p>
+					</div>
+				</article>
+
+				<article>
+					<div class="time-group">
+						<time datetime="2025">2025</time>
+						<div class="point"></div>
+					</div>
+					<div class="content">
+						<h2>Mon entrée à ESIEE ?</h2>
+						<p>Informatique, design, architecture et développement.</p>
+					</div>
+				</article>
+
+				<article>
+					<div class="time-group">
+						<time datetime="2025">202q sd qsd5</time>
+						<div class="point"></div>
+					</div>
+					<div class="content">
+						<h2>Mon entrée à ESIEE ?</h2>
+						<p>Informatique, design, architecture et développement.</p>
+					</div>
+				</article>
+
+				<article>
+					<div class="time-group">
+						<time datetime="2025">2025</time>
+						<div class="point"></div>
+					</div>
+					<div class="content">
+						<h2>Mon entrée à ESIEE ?</h2>
+						<p>Informatique, design, architecture et développement.</p>
+					</div>
+				</article>
+
+			</article>
+		</div>
+	</section>
+</Base>
+
+<style>
+	.career {
+		display: flex;
+		justify-content: center;
+	}
+
+	.nav-map {
+		display: grid;
+		gap: 1rem;
+		width: fit-content;
+		max-width: 36rem;
+		grid-template-columns: [timeline] auto [description] auto;
+
+		article {
+			grid-column: 1 / -1;
+			display: grid;
+			align-items: baseline;
+			grid-template-columns: subgrid;
+			gap: 1rem;
+		}
+
+		article .time-group {
+			grid-column: timeline;
+			display: flex;
+			align-items: center;
+			justify-content: end;
+			gap: .5rem;
+			background-color: red;
+
+			.point {
+				background-color: white;
+				border-radius: 999rem;
+				width: 1.5rem;
+				aspect-ratio: 1 / 1;
+			}
+		}
+		article .content {
+			grid-column: decription;
+		}
+	}
+</style>
