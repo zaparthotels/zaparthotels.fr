@@ -20,8 +20,8 @@ services:
   #       - traefik.http.middlewares.zaparthotels-frontend_staging-auth.basicauth.users=${STAGING_USERS}
   #       - traefik.http.routers.zaparthotels-frontend_staging.middlewares=zaparthotels-frontend_staging-auth
   #   environment:
-  #     - SOCKET_IO_URL=https://staging.zaparthotels.fr/api
-  #     - BACKEND_URL=https://staging.zaparthotels.fr/api
+  #     - SOCKET_IO_URL=https://staging.api.zaparthotels.fr
+  #     - BACKEND_URL=https://staging.api.zaparthotels.fr
   #     - DIRECTUS_URL=https://staging.cms.zaparthotels.fr
 
   zaparthotels-backend:

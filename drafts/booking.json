@@ -1,0 +1,34 @@
+{
+  "id": "F19899A6-D9B6-4312-980F-BF80C9E59F36",
+  "beds24id": "65731921",
+  "guest": {
+    "firstName": "Jean",
+    "lastName": "Dupont",
+    "email": "jean.dupont@example.com",
+    "phone": "+33612345678",
+    "locale": "en-US"
+  },
+  "dates": {
+    "checkIn": 1746307200,
+    "checkOut": 1746885600
+  },
+  "additionalProperties": {
+    "lockCodes": [
+      {
+        "lockId": "L101",
+        "code": "123ABC",
+        "createdAt": 1746220800,
+        "expiresAt": 1766220800
+      },
+      {
+        "lockId": "L102",
+        "code": "456DEF",
+        "createdAt": 1746220801,
+        "expiresAt": 1766220801
+      }
+    ]
+  },
+  "status": "confirmed",
+  "createdAt": 1746220800,
+  "updatedAt": 1746230800
+}

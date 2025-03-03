@@ -5,10 +5,10 @@ import { CacheService } from './cache.service';
 @Module({
   imports: [
     CacheModule.register({
-      isGlobal: true, // Rend le cache accessible partout
+      isGlobal: true,
     }),
   ],
   providers: [CacheService],
-  exports: [CacheService], // Pour pouvoir utiliser CacheService dans d'autres modules
+  exports: [CacheService],
 })
 export class CacheConfigModule {}

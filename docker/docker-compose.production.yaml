@@ -18,8 +18,8 @@ services:
   #       - traefik.http.routers.zaparthotels-frontend_production.tls=true
   #       - traefik.http.routers.zaparthotels-frontend_production.tls.certresolver=letsencrypt
   #   environment:
-  #     - SOCKET_IO_URL=https://zaparthotels.fr/api
-  #     - BACKEND_URL=https://zaparthotels.fr/api
+  #     - SOCKET_IO_URL=https://api.zaparthotels.fr
+  #     - BACKEND_URL=https://api.zaparthotels.fr
   #     - DIRECTUS_URL=https://cms.zaparthotels.fr
 
   zaparthotels-backend:

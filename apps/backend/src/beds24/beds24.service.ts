@@ -1,46 +1,77 @@
-import { Injectable, Logger } from '@nestjs/common';
+import {
+  Injectable,
+  Logger,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { CacheService } from '../cache/cache.service';
+import { RefreshTokenDto } from './dto/refresh-token.dto';
+import { validateOrReject } from 'class-validator';
 
 @Injectable()
 export class Beds24Service {
   private readonly logger = new Logger(Beds24Service.name);
-  private readonly tokenCacheKey = 'beds24_token';
+
+  readonly BASE_URL = 'https://beds24.com/api/v2/';
+  private readonly REFRESH_TOKEN = process.env.BEDS24_REFRESH_TOKEN;
+  private readonly TOKEN_CACHE_KEY = 'beds24_token';
+  private readonly TOKEN_TTL_SECONDS = 86400; // 24 hours
 
   constructor(private readonly cacheService: CacheService) {}
 
-  /**
-   * Récupère le token depuis le cache ou via l’API Beds24 si nécessaire.
-   */
   async getToken(): Promise<string> {
-    // Vérification du token dans le cache
-    const cachedToken = await this.cacheService.getCache<string>(this.tokenCacheKey);
+    const cachedToken = await this.cacheService.getCache<string>(
+      this.TOKEN_CACHE_KEY,
+    );
+
     if (cachedToken) {
-      this.logger.log('Token récupéré depuis le cache');
       return cachedToken;
     }
 
-    // Définition de l’URL de l’API pour récupérer le token
-    const apiUrl = 'https://api.beds24.com/your_token_endpoint';
-    // Ajoutez ici les paramètres ou le corps de la requête si l’API nécessite une méthode POST
+    this.logger.log('No cached token found. Fetching a new one.');
+    const token = await this.refreshToken(this.REFRESH_TOKEN);
+
+    await this.cacheService.setCache(
+      this.TOKEN_CACHE_KEY,
+      token,
+      this.TOKEN_TTL_SECONDS,
+    );
+    this.logger.log('New token stored in cache.');
+
+    return token;
+  }
+
+  private async refreshToken(refreshToken: string): Promise<string> {
+    const url = new URL('authentication/token', this.BASE_URL);
+
     try {
-      const response = await fetch(apiUrl, {
-        method: 'GET', // Changez en 'POST' si besoin et ajoutez les headers/body
-        // headers: { 'Content-Type': 'application/json' },
-        // body: JSON.stringify({ param1: 'value1', param2: 'value2' }),
+      const response = await fetch(url.toString(), {
+        method: 'GET',
+        headers: {
+          refreshToken,
+          'Content-Type': 'application/json',
+        },
       });
 
       if (!response.ok) {
-        throw new Error(`Erreur lors de la récupération du token: ${response.statusText}`);
+        this.logger.error(
+          `Beds24 API error: ${response.status} ${response.statusText}`,
+        );
+        throw new InternalServerErrorException(
+          `Beds24 API error: ${response.statusText}`,
+        );
       }
-      const data = await response.json();
-      const token = data.token; // Adaptez selon la structure de la réponse
-      // Stockage du token dans le cache pour 3600 secondes (1 heure)
-      await this.cacheService.setCache(this.tokenCacheKey, token, 3600);
-      this.logger.log('Token récupéré depuis l’API et stocké dans le cache');
-      return token;
-    } catch (error) {
-      this.logger.error('Erreur lors de la récupération du token', error);
-      throw error;
+
+      const data: RefreshTokenDto = await response.json();
+      const dto = Object.assign(new RefreshTokenDto(), data);
+
+      await validateOrReject(dto);
+      return data.token;
+    } catch (error: unknown) {
+      this.logger.error('Error fetching token', error);
+      const message = error instanceof Error ? error.message : 'Unknown error';
+      throw new InternalServerErrorException(
+        `Error fetching token: ${message}`,
+      );
     }
   }
 }
