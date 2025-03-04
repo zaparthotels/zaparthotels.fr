@@ -1,56 +1,25 @@
-# compiled output
-/dist
-/node_modules
-/build
+# Dependencies and AdonisJS build
+node_modules
+build
+tmp
 
-# Logs
-logs
-*.log
-npm-debug.log*
-pnpm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
-
-# OS
-.DS_Store
-
-# Tests
-/coverage
-/.nyc_output
-
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-# dotenv environment variable files
+# Secrets
 .env
-.env.development.local
-.env.test.local
-.env.production.local
 .env.local
+.env.production.local
+.env.development.local
 
-# temp directory
-.temp
-.tmp
+# Frontend assets compiled code
+public/assets
 
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
+# Build tools specific
+npm-debug.log
+yarn-error.log
 
-# Diagnostic reports (https://nodejs.org/api/report.html)
-report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+# Editors specific
+.fleet
+.idea
+.vscode
+
+# Platform specific
+.DS_Store
