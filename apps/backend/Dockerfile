@@ -16,5 +16,5 @@ FROM base AS prod
 RUN pnpm install --frozen-lockfile --prod --filter @zaparthotels/backend
 COPY --from=assets /app .
 
-EXPOSE 3001
-ENTRYPOINT ["pnpm", "run", "--filter", "@zaparthotels/backend", "start:prod"]
+EXPOSE 3000
+ENTRYPOINT ["pnpm", "run", "--filter", "@tousinclus/backend", "start:prod"]

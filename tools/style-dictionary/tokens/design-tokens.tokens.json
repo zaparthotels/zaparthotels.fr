@@ -2224,239 +2224,15 @@
   "Color Tokens": {
     "Button": {
       "Bg": {
-        "Positive": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Green.400}",
-            "$description": "Bg/Positive/Default",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Green.400}",
-                "Light": "{Color Primitives.Green.400}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-positive-default)"
-                },
-                "variableId": "VariableID:3919:36433",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Green.200}",
-            "$description": "Bg/Positive/Secondary",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Green.200}",
-                "Light": "{Color Primitives.Green.200}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-positive-secondary)"
-                },
-                "variableId": "VariableID:3919:36435",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Hover": {
-            "$type": "color",
-            "$value": "{Color Primitives.Green.600}",
-            "$description": "Bg/Positive/Hover",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Green.600}",
-                "Light": "{Color Primitives.Green.600}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-positive-hover)"
-                },
-                "variableId": "VariableID:3919:36436",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Active": {
-            "$type": "color",
-            "$value": "{Color Primitives.Green.600}",
-            "$description": "Bg/Positive/Secondary Hover",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Green.600}",
-                "Light": "{Color Primitives.Green.600}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-positive-secondary-hover)"
-                },
-                "variableId": "VariableID:56:9907",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Loading": {
-            "$type": "color",
-            "$value": "{Color Primitives.Green.200}",
-            "$description": "Bg/Positive/Tertiary",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Green.200}",
-                "Light": "{Color Primitives.Green.200}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-positive-tertiary)"
-                },
-                "variableId": "VariableID:2002:7433",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
-        "Warning": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Yellow.400}",
-            "$description": "Bg/Warning/Default",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Yellow.400}",
-                "Light": "{Color Primitives.Yellow.400}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-warning-default)"
-                },
-                "variableId": "VariableID:3919:36438",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Yellow.200}",
-            "$description": "Bg/Warning/Secondary",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Yellow.200}",
-                "Light": "{Color Primitives.Yellow.200}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-warning-secondary)"
-                },
-                "variableId": "VariableID:3919:36440",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Hover": {
-            "$type": "color",
-            "$value": "{Color Primitives.Yellow.600}",
-            "$description": "Bg/Warning/Hover",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Yellow.600}",
-                "Light": "{Color Primitives.Yellow.600}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-warning-hover)"
-                },
-                "variableId": "VariableID:3919:36441",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Active": {
-            "$type": "color",
-            "$value": "{Color Primitives.Yellow.600}",
-            "$description": "Bg/Warning/Secondary Hover",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Yellow.600}",
-                "Light": "{Color Primitives.Yellow.600}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-warning-secondary-hover)"
-                },
-                "variableId": "VariableID:56:9908",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Loading": {
-            "$type": "color",
-            "$value": "{Color Primitives.Yellow.200}",
-            "$description": "Bg/Warning/Tertiary",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Yellow.200}",
-                "Light": "{Color Primitives.Yellow.200}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-warning-tertiary)"
-                },
-                "variableId": "VariableID:2002:7448",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
         "Primary": {
           "Default": {
             "$type": "color",
-            "$value": "{Color Primitives.Blue.400}",
+            "$value": "{Color Primitives.Yellow.400}",
             "$description": "Bg/Neutral/Default",
             "$extensions": {
               "mode": {
                 "Dark": "{Color Primitives.Blue.400}",
-                "Light": "{Color Primitives.Blue.400}"
+                "Light": "{Color Primitives.Yellow.400}"
               },
               "figma": {
                 "codeSyntax": {
@@ -2473,12 +2249,12 @@
           },
           "Hover": {
             "$type": "color",
-            "$value": "{Color Primitives.Blue.600}",
+            "$value": "{Color Primitives.Yellow.500}",
             "$description": "Bg/Neutral/Hover",
             "$extensions": {
               "mode": {
                 "Dark": "{Color Primitives.Blue.600}",
-                "Light": "{Color Primitives.Blue.600}"
+                "Light": "{Color Primitives.Yellow.500}"
               },
               "figma": {
                 "codeSyntax": {
@@ -2495,12 +2271,12 @@
           },
           "Disabled": {
             "$type": "color",
-            "$value": "{Color Primitives.Blue.200}",
+            "$value": "{Color Primitives.Yellow.400}",
             "$description": "Bg/Neutral/Secondary",
             "$extensions": {
               "mode": {
                 "Dark": "{Color Primitives.Blue.200}",
-                "Light": "{Color Primitives.Blue.200}"
+                "Light": "{Color Primitives.Yellow.400}"
               },
               "figma": {
                 "codeSyntax": {
@@ -2517,12 +2293,12 @@
           },
           "Active": {
             "$type": "color",
-            "$value": "{Color Primitives.Blue.600}",
+            "$value": "{Color Primitives.Yellow.500}",
             "$description": "Bg/Neutral/Secondary Hover",
             "$extensions": {
               "mode": {
                 "Dark": "{Color Primitives.Blue.600}",
-                "Light": "{Color Primitives.Blue.600}"
+                "Light": "{Color Primitives.Yellow.500}"
               },
               "figma": {
                 "codeSyntax": {
@@ -2536,39 +2312,17 @@
                 }
               }
             }
-          },
-          "Loading": {
-            "$type": "color",
-            "$value": "{Color Primitives.Blue.200}",
-            "$description": "Bg/Neutral/Tertiary",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Blue.200}",
-                "Light": "{Color Primitives.Blue.200}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-neutral-tertiary)"
-                },
-                "variableId": "VariableID:106:12468",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
           }
         },
         "Secondary": {
           "Hover": {
             "$type": "color",
-            "$value": "{Color Primitives.Blue.100}",
+            "$value": "{Color Primitives.Yellow.300}",
             "$description": "Bg/Neutral/Hover",
             "$extensions": {
               "mode": {
                 "Dark": "{Color Primitives.Blue.100}",
-                "Light": "{Color Primitives.Blue.100}"
+                "Light": "{Color Primitives.Yellow.300}"
               },
               "figma": {
                 "codeSyntax": {
@@ -2585,12 +2339,12 @@
           },
           "Active": {
             "$type": "color",
-            "$value": "{Color Primitives.Blue.200}",
+            "$value": "{Color Primitives.Yellow.300}",
             "$description": "Bg/Neutral/Secondary Hover",
             "$extensions": {
               "mode": {
                 "Dark": "{Color Primitives.Blue.200}",
-                "Light": "{Color Primitives.Blue.200}"
+                "Light": "{Color Primitives.Yellow.300}"
               },
               "figma": {
                 "codeSyntax": {
@@ -2604,45 +2358,19 @@
                 }
               }
             }
-          }
-        },
-        "Danger": {
+          },
           "Default": {
             "$type": "color",
-            "$value": "{Color Primitives.Red.400}",
-            "$description": "Bg/Warning/Default",
+            "$value": "{Color Primitives.Yellow.100}",
+            "$description": "",
             "$extensions": {
               "mode": {
-                "Dark": "{Color Primitives.Red.400}",
-                "Light": "{Color Primitives.Red.400}"
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Yellow.100}"
               },
               "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-warning-default)"
-                },
-                "variableId": "VariableID:3047:455",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Hover": {
-            "$type": "color",
-            "$value": "{Color Primitives.Red.600}",
-            "$description": "Bg/Warning/Hover",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Red.600}",
-                "Light": "{Color Primitives.Red.600}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-warning-hover)"
-                },
-                "variableId": "VariableID:3047:456",
+                "codeSyntax": {},
+                "variableId": "VariableID:3430:2587",
                 "collection": {
                   "id": "VariableCollectionId:3919:36422",
                   "name": "Color Tokens",
@@ -2653,62 +2381,16 @@
           },
           "Disabled": {
             "$type": "color",
-            "$value": "{Color Primitives.Red.200}",
-            "$description": "Bg/Warning/Secondary",
+            "$value": "{Color Primitives.Yellow.100}",
+            "$description": "",
             "$extensions": {
               "mode": {
-                "Dark": "{Color Primitives.Red.200}",
-                "Light": "{Color Primitives.Red.200}"
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Yellow.100}"
               },
               "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-warning-secondary)"
-                },
-                "variableId": "VariableID:3047:457",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Active": {
-            "$type": "color",
-            "$value": "{Color Primitives.Red.600}",
-            "$description": "Bg/Warning/Secondary Hover",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Red.600}",
-                "Light": "{Color Primitives.Red.600}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-warning-secondary-hover)"
-                },
-                "variableId": "VariableID:3047:458",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Loading": {
-            "$type": "color",
-            "$value": "{Color Primitives.Red.200}",
-            "$description": "Bg/Warning/Tertiary",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Red.200}",
-                "Light": "{Color Primitives.Red.200}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-warning-tertiary)"
-                },
-                "variableId": "VariableID:3047:459",
+                "codeSyntax": {},
+                "variableId": "VariableID:3430:2588",
                 "collection": {
                   "id": "VariableCollectionId:3919:36422",
                   "name": "Color Tokens",
@@ -2718,21 +2400,19 @@
             }
           }
         },
-        "Outlined": {
+        "Tertiary": {
           "Default": {
             "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.100}",
-            "$description": "Bg/Neutral/Default",
+            "$value": "{Color Primitives.Pale Blue.600}",
+            "$description": "",
             "$extensions": {
               "mode": {
-                "Dark": "{Color Primitives.Pale Blue.100}",
-                "Light": "{Color Primitives.Pale Blue.100}"
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Pale Blue.600}"
               },
               "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-neutral-default)"
-                },
-                "variableId": "VariableID:3047:12246",
+                "codeSyntax": {},
+                "variableId": "VariableID:3430:2589",
                 "collection": {
                   "id": "VariableCollectionId:3919:36422",
                   "name": "Color Tokens",
@@ -2743,40 +2423,16 @@
           },
           "Hover": {
             "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.100}",
-            "$description": "Bg/Neutral/Hover",
+            "$value": "{Color Primitives.Pale Blue.600}",
+            "$description": "",
             "$extensions": {
               "mode": {
-                "Dark": "{Color Primitives.Pale Blue.100}",
-                "Light": "{Color Primitives.Pale Blue.100}"
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Pale Blue.600}"
               },
               "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-neutral-hover)"
-                },
-                "variableId": "VariableID:3047:12247",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.100}",
-            "$description": "Bg/Neutral/Secondary",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.100}",
-                "Light": "{Color Primitives.Pale Blue.100}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-neutral-secondary)"
-                },
-                "variableId": "VariableID:3047:12248",
+                "codeSyntax": {},
+                "variableId": "VariableID:3430:2614",
                 "collection": {
                   "id": "VariableCollectionId:3919:36422",
                   "name": "Color Tokens",
@@ -2787,18 +2443,16 @@
           },
           "Active": {
             "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.100}",
-            "$description": "Bg/Neutral/Secondary Hover",
+            "$value": "{Color Primitives.Pale Blue.600}",
+            "$description": "",
             "$extensions": {
               "mode": {
-                "Dark": "{Color Primitives.Pale Blue.100}",
-                "Light": "{Color Primitives.Pale Blue.100}"
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Pale Blue.600}"
               },
               "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-neutral-secondary-hover)"
-                },
-                "variableId": "VariableID:3047:12249",
+                "codeSyntax": {},
+                "variableId": "VariableID:3430:2615",
                 "collection": {
                   "id": "VariableCollectionId:3919:36422",
                   "name": "Color Tokens",
@@ -2807,20 +2461,100 @@
               }
             }
           },
-          "Loading": {
+          "Disabled": {
             "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.100}",
-            "$description": "Bg/Neutral/Tertiary",
+            "$value": "{Color Primitives.Pale Blue.400}",
+            "$description": "",
             "$extensions": {
               "mode": {
-                "Dark": "{Color Primitives.Pale Blue.100}",
-                "Light": "{Color Primitives.Pale Blue.100}"
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Pale Blue.400}"
               },
               "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-background-neutral-tertiary)"
-                },
-                "variableId": "VariableID:3047:12250",
+                "codeSyntax": {},
+                "variableId": "VariableID:3430:2617",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          }
+        },
+        "Quaternary": {
+          "Default": {
+            "$type": "color",
+            "$value": "{Color Primitives.White.1000}",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.White.1000}"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3569:779",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          },
+          "Hover": {
+            "$type": "color",
+            "$value": "{Color Primitives.Blue.100}",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Blue.100}"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3569:781",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          },
+          "Active": {
+            "$type": "color",
+            "$value": "{Color Primitives.Blue.100}",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Blue.100}"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3569:782",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          },
+          "Disable": {
+            "$type": "color",
+            "$value": "{Color Primitives.Blue.100}",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Blue.100}"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3569:783",
                 "collection": {
                   "id": "VariableCollectionId:3919:36422",
                   "name": "Color Tokens",
@@ -2832,351 +2566,15 @@
         }
       },
       "Contrast": {
-        "Positive": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Green.900}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Green.900}",
-                "Light": "{Color Primitives.Green.900}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-positive-default)"
-                },
-                "variableId": "VariableID:3919:36462",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Hover": {
-            "$type": "color",
-            "$value": "{Color Primitives.Green.1000}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Green.1000}",
-                "Light": "{Color Primitives.Green.1000}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-positive-secondary)"
-                },
-                "variableId": "VariableID:3919:36463",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Green.400}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Green.400}",
-                "Light": "{Color Primitives.Green.400}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-positive-tertiary)"
-                },
-                "variableId": "VariableID:3919:36464",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Active": {
-            "$type": "color",
-            "$value": "{Color Primitives.Green.1000}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Green.1000}",
-                "Light": "{Color Primitives.Green.1000}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-positive-on-positive)"
-                },
-                "variableId": "VariableID:3919:36465",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Loading": {
-            "$type": "color",
-            "$value": "{Color Primitives.Green.800}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Green.800}",
-                "Light": "{Color Primitives.Green.800}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-positive-on-positive-secondary)"
-                },
-                "variableId": "VariableID:3919:36467",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
-        "Warning": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Yellow.900}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Yellow.900}",
-                "Light": "{Color Primitives.Yellow.900}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-warning-default)"
-                },
-                "variableId": "VariableID:3919:36468",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Hover": {
-            "$type": "color",
-            "$value": "{Color Primitives.Yellow.1000}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Yellow.1000}",
-                "Light": "{Color Primitives.Yellow.1000}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-warning-secondary)"
-                },
-                "variableId": "VariableID:3919:36469",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Yellow.400}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Yellow.400}",
-                "Light": "{Color Primitives.Yellow.400}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-warning-tertiary)"
-                },
-                "variableId": "VariableID:3919:36470",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Active": {
-            "$type": "color",
-            "$value": "{Color Primitives.Yellow.1000}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Yellow.1000}",
-                "Light": "{Color Primitives.Yellow.1000}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-warning-on-warning)"
-                },
-                "variableId": "VariableID:3919:36471",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Loading": {
-            "$type": "color",
-            "$value": "{Color Primitives.Yellow.800}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Yellow.800}",
-                "Light": "{Color Primitives.Yellow.800}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-warning-on-warning-secondary)"
-                },
-                "variableId": "VariableID:3919:36473",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
-        "Danger": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Red.900}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Red.900}",
-                "Light": "{Color Primitives.Red.900}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-danger-default)"
-                },
-                "variableId": "VariableID:3919:36474",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Hover": {
-            "$type": "color",
-            "$value": "{Color Primitives.Red.1000}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Red.1000}",
-                "Light": "{Color Primitives.Red.1000}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-danger-secondary)"
-                },
-                "variableId": "VariableID:3919:36475",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Red.400}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Red.400}",
-                "Light": "{Color Primitives.Red.400}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-danger-tertiary)"
-                },
-                "variableId": "VariableID:3919:36476",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Active": {
-            "$type": "color",
-            "$value": "{Color Primitives.Red.1000}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Red.1000}",
-                "Light": "{Color Primitives.Red.1000}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-danger-on-danger)"
-                },
-                "variableId": "VariableID:3919:36477",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Loading": {
-            "$type": "color",
-            "$value": "{Color Primitives.Red.800}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Red.800}",
-                "Light": "{Color Primitives.Red.800}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-danger-on-danger-secondary)"
-                },
-                "variableId": "VariableID:3919:36479",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
         "Primary": {
           "Default": {
             "$type": "color",
-            "$value": "{Color Primitives.Blue.900}",
+            "$value": "{Color Primitives.Pale Blue.600}",
             "$description": "",
             "$extensions": {
               "mode": {
                 "Dark": "{Color Primitives.Blue.900}",
-                "Light": "{Color Primitives.Blue.900}"
+                "Light": "{Color Primitives.Pale Blue.600}"
               },
               "figma": {
                 "codeSyntax": {
@@ -3193,12 +2591,12 @@
           },
           "Hover": {
             "$type": "color",
-            "$value": "{Color Primitives.Blue.1000}",
+            "$value": "{Color Primitives.Pale Blue.600}",
             "$description": "",
             "$extensions": {
               "mode": {
                 "Dark": "{Color Primitives.Blue.1000}",
-                "Light": "{Color Primitives.Blue.1000}"
+                "Light": "{Color Primitives.Pale Blue.600}"
               },
               "figma": {
                 "codeSyntax": {
@@ -3215,12 +2613,12 @@
           },
           "Disabled": {
             "$type": "color",
-            "$value": "{Color Primitives.Blue.400}",
+            "$value": "{Color Primitives.Pale Blue.400}",
             "$description": "",
             "$extensions": {
               "mode": {
                 "Dark": "{Color Primitives.Blue.400}",
-                "Light": "{Color Primitives.Blue.400}"
+                "Light": "{Color Primitives.Pale Blue.400}"
               },
               "figma": {
                 "codeSyntax": {
@@ -3237,12 +2635,12 @@
           },
           "Active": {
             "$type": "color",
-            "$value": "{Color Primitives.Blue.1000}",
+            "$value": "{Color Primitives.Pale Blue.600}",
             "$description": "",
             "$extensions": {
               "mode": {
                 "Dark": "{Color Primitives.Blue.1000}",
-                "Light": "{Color Primitives.Blue.1000}"
+                "Light": "{Color Primitives.Pale Blue.600}"
               },
               "figma": {
                 "codeSyntax": {
@@ -3256,39 +2654,17 @@
                 }
               }
             }
-          },
-          "Loading": {
-            "$type": "color",
-            "$value": "{Color Primitives.Blue.800}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Blue.800}",
-                "Light": "{Color Primitives.Blue.800}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-neutral-on-neutral-secondary)"
-                },
-                "variableId": "VariableID:106:12477",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
           }
         },
         "Secondary": {
           "Default": {
             "$type": "color",
-            "$value": "{Color Primitives.Blue.800}",
+            "$value": "{Color Primitives.Pale Blue.600}",
             "$description": "",
             "$extensions": {
               "mode": {
                 "Dark": "{Color Primitives.Blue.800}",
-                "Light": "{Color Primitives.Blue.800}"
+                "Light": "{Color Primitives.Pale Blue.600}"
               },
               "figma": {
                 "codeSyntax": {
@@ -3305,12 +2681,12 @@
           },
           "Hover": {
             "$type": "color",
-            "$value": "{Color Primitives.Blue.900}",
+            "$value": "{Color Primitives.Pale Blue.600}",
             "$description": "",
             "$extensions": {
               "mode": {
                 "Dark": "{Color Primitives.Blue.900}",
-                "Light": "{Color Primitives.Blue.900}"
+                "Light": "{Color Primitives.Pale Blue.600}"
               },
               "figma": {
                 "codeSyntax": {
@@ -3327,12 +2703,12 @@
           },
           "Disabled": {
             "$type": "color",
-            "$value": "{Color Primitives.Blue.200}",
+            "$value": "{Color Primitives.Pale Blue.400}",
             "$description": "",
             "$extensions": {
               "mode": {
                 "Dark": "{Color Primitives.Blue.200}",
-                "Light": "{Color Primitives.Blue.200}"
+                "Light": "{Color Primitives.Pale Blue.400}"
               },
               "figma": {
                 "codeSyntax": {
@@ -3349,12 +2725,12 @@
           },
           "Active": {
             "$type": "color",
-            "$value": "{Color Primitives.Blue.1000}",
+            "$value": "{Color Primitives.Pale Blue.600}",
             "$description": "",
             "$extensions": {
               "mode": {
                 "Dark": "{Color Primitives.Blue.1000}",
-                "Light": "{Color Primitives.Blue.1000}"
+                "Light": "{Color Primitives.Pale Blue.600}"
               },
               "figma": {
                 "codeSyntax": {
@@ -3368,39 +2744,17 @@
                 }
               }
             }
-          },
-          "Loading": {
-            "$type": "color",
-            "$value": "{Color Primitives.Blue.600}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Blue.600}",
-                "Light": "{Color Primitives.Blue.600}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-neutral-on-neutral-secondary)"
-                },
-                "variableId": "VariableID:3038:399",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
           }
         },
         "Tertiary": {
           "Default": {
             "$type": "color",
-            "$value": "{Color Primitives.Blue.800}",
+            "$value": "{Color Primitives.White.1000}",
             "$description": "",
             "$extensions": {
               "mode": {
                 "Dark": "{Color Primitives.Blue.800}",
-                "Light": "{Color Primitives.Blue.800}"
+                "Light": "{Color Primitives.White.1000}"
               },
               "figma": {
                 "codeSyntax": {
@@ -3417,12 +2771,12 @@
           },
           "Hover": {
             "$type": "color",
-            "$value": "{Color Primitives.Blue.900}",
+            "$value": "{Color Primitives.White.1000}",
             "$description": "",
             "$extensions": {
               "mode": {
                 "Dark": "{Color Primitives.Blue.900}",
-                "Light": "{Color Primitives.Blue.900}"
+                "Light": "{Color Primitives.White.1000}"
               },
               "figma": {
                 "codeSyntax": {
@@ -3439,12 +2793,12 @@
           },
           "Disabled": {
             "$type": "color",
-            "$value": "{Color Primitives.Blue.200}",
+            "$value": "{Color Primitives.White.1000}",
             "$description": "",
             "$extensions": {
               "mode": {
                 "Dark": "{Color Primitives.Blue.200}",
-                "Light": "{Color Primitives.Blue.200}"
+                "Light": "{Color Primitives.White.1000}"
               },
               "figma": {
                 "codeSyntax": {
@@ -3461,12 +2815,12 @@
           },
           "Active": {
             "$type": "color",
-            "$value": "{Color Primitives.Blue.1000}",
+            "$value": "{Color Primitives.White.1000}",
             "$description": "",
             "$extensions": {
               "mode": {
                 "Dark": "{Color Primitives.Blue.1000}",
-                "Light": "{Color Primitives.Blue.1000}"
+                "Light": "{Color Primitives.White.1000}"
               },
               "figma": {
                 "codeSyntax": {
@@ -3480,45 +2834,21 @@
                 }
               }
             }
-          },
-          "Loading": {
-            "$type": "color",
-            "$value": "{Color Primitives.Blue.600}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Blue.600}",
-                "Light": "{Color Primitives.Blue.600}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-neutral-on-neutral-secondary)"
-                },
-                "variableId": "VariableID:3047:511",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
           }
         },
-        "Outlined": {
+        "Quaternary": {
           "Default": {
             "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.800}",
+            "$value": "{Color Primitives.Blue.800}",
             "$description": "",
             "$extensions": {
               "mode": {
-                "Dark": "{Color Primitives.Pale Blue.800}",
-                "Light": "{Color Primitives.Pale Blue.800}"
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Blue.800}"
               },
               "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-neutral-default)"
-                },
-                "variableId": "VariableID:3047:12251",
+                "codeSyntax": {},
+                "variableId": "VariableID:3569:784",
                 "collection": {
                   "id": "VariableCollectionId:3919:36422",
                   "name": "Color Tokens",
@@ -3529,226 +2859,36 @@
           },
           "Hover": {
             "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.800}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.800}",
-                "Light": "{Color Primitives.Pale Blue.800}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-neutral-secondary)"
-                },
-                "variableId": "VariableID:3047:12252",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.200}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.200}",
-                "Light": "{Color Primitives.Pale Blue.200}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-neutral-tertiary)"
-                },
-                "variableId": "VariableID:3047:12253",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Active": {
-            "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.900}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.900}",
-                "Light": "{Color Primitives.Pale Blue.900}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-neutral-on-neutral)"
-                },
-                "variableId": "VariableID:3047:12254",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Loading": {
-            "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.600}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.600}",
-                "Light": "{Color Primitives.Pale Blue.600}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-text-neutral-on-neutral-secondary)"
-                },
-                "variableId": "VariableID:3047:12255",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        }
-      },
-      "Border": {
-        "Positive": {
-          "Active": {
-            "$type": "color",
-            "$value": "{Color Primitives.Green.800}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Green.800}",
-                "Light": "{Color Primitives.Green.800}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-border-positive-default)"
-                },
-                "variableId": "VariableID:3919:36520",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
-        "Warning": {
-          "Active": {
-            "$type": "color",
-            "$value": "{Color Primitives.Yellow.800}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Yellow.800}",
-                "Light": "{Color Primitives.Yellow.800}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-border-warning-default)"
-                },
-                "variableId": "VariableID:3919:36524",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
-        "Danger": {
-          "Active": {
-            "$type": "color",
-            "$value": "{Color Primitives.Red.800}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Red.800}",
-                "Light": "{Color Primitives.Red.800}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-border-danger-default)"
-                },
-                "variableId": "VariableID:3919:36528",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
-        "Primary": {
-          "Active": {
-            "$type": "color",
             "$value": "{Color Primitives.Blue.800}",
             "$description": "",
             "$extensions": {
               "mode": {
-                "Dark": "{Color Primitives.Blue.800}",
-                "Light": "{Color Primitives.Blue.800}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-border-neutral-default)"
-                },
-                "variableId": "VariableID:106:12485",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
-        "Secondary": {
-          "Active": {
-            "$type": "color",
-            "$value": "{Color Primitives.Blue.1000}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Blue.1000}",
-                "Light": "{Color Primitives.Blue.1000}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-border-neutral-default)"
-                },
-                "variableId": "VariableID:3038:453",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Blue.800}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Blue.800}",
+                "Dark": "#ffffff",
                 "Light": "{Color Primitives.Blue.800}"
               },
               "figma": {
                 "codeSyntax": {},
-                "variableId": "VariableID:3047:312",
+                "variableId": "VariableID:3569:785",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          },
+          "Active": {
+            "$type": "color",
+            "$value": "{Color Primitives.Blue.800}",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Blue.800}"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3569:786",
                 "collection": {
                   "id": "VariableCollectionId:3919:36422",
                   "name": "Color Tokens",
@@ -3763,32 +2903,12 @@
             "$description": "",
             "$extensions": {
               "mode": {
-                "Dark": "{Color Primitives.Blue.200}",
+                "Dark": "#ffffff",
                 "Light": "{Color Primitives.Blue.200}"
               },
               "figma": {
                 "codeSyntax": {},
-                "variableId": "VariableID:3047:313",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Loading": {
-            "$type": "color",
-            "$value": "{Color Primitives.Blue.600}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Blue.600}",
-                "Light": "{Color Primitives.Blue.600}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3047:314",
+                "variableId": "VariableID:3569:787",
                 "collection": {
                   "id": "VariableCollectionId:3919:36422",
                   "name": "Color Tokens",
@@ -3797,42 +2917,22 @@
               }
             }
           }
-        },
-        "Outlined": {
+        }
+      },
+      "Shadow": {
+        "Primary": {
           "Default": {
             "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.800}",
+            "$value": "{Color Primitives.Pale Blue.600}",
             "$description": "",
             "$extensions": {
               "mode": {
-                "Dark": "{Color Primitives.Pale Blue.800}",
-                "Light": "{Color Primitives.Pale Blue.800}"
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Pale Blue.600}"
               },
               "figma": {
                 "codeSyntax": {},
-                "variableId": "VariableID:3047:12256",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Active": {
-            "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.900}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.900}",
-                "Light": "{Color Primitives.Pale Blue.900}"
-              },
-              "figma": {
-                "codeSyntax": {
-                  "WEB": "var(--sds-color-border-neutral-default)"
-                },
-                "variableId": "VariableID:3047:12257",
+                "variableId": "VariableID:3541:382",
                 "collection": {
                   "id": "VariableCollectionId:3919:36422",
                   "name": "Color Tokens",
@@ -3843,16 +2943,38 @@
           },
           "Disabled": {
             "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.200}",
+            "$value": "{Color Primitives.Pale Blue.400}",
             "$description": "",
             "$extensions": {
               "mode": {
-                "Dark": "{Color Primitives.Pale Blue.200}",
-                "Light": "{Color Primitives.Pale Blue.200}"
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Pale Blue.400}"
               },
               "figma": {
                 "codeSyntax": {},
-                "variableId": "VariableID:3047:12258",
+                "variableId": "VariableID:3541:384",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          }
+        },
+        "Secondary": {
+          "Default": {
+            "$type": "color",
+            "$value": "{Color Primitives.Pale Blue.600}",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Pale Blue.600}"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3542:415",
                 "collection": {
                   "id": "VariableCollectionId:3919:36422",
                   "name": "Color Tokens",
@@ -3861,18 +2983,146 @@
               }
             }
           },
-          "Loading": {
+          "Disabled": {
+            "$type": "color",
+            "$value": "{Color Primitives.Pale Blue.400}",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Pale Blue.400}"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3542:417",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          }
+        },
+        "Tertiary": {
+          "Default": {
             "$type": "color",
             "$value": "{Color Primitives.Pale Blue.600}",
             "$description": "",
             "$extensions": {
               "mode": {
-                "Dark": "{Color Primitives.Pale Blue.600}",
+                "Dark": "#ffffff",
                 "Light": "{Color Primitives.Pale Blue.600}"
               },
               "figma": {
                 "codeSyntax": {},
-                "variableId": "VariableID:3047:12259",
+                "variableId": "VariableID:3542:418",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          },
+          "Disabled": {
+            "$type": "color",
+            "$value": "{Color Primitives.Pale Blue.400}",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Pale Blue.400}"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3542:420",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          }
+        },
+        "Quaternary": {
+          "Default": {
+            "$type": "color",
+            "$value": "{Color Primitives.Blue.300}",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Blue.300}"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3569:788",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          },
+          "Disabled": {
+            "$type": "color",
+            "$value": "{Color Primitives.Blue.200}",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Blue.200}"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3569:791",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Border": {
+        "Quaternary": {
+          "Default": {
+            "$type": "color",
+            "$value": "{Color Primitives.Blue.800}",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Blue.800}"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3569:792",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          },
+          "Active": {
+            "$type": "color",
+            "$value": "{Color Primitives.Blue.800}",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Blue.800}"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3569:850",
                 "collection": {
                   "id": "VariableCollectionId:3919:36422",
                   "name": "Color Tokens",
@@ -3883,16 +3133,82 @@
           },
           "Hover": {
             "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.800}",
+            "$value": "{Color Primitives.Blue.800}",
             "$description": "",
             "$extensions": {
               "mode": {
-                "Dark": "{Color Primitives.Pale Blue.800}",
-                "Light": "{Color Primitives.Pale Blue.800}"
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Blue.800}"
               },
               "figma": {
                 "codeSyntax": {},
-                "variableId": "VariableID:3047:12260",
+                "variableId": "VariableID:3569:851",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          }
+        },
+        "Primary": {
+          "Active": {
+            "$type": "color",
+            "$value": "{Color Primitives.Pale Blue.600}",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Pale Blue.600}"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3569:846",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          }
+        },
+        "Secondary": {
+          "Active": {
+            "$type": "color",
+            "$value": "{Color Primitives.Pale Blue.600}",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.Pale Blue.600}"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3569:848",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          }
+        },
+        "Tertiary": {
+          "Active": {
+            "$type": "color",
+            "$value": "{Color Primitives.White.1000}",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "#ffffff",
+                "Light": "{Color Primitives.White.1000}"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3569:849",
                 "collection": {
                   "id": "VariableCollectionId:3919:36422",
                   "name": "Color Tokens",
@@ -3906,17 +3222,59 @@
     },
     "View": {
       "Bg": {
+        "Primary": {
+          "$type": "color",
+          "$value": "{Color Primitives.Blue.500}",
+          "$description": "",
+          "$extensions": {
+            "mode": {
+              "Dark": "{Color Primitives.Yellow.100}",
+              "Light": "{Color Primitives.Blue.500}"
+            },
+            "figma": {
+              "codeSyntax": {},
+              "variableId": "VariableID:3012:11830",
+              "collection": {
+                "id": "VariableCollectionId:3919:36422",
+                "name": "Color Tokens",
+                "defaultModeId": "3919:21"
+              }
+            }
+          }
+        },
+        "Secondary": {
+          "$type": "color",
+          "$value": "{Color Primitives.White.1000}",
+          "$description": "",
+          "$extensions": {
+            "mode": {
+              "Dark": "#ffffff",
+              "Light": "{Color Primitives.White.1000}"
+            },
+            "figma": {
+              "codeSyntax": {},
+              "variableId": "VariableID:3429:1441",
+              "collection": {
+                "id": "VariableCollectionId:3919:36422",
+                "name": "Color Tokens",
+                "defaultModeId": "3919:21"
+              }
+            }
+          }
+        }
+      },
+      "Bg-top": {
         "$type": "color",
-        "$value": "{Color Primitives.Yellow.100}",
+        "$value": "{Color Primitives.Blue.900}",
         "$description": "",
         "$extensions": {
           "mode": {
-            "Dark": "{Color Primitives.Yellow.100}",
-            "Light": "{Color Primitives.Yellow.100}"
+            "Dark": "#ffffff",
+            "Light": "{Color Primitives.Blue.900}"
           },
           "figma": {
             "codeSyntax": {},
-            "variableId": "VariableID:3012:11830",
+            "variableId": "VariableID:3429:1428",
             "collection": {
               "id": "VariableCollectionId:3919:36422",
               "name": "Color Tokens",
@@ -3975,28 +3333,6 @@
     "Game Card": {
       "Title": {
         "Bg": {
-          "Concevoir": {
-            "Default": {
-              "$type": "color",
-              "$value": "{Color Primitives.Yellow.600}",
-              "$description": "",
-              "$extensions": {
-                "mode": {
-                  "Dark": "{Color Primitives.Yellow.600}",
-                  "Light": "{Color Primitives.Yellow.600}"
-                },
-                "figma": {
-                  "codeSyntax": {},
-                  "variableId": "VariableID:3065:11449",
-                  "collection": {
-                    "id": "VariableCollectionId:3919:36422",
-                    "name": "Color Tokens",
-                    "defaultModeId": "3919:21"
-                  }
-                }
-              }
-            }
-          },
           "Situation": {
             "Default": {
               "$type": "color",
@@ -4043,28 +3379,6 @@
           }
         },
         "Contrast": {
-          "Concevoir": {
-            "Default": {
-              "$type": "color",
-              "$value": "{Color Primitives.Yellow.1000}",
-              "$description": "",
-              "$extensions": {
-                "mode": {
-                  "Dark": "{Color Primitives.Yellow.1000}",
-                  "Light": "{Color Primitives.Yellow.1000}"
-                },
-                "figma": {
-                  "codeSyntax": {},
-                  "variableId": "VariableID:3065:11450",
-                  "collection": {
-                    "id": "VariableCollectionId:3919:36422",
-                    "name": "Color Tokens",
-                    "defaultModeId": "3919:21"
-                  }
-                }
-              }
-            }
-          },
           "Situation": {
             "Default": {
               "$type": "color",
@@ -4112,28 +3426,6 @@
         }
       },
       "Bg": {
-        "Concevoir": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.White.1000}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.White.1000}",
-                "Light": "{Color Primitives.White.1000}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3065:13929",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
         "Situation": {
           "Default": {
             "$type": "color",
@@ -4179,20 +3471,20 @@
           }
         }
       },
-      "Principle Text": {
-        "Concevoir": {
+      "Text": {
+        "Situation": {
           "Default": {
             "$type": "color",
-            "$value": "{Color Primitives.Yellow.700}",
+            "$value": "{Color Primitives.Pale Blue.700}",
             "$description": "",
             "$extensions": {
               "mode": {
-                "Dark": "{Color Primitives.Yellow.700}",
-                "Light": "{Color Primitives.Yellow.700}"
+                "Dark": "{Color Primitives.Pale Blue.700}",
+                "Light": "{Color Primitives.Pale Blue.700}"
               },
               "figma": {
                 "codeSyntax": {},
-                "variableId": "VariableID:3065:13931",
+                "variableId": "VariableID:3076:7819",
                 "collection": {
                   "id": "VariableCollectionId:3919:36422",
                   "name": "Color Tokens",
@@ -4202,6 +3494,30 @@
             }
           }
         },
+        "Utilisateur": {
+          "Default": {
+            "$type": "color",
+            "$value": "{Color Primitives.Pale Blue.700}",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "{Color Primitives.Pale Blue.700}",
+                "Light": "{Color Primitives.Pale Blue.700}"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3076:7820",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Principle Text": {
         "Situation": {
           "Default": {
             "$type": "color",
@@ -4247,1215 +3563,29 @@
           }
         }
       },
-      "Text": {
-        "Concevoir": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.700}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.700}",
-                "Light": "{Color Primitives.Pale Blue.700}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3076:7615",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
-        "Situation": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.700}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.700}",
-                "Light": "{Color Primitives.Pale Blue.700}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3076:7819",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
-        "Utilisateur": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.700}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.700}",
-                "Light": "{Color Primitives.Pale Blue.700}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3076:7820",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "Textarea Field": {
-      "Label": {
-        "Primary": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.700}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.700}",
-                "Light": "{Color Primitives.Pale Blue.700}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3082:9598",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Gray.400}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Gray.400}",
-                "Light": "{Color Primitives.Gray.400}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3084:1932",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
-        "Outlined": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.700}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.700}",
-                "Light": "{Color Primitives.Pale Blue.700}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3095:499",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Gray.400}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Gray.400}",
-                "Light": "{Color Primitives.Gray.400}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3095:500",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        }
-      },
-      "Description": {
-        "Primary": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.500}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.500}",
-                "Light": "{Color Primitives.Pale Blue.500}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3082:9600",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Gray.300}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Gray.300}",
-                "Light": "{Color Primitives.Gray.300}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3084:1927",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
-        "Outlined": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.500}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.500}",
-                "Light": "{Color Primitives.Pale Blue.500}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3095:501",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Gray.300}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Gray.300}",
-                "Light": "{Color Primitives.Gray.300}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3095:502",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        }
-      },
-      "Bg": {
-        "Primary": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.White.1000}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.White.1000}",
-                "Light": "{Color Primitives.White.1000}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3082:9601",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Gray.100}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Gray.100}",
-                "Light": "{Color Primitives.Gray.100}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3084:1928",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
-        "Outlined": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.White.1000}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.White.1000}",
-                "Light": "{Color Primitives.White.1000}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3095:495",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Gray.100}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Gray.100}",
-                "Light": "{Color Primitives.Gray.100}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3095:496",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        }
-      },
-      "Hint": {
-        "Primary": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.500}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.500}",
-                "Light": "{Color Primitives.Pale Blue.500}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3082:9602",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Gray.300}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Gray.300}",
-                "Light": "{Color Primitives.Gray.300}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3084:1929",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Danger": {
-            "$type": "color",
-            "$value": "{Color Primitives.Red.700}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Red.700}",
-                "Light": "{Color Primitives.Red.700}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3085:396",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Positive": {
-            "$type": "color",
-            "$value": "{Color Primitives.Green.800}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Green.800}",
-                "Light": "{Color Primitives.Green.800}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3085:397",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
-        "Outlined": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.500}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.500}",
-                "Light": "{Color Primitives.Pale Blue.500}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3095:503",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Gray.300}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Gray.300}",
-                "Light": "{Color Primitives.Gray.300}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3095:504",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Error": {
-            "$type": "color",
-            "$value": "{Color Primitives.Red.700}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Red.700}",
-                "Light": "{Color Primitives.Red.700}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3095:795",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Valid": {
-            "$type": "color",
-            "$value": "{Color Primitives.Green.800}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Green.800}",
-                "Light": "{Color Primitives.Green.800}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3095:796",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        }
-      },
       "Border": {
-        "Primary": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Gray.300}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Gray.300}",
-                "Light": "{Color Primitives.Gray.300}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3082:9604",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
+        "$type": "color",
+        "$value": "{Color Primitives.Blue.1000}",
+        "$description": "",
+        "$extensions": {
+          "mode": {
+            "Dark": "#ffffff",
+            "Light": "{Color Primitives.Blue.1000}"
           },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Gray.300}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Gray.300}",
-                "Light": "{Color Primitives.Gray.300}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3084:1930",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Danger": {
-            "$type": "color",
-            "$value": "{Color Primitives.Red.700}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Red.700}",
-                "Light": "{Color Primitives.Red.700}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3085:393",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Positive": {
-            "$type": "color",
-            "$value": "{Color Primitives.Green.800}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Green.800}",
-                "Light": "{Color Primitives.Green.800}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3085:398",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
-        "Outlined": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.700}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.700}",
-                "Light": "{Color Primitives.Pale Blue.700}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3094:392",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Gray.300}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Gray.300}",
-                "Light": "{Color Primitives.Gray.300}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3094:393",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Danger": {
-            "$type": "color",
-            "$value": "{Color Primitives.Red.700}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Red.700}",
-                "Light": "{Color Primitives.Red.700}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3094:394",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Positive": {
-            "$type": "color",
-            "$value": "{Color Primitives.Green.800}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Green.800}",
-                "Light": "{Color Primitives.Green.800}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3094:395",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        }
-      },
-      "Contrast": {
-        "Primary": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.700}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.700}",
-                "Light": "{Color Primitives.Pale Blue.700}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3082:9606",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Gray.300}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Gray.300}",
-                "Light": "{Color Primitives.Gray.300}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3084:1931",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Placeholder": {
-            "$type": "color",
-            "$value": "{Color Primitives.Gray.500}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Gray.500}",
-                "Light": "{Color Primitives.Gray.500}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3087:569",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
-        "Outlined": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.700}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.700}",
-                "Light": "{Color Primitives.Pale Blue.700}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3095:505",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Gray.300}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Gray.300}",
-                "Light": "{Color Primitives.Gray.300}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3095:506",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Placeholder": {
-            "$type": "color",
-            "$value": "{Color Primitives.Gray.500}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Gray.500}",
-                "Light": "{Color Primitives.Gray.500}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3095:578",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        }
-      },
-      "Field Constraint": {
-        "Required": {
-          "$type": "color",
-          "$value": "{Color Primitives.Red.700}",
-          "$description": "",
-          "$extensions": {
-            "mode": {
-              "Dark": "{Color Primitives.Red.700}",
-              "Light": "{Color Primitives.Red.700}"
-            },
-            "figma": {
-              "codeSyntax": {},
-              "variableId": "VariableID:3095:533",
-              "collection": {
-                "id": "VariableCollectionId:3919:36422",
-                "name": "Color Tokens",
-                "defaultModeId": "3919:21"
-              }
-            }
-          }
-        },
-        "Optional": {
-          "$type": "color",
-          "$value": "{Color Primitives.Gray.600}",
-          "$description": "",
-          "$extensions": {
-            "mode": {
-              "Dark": "{Color Primitives.Gray.600}",
-              "Light": "{Color Primitives.Gray.600}"
-            },
-            "figma": {
-              "codeSyntax": {},
-              "variableId": "VariableID:3095:534",
-              "collection": {
-                "id": "VariableCollectionId:3919:36422",
-                "name": "Color Tokens",
-                "defaultModeId": "3919:21"
-              }
+          "figma": {
+            "codeSyntax": {},
+            "variableId": "VariableID:3428:1689",
+            "collection": {
+              "id": "VariableCollectionId:3919:36422",
+              "name": "Color Tokens",
+              "defaultModeId": "3919:21"
             }
           }
         }
       }
     },
     "Checkbox Field": {
-      "Bg": {
-        "Primary": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.White.1000}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.White.1000}",
-                "Light": "{Color Primitives.White.1000}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3097:542",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
-        "Outlined": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.White.1000}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.White.1000}",
-                "Light": "{Color Primitives.White.1000}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3101:1326",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        }
-      },
-      "Contrast": {
-        "Primary": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Blue.400}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Blue.400}",
-                "Light": "{Color Primitives.Blue.400}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3101:654",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Gray.400}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Gray.400}",
-                "Light": "{Color Primitives.Gray.400}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3101:747",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Danger": {
-            "$type": "color",
-            "$value": "{Color Primitives.Red.600}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Red.600}",
-                "Light": "{Color Primitives.Red.600}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3101:955",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Positive": {
-            "$type": "color",
-            "$value": "{Color Primitives.Green.600}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Green.600}",
-                "Light": "{Color Primitives.Green.600}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3101:957",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
-        "Outlined": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.700}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.700}",
-                "Light": "{Color Primitives.Pale Blue.700}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3101:1296",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Gray.400}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Gray.400}",
-                "Light": "{Color Primitives.Gray.400}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3101:1297",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Danger": {
-            "$type": "color",
-            "$value": "{Color Primitives.Red.600}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Red.600}",
-                "Light": "{Color Primitives.Red.600}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3101:1298",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Positive": {
-            "$type": "color",
-            "$value": "{Color Primitives.Green.600}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Green.600}",
-                "Light": "{Color Primitives.Green.600}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3101:1299",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        }
-      },
-      "Border": {
-        "Primary": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Blue.400}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Blue.400}",
-                "Light": "{Color Primitives.Blue.400}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3101:655",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Gray.400}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Gray.400}",
-                "Light": "{Color Primitives.Gray.400}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3101:748",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Danger": {
-            "$type": "color",
-            "$value": "{Color Primitives.Red.600}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Red.600}",
-                "Light": "{Color Primitives.Red.600}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3101:958",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Positive": {
-            "$type": "color",
-            "$value": "{Color Primitives.Green.600}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Green.600}",
-                "Light": "{Color Primitives.Green.600}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3101:959",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        },
-        "Outlined": {
-          "Default": {
-            "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.700}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Pale Blue.700}",
-                "Light": "{Color Primitives.Pale Blue.700}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3101:1300",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Disabled": {
-            "$type": "color",
-            "$value": "{Color Primitives.Gray.400}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Gray.400}",
-                "Light": "{Color Primitives.Gray.400}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3101:1301",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Danger": {
-            "$type": "color",
-            "$value": "{Color Primitives.Red.600}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Red.600}",
-                "Light": "{Color Primitives.Red.600}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3101:1302",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          },
-          "Positive": {
-            "$type": "color",
-            "$value": "{Color Primitives.Green.600}",
-            "$description": "",
-            "$extensions": {
-              "mode": {
-                "Dark": "{Color Primitives.Green.600}",
-                "Light": "{Color Primitives.Green.600}"
-              },
-              "figma": {
-                "codeSyntax": {},
-                "variableId": "VariableID:3101:1303",
-                "collection": {
-                  "id": "VariableCollectionId:3919:36422",
-                  "name": "Color Tokens",
-                  "defaultModeId": "3919:21"
-                }
-              }
-            }
-          }
-        }
-      },
-      "Label": {
+      "Text": {
         "Primary": {
           "Default": {
             "$type": "color",
@@ -5499,20 +3629,20 @@
           }
         }
       },
-      "Description": {
+      "Icon": {
         "Primary": {
           "Default": {
             "$type": "color",
-            "$value": "{Color Primitives.Pale Blue.500}",
+            "$value": "{Color Primitives.Pale Blue.700}",
             "$description": "",
             "$extensions": {
               "mode": {
-                "Dark": "{Color Primitives.Pale Blue.500}",
-                "Light": "{Color Primitives.Pale Blue.500}"
+                "Dark": "{Color Primitives.Pale Blue.700}",
+                "Light": "{Color Primitives.Pale Blue.700}"
               },
               "figma": {
                 "codeSyntax": {},
-                "variableId": "VariableID:3101:761",
+                "variableId": "VariableID:3101:1296",
                 "collection": {
                   "id": "VariableCollectionId:3919:36422",
                   "name": "Color Tokens",
@@ -5523,16 +3653,60 @@
           },
           "Disabled": {
             "$type": "color",
-            "$value": "{Color Primitives.Gray.500}",
+            "$value": "{Color Primitives.Gray.400}",
             "$description": "",
             "$extensions": {
               "mode": {
-                "Dark": "{Color Primitives.Gray.500}",
-                "Light": "{Color Primitives.Gray.500}"
+                "Dark": "{Color Primitives.Gray.400}",
+                "Light": "{Color Primitives.Gray.400}"
               },
               "figma": {
                 "codeSyntax": {},
-                "variableId": "VariableID:3101:762",
+                "variableId": "VariableID:3101:1297",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          }
+        }
+      },
+      "Border": {
+        "Primary": {
+          "Default": {
+            "$type": "color",
+            "$value": "{Color Primitives.Pale Blue.700}",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "{Color Primitives.Pale Blue.700}",
+                "Light": "{Color Primitives.Pale Blue.700}"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3101:1300",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          },
+          "Disabled": {
+            "$type": "color",
+            "$value": "{Color Primitives.Gray.400}",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "{Color Primitives.Gray.400}",
+                "Light": "{Color Primitives.Gray.400}"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3101:1301",
                 "collection": {
                   "id": "VariableCollectionId:3919:36422",
                   "name": "Color Tokens",
@@ -5544,7 +3718,7 @@
         }
       },
       "Shadow": {
-        "Outlined": {
+        "Primary": {
           "Default": {
             "$type": "color",
             "$value": "{Color Primitives.Pale Blue.700}",
@@ -5562,6 +3736,502 @@
                   "name": "Color Tokens",
                   "defaultModeId": "3919:21"
                 }
+              }
+            }
+          }
+        }
+      },
+      "Bg": {
+        "Primary": {
+          "Default": {
+            "$type": "color",
+            "$value": "{Color Primitives.White.1000}",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "{Color Primitives.White.1000}",
+                "Light": "{Color Primitives.White.1000}"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3101:1326",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          },
+          "Disabled": {
+            "$type": "color",
+            "$value": "#ff1515",
+            "$description": "",
+            "$extensions": {
+              "mode": {
+                "Dark": "#ffffff",
+                "Light": "#ff1515"
+              },
+              "figma": {
+                "codeSyntax": {},
+                "variableId": "VariableID:3481:267",
+                "collection": {
+                  "id": "VariableCollectionId:3919:36422",
+                  "name": "Color Tokens",
+                  "defaultModeId": "3919:21"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Textarea Field": {
+      "Border": {
+        "Default": {
+          "$type": "color",
+          "$value": "{Color Primitives.Pale Blue.600}",
+          "$description": "",
+          "$extensions": {
+            "mode": {
+              "Dark": "{Color Primitives.Pale Blue.600}",
+              "Light": "{Color Primitives.Pale Blue.600}"
+            },
+            "figma": {
+              "codeSyntax": {},
+              "variableId": "VariableID:3429:2567",
+              "collection": {
+                "id": "VariableCollectionId:3919:36422",
+                "name": "Color Tokens",
+                "defaultModeId": "3919:21"
+              }
+            }
+          }
+        }
+      },
+      "Contrast": {
+        "Default": {
+          "$type": "color",
+          "$value": "{Color Primitives.Pale Blue.800}",
+          "$description": "",
+          "$extensions": {
+            "mode": {
+              "Dark": "{Color Primitives.Pale Blue.800}",
+              "Light": "{Color Primitives.Pale Blue.800}"
+            },
+            "figma": {
+              "codeSyntax": {},
+              "variableId": "VariableID:3429:2569",
+              "collection": {
+                "id": "VariableCollectionId:3919:36422",
+                "name": "Color Tokens",
+                "defaultModeId": "3919:21"
+              }
+            }
+          }
+        },
+        "Placeholder": {
+          "$type": "color",
+          "$value": "{Color Primitives.Pale Blue.500}",
+          "$description": "",
+          "$extensions": {
+            "mode": {
+              "Dark": "{Color Primitives.Pale Blue.500}",
+              "Light": "{Color Primitives.Pale Blue.500}"
+            },
+            "figma": {
+              "codeSyntax": {},
+              "variableId": "VariableID:3429:2570",
+              "collection": {
+                "id": "VariableCollectionId:3919:36422",
+                "name": "Color Tokens",
+                "defaultModeId": "3919:21"
+              }
+            }
+          }
+        }
+      },
+      "Bg": {
+        "Default": {
+          "$type": "color",
+          "$value": "{Color Primitives.White.1000}",
+          "$description": "",
+          "$extensions": {
+            "mode": {
+              "Dark": "{Color Primitives.White.1000}",
+              "Light": "{Color Primitives.White.1000}"
+            },
+            "figma": {
+              "codeSyntax": {},
+              "variableId": "VariableID:3429:2571",
+              "collection": {
+                "id": "VariableCollectionId:3919:36422",
+                "name": "Color Tokens",
+                "defaultModeId": "3919:21"
+              }
+            }
+          }
+        }
+      },
+      "Label": {
+        "Default": {
+          "$type": "color",
+          "$value": "{Color Primitives.Pale Blue.600}",
+          "$description": "",
+          "$extensions": {
+            "mode": {
+              "Dark": "{Color Primitives.Pale Blue.600}",
+              "Light": "{Color Primitives.Pale Blue.600}"
+            },
+            "figma": {
+              "codeSyntax": {},
+              "variableId": "VariableID:3429:2572",
+              "collection": {
+                "id": "VariableCollectionId:3919:36422",
+                "name": "Color Tokens",
+                "defaultModeId": "3919:21"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Link": {
+      "Default": {
+        "$type": "color",
+        "$value": "{Color Primitives.Pale Blue.500}",
+        "$description": "",
+        "$extensions": {
+          "mode": {
+            "Dark": "#ffffff",
+            "Light": "{Color Primitives.Pale Blue.500}"
+          },
+          "figma": {
+            "codeSyntax": {},
+            "variableId": "VariableID:3481:36",
+            "collection": {
+              "id": "VariableCollectionId:3919:36422",
+              "name": "Color Tokens",
+              "defaultModeId": "3919:21"
+            }
+          }
+        }
+      },
+      "Hover": {
+        "$type": "color",
+        "$value": "{Color Primitives.Gray.500}",
+        "$description": "",
+        "$extensions": {
+          "mode": {
+            "Dark": "#ffffff",
+            "Light": "{Color Primitives.Gray.500}"
+          },
+          "figma": {
+            "codeSyntax": {},
+            "variableId": "VariableID:3481:37",
+            "collection": {
+              "id": "VariableCollectionId:3919:36422",
+              "name": "Color Tokens",
+              "defaultModeId": "3919:21"
+            }
+          }
+        }
+      },
+      "Active": {
+        "$type": "color",
+        "$value": "{Color Primitives.Pale Blue.700}",
+        "$description": "",
+        "$extensions": {
+          "mode": {
+            "Dark": "#ffffff",
+            "Light": "{Color Primitives.Pale Blue.700}"
+          },
+          "figma": {
+            "codeSyntax": {},
+            "variableId": "VariableID:3481:38",
+            "collection": {
+              "id": "VariableCollectionId:3919:36422",
+              "name": "Color Tokens",
+              "defaultModeId": "3919:21"
+            }
+          }
+        }
+      }
+    },
+    "Input Field": {
+      "Contrast": {
+        "Default": {
+          "$type": "color",
+          "$value": "{Color Primitives.Pale Blue.800}",
+          "$description": "",
+          "$extensions": {
+            "mode": {
+              "Dark": "{Color Primitives.Pale Blue.800}",
+              "Light": "{Color Primitives.Pale Blue.800}"
+            },
+            "figma": {
+              "codeSyntax": {},
+              "variableId": "VariableID:3481:268",
+              "collection": {
+                "id": "VariableCollectionId:3919:36422",
+                "name": "Color Tokens",
+                "defaultModeId": "3919:21"
+              }
+            }
+          }
+        },
+        "Placeholder": {
+          "$type": "color",
+          "$value": "{Color Primitives.Pale Blue.500}",
+          "$description": "",
+          "$extensions": {
+            "mode": {
+              "Dark": "{Color Primitives.Pale Blue.500}",
+              "Light": "{Color Primitives.Pale Blue.500}"
+            },
+            "figma": {
+              "codeSyntax": {},
+              "variableId": "VariableID:3481:269",
+              "collection": {
+                "id": "VariableCollectionId:3919:36422",
+                "name": "Color Tokens",
+                "defaultModeId": "3919:21"
+              }
+            }
+          }
+        }
+      },
+      "Bg": {
+        "Default": {
+          "$type": "color",
+          "$value": "{Color Primitives.White.1000}",
+          "$description": "",
+          "$extensions": {
+            "mode": {
+              "Dark": "{Color Primitives.White.1000}",
+              "Light": "{Color Primitives.White.1000}"
+            },
+            "figma": {
+              "codeSyntax": {},
+              "variableId": "VariableID:3481:270",
+              "collection": {
+                "id": "VariableCollectionId:3919:36422",
+                "name": "Color Tokens",
+                "defaultModeId": "3919:21"
+              }
+            }
+          }
+        }
+      },
+      "Label": {
+        "Default": {
+          "$type": "color",
+          "$value": "{Color Primitives.Pale Blue.600}",
+          "$description": "",
+          "$extensions": {
+            "mode": {
+              "Dark": "{Color Primitives.Pale Blue.600}",
+              "Light": "{Color Primitives.Pale Blue.600}"
+            },
+            "figma": {
+              "codeSyntax": {},
+              "variableId": "VariableID:3481:271",
+              "collection": {
+                "id": "VariableCollectionId:3919:36422",
+                "name": "Color Tokens",
+                "defaultModeId": "3919:21"
+              }
+            }
+          }
+        }
+      },
+      "Border": {
+        "Default": {
+          "$type": "color",
+          "$value": "{Color Primitives.Pale Blue.600}",
+          "$description": "",
+          "$extensions": {
+            "mode": {
+              "Dark": "{Color Primitives.Pale Blue.600}",
+              "Light": "{Color Primitives.Pale Blue.600}"
+            },
+            "figma": {
+              "codeSyntax": {},
+              "variableId": "VariableID:3481:272",
+              "collection": {
+                "id": "VariableCollectionId:3919:36422",
+                "name": "Color Tokens",
+                "defaultModeId": "3919:21"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Progress Bar": {
+      "Bg-top": {
+        "$type": "color",
+        "$value": "{Color Primitives.Yellow.500}",
+        "$description": "",
+        "$extensions": {
+          "mode": {
+            "Dark": "#ffffff",
+            "Light": "{Color Primitives.Yellow.500}"
+          },
+          "figma": {
+            "codeSyntax": {},
+            "variableId": "VariableID:3551:62",
+            "collection": {
+              "id": "VariableCollectionId:3919:36422",
+              "name": "Color Tokens",
+              "defaultModeId": "3919:21"
+            }
+          }
+        }
+      },
+      "Bg": {
+        "$type": "color",
+        "$value": "{Color Primitives.Blue.400}",
+        "$description": "",
+        "$extensions": {
+          "mode": {
+            "Dark": "#ffffff",
+            "Light": "{Color Primitives.Blue.400}"
+          },
+          "figma": {
+            "codeSyntax": {},
+            "variableId": "VariableID:3551:63",
+            "collection": {
+              "id": "VariableCollectionId:3919:36422",
+              "name": "Color Tokens",
+              "defaultModeId": "3919:21"
+            }
+          }
+        }
+      }
+    },
+    "Step": {
+      "Bg": {
+        "$type": "color",
+        "$value": "{Color Primitives.Yellow.600}",
+        "$description": "",
+        "$extensions": {
+          "mode": {
+            "Dark": "#ffffff",
+            "Light": "{Color Primitives.Yellow.600}"
+          },
+          "figma": {
+            "codeSyntax": {},
+            "variableId": "VariableID:3559:762",
+            "collection": {
+              "id": "VariableCollectionId:3919:36422",
+              "name": "Color Tokens",
+              "defaultModeId": "3919:21"
+            }
+          }
+        }
+      },
+      "Contrast": {
+        "$type": "color",
+        "$value": "{Color Primitives.White.1000}",
+        "$description": "",
+        "$extensions": {
+          "mode": {
+            "Dark": "#ffffff",
+            "Light": "{Color Primitives.White.1000}"
+          },
+          "figma": {
+            "codeSyntax": {},
+            "variableId": "VariableID:3559:763",
+            "collection": {
+              "id": "VariableCollectionId:3919:36422",
+              "name": "Color Tokens",
+              "defaultModeId": "3919:21"
+            }
+          }
+        }
+      }
+    },
+    "Timer": {
+      "Bg": {
+        "Primary": {
+          "$type": "color",
+          "$value": "{Color Primitives.Pink.100}",
+          "$description": "",
+          "$extensions": {
+            "mode": {
+              "Dark": "#ffffff",
+              "Light": "{Color Primitives.Pink.100}"
+            },
+            "figma": {
+              "codeSyntax": {},
+              "variableId": "VariableID:3568:675",
+              "collection": {
+                "id": "VariableCollectionId:3919:36422",
+                "name": "Color Tokens",
+                "defaultModeId": "3919:21"
+              }
+            }
+          }
+        },
+        "Alert": {
+          "$type": "color",
+          "$value": "{Color Primitives.Red.600}",
+          "$description": "",
+          "$extensions": {
+            "mode": {
+              "Dark": "#ffffff",
+              "Light": "{Color Primitives.Red.600}"
+            },
+            "figma": {
+              "codeSyntax": {},
+              "variableId": "VariableID:3568:679",
+              "collection": {
+                "id": "VariableCollectionId:3919:36422",
+                "name": "Color Tokens",
+                "defaultModeId": "3919:21"
+              }
+            }
+          }
+        }
+      },
+      "Contrast": {
+        "Primary": {
+          "$type": "color",
+          "$value": "{Color Primitives.Pink.600}",
+          "$description": "",
+          "$extensions": {
+            "mode": {
+              "Dark": "#ffffff",
+              "Light": "{Color Primitives.Pink.600}"
+            },
+            "figma": {
+              "codeSyntax": {},
+              "variableId": "VariableID:3568:683",
+              "collection": {
+                "id": "VariableCollectionId:3919:36422",
+                "name": "Color Tokens",
+                "defaultModeId": "3919:21"
+              }
+            }
+          }
+        },
+        "Alert": {
+          "$type": "color",
+          "$value": "{Color Primitives.Red.100}",
+          "$description": "",
+          "$extensions": {
+            "mode": {
+              "Dark": "#ffffff",
+              "Light": "{Color Primitives.Red.100}"
+            },
+            "figma": {
+              "codeSyntax": {},
+              "variableId": "VariableID:3568:684",
+              "collection": {
+                "id": "VariableCollectionId:3919:36422",
+                "name": "Color Tokens",
+                "defaultModeId": "3919:21"
               }
             }
           }
@@ -6912,6 +5582,25 @@
             }
           }
         }
+      },
+      "9999": {
+        "$type": "dimension",
+        "$value": "92px",
+        "$description": "",
+        "$extensions": {
+          "mode": {},
+          "figma": {
+            "codeSyntax": {
+              "WEB": "var(--sds-size-blur-100)"
+            },
+            "variableId": "VariableID:3576:26",
+            "collection": {
+              "id": "VariableCollectionId:9:11257",
+              "name": "Size Tokens",
+              "defaultModeId": "9:7"
+            }
+          }
+        }
       }
     },
     "Icon": {
@@ -7569,7 +6258,7 @@
         "Size Tokens",
         "Typography Tokens"
       ],
-      "createdAt": "2025-01-27T17:05:30.676Z"
+      "createdAt": "2025-03-12T10:00:57.811Z"
     }
   }
 }

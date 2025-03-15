@@ -1,0 +1,4 @@
+"id","translations","group"
+14,"[{""id"":23,""decks_id"":14,""languages_code"":""fr-FR"",""title"":""Deck écoles""},{""id"":24,""decks_id"":14,""languages_code"":""en-US"",""title"":""School deck""}]","[{""cards_group_id"":51},{""cards_group_id"":54},{""cards_group_id"":55},{""cards_group_id"":53}]"
+15,"[{""id"":25,""decks_id"":15,""languages_code"":""fr-FR"",""title"":""Deck l'oréal""},{""id"":28,""decks_id"":15,""languages_code"":""en-US"",""title"":""L'oreal group""}]","[{""cards_group_id"":54},{""cards_group_id"":55},{""cards_group_id"":53}]"
+16,"[{""id"":26,""decks_id"":16,""languages_code"":""fr-FR"",""title"":""Deck renault""},{""id"":27,""decks_id"":16,""languages_code"":""en-US"",""title"":""Renault deck""}]","[{""cards_group_id"":52},{""cards_group_id"":53},{""cards_group_id"":55}]"

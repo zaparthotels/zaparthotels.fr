@@ -29,9 +29,6 @@ services:
     networks:
       zaparthotels-backend:
     deploy:
-      placement:
-        constraints:
-          - node.hostname == vm01
       replicas: 1
       labels:
         - traefik.enable=true
@@ -56,9 +53,6 @@ services:
     networks:
       zaparthotels-backend:
     deploy:
-      placement:
-        constraints:
-          - node.hostname == vm01
       replicas: 1
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${BACKEND_DB_USER}
@@ -72,9 +66,6 @@ services:
     networks:
       zaparthotels-backend:
     deploy:
-      placement:
-        constraints:
-          - node.hostname == vm01
       replicas: 1
     volumes:
       - valkey-backend:/data
@@ -85,9 +76,6 @@ services:
       directus:
       traefik_traefik:
     deploy:
-      placement:
-        constraints:
-          - node.hostname == vm01
       replicas: 1
       labels:
         - traefik.enable=true
@@ -134,9 +122,6 @@ services:
     networks:
       directus:
     deploy:
-      placement:
-        constraints:
-          - node.hostname == vm01
       replicas: 1
     volumes:
       - valkey-directus:/data
@@ -146,9 +131,6 @@ services:
     networks:
       directus:
     deploy:
-      placement:
-        constraints:
-          - node.hostname == vm01
       replicas: 1
     environment:
       - POSTGRES_USER=${DIRECTUS_DB_USER}
