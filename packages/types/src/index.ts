@@ -8,3 +8,8 @@ export * from './IWebsocket';
 export * from './TRole';
 export * from './TTeam';
 export * from './TWaiting';
+export * from './IBooking';
+export * from './ISms';
+export * from './IEmail';
+export * from './ILockCode';
+export * from './EBookingNotification';

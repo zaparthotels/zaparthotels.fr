@@ -1,54 +1,72 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { CreateBookingDto } from './dto/create-booking.dto';
-import { UpdateBookingDto } from './dto/update-booking.dto';
-import { Booking } from './schemas/booking.schema';
+import { BookingDocument } from './schemas/booking.schema';
+import { WebhookBeds24PayloadDto } from './dto/create-update-booking.dto';
+import { BookingDto } from './dto/booking.dto';
 
 @Injectable()
 export class BookingsService {
   constructor(
-    @InjectModel(Booking.name) private bookingModel: Model<Booking>,
+    @InjectModel('Booking')
+    private readonly bookingModel: Model<BookingDocument>,
   ) {}
 
-  async findAll(): Promise<Booking[]> {
-    return this.bookingModel.find().exec();
-  }
+  async createOrUpdate(
+    createUpdateBookingDto: BookingDto,
+  ): Promise<BookingDocument> {
+    const { beds24id } = createUpdateBookingDto;
 
-  async findOne(id: string): Promise<Booking> {
-    const booking = await this.bookingModel.findById(id).exec();
-    if (!booking) throw new NotFoundException('Booking Not Found');
-    return booking;
-  }
+    const existingBooking = await this.bookingModel
+      .findOne({ beds24id })
+      .exec();
 
-  async create(createBookingDto: CreateBookingDto): Promise<Booking> {
-    const newBooking = new this.bookingModel({
-      ...createBookingDto,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    });
+    if (existingBooking) {
+      // Mise à jour
+      return this.bookingModel
+        .findOneAndUpdate({ beds24id }, createUpdateBookingDto, { new: true })
+        .exec();
+    }
+
+    // Création
+    const newBooking = new this.bookingModel(createUpdateBookingDto);
     return newBooking.save();
   }
 
-  async update(
-    id: string,
-    updateBookingDto: UpdateBookingDto,
-  ): Promise<Booking> {
-    const updatedBooking = await this.bookingModel
-      .findByIdAndUpdate(
-        id,
-        { ...updateBookingDto, updatedAt: new Date() },
-        { new: true },
-      )
-      .exec();
+  transformWebhookPayload(payload: WebhookBeds24PayloadDto): BookingDto {
+    const { booking } = payload;
 
-    if (!updatedBooking) throw new NotFoundException('Booking Not Found');
-    return updatedBooking;
-  }
+    // Conversion des dates ISO en objets Date
+    const checkInDate = new Date(booking.arrival);
+    const checkOutDate = new Date(booking.departure);
+    const createdAt = new Date(booking.bookingTime);
+    const updatedAt = new Date(booking.modifiedTime);
 
-  async delete(id: string): Promise<Booking> {
-    const removedBooking = await this.bookingModel.findByIdAndDelete(id).exec();
-    if (!removedBooking) throw new NotFoundException('Booking Not Found');
-    return removedBooking;
+    // Nettoyage du numéro de téléphone (suppression des espaces)
+    const cleanPhone = booking.phone
+      ? booking.phone.replace(/\s+/g, '')
+      : undefined;
+
+    // Construction du DTO pour la création/mise à jour
+    return {
+      beds24id: booking.id.toString(),
+      guest: {
+        firstName: booking.firstName,
+        lastName: booking.lastName,
+        email: booking.email,
+        phone: cleanPhone,
+        locale: booking.lang
+          ? `${booking.lang}-${booking.lang.toUpperCase()}`
+          : undefined,
+      },
+      dates: {
+        checkIn: checkInDate,
+        checkOut: checkOutDate,
+      },
+      additionalProperties: {},
+      status: booking.status,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
+    };
   }
 }

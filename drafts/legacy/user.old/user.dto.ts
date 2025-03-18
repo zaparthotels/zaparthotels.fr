@@ -5,7 +5,7 @@ import {
   IsEnum,
   IsOptional,
 } from 'class-validator';
-import { IUser, TRole } from '@tousinclus/types';
+import { IUser, TRole } from '@zaparthotels/types';
 
 export class UserDto implements IUser {
   @IsOptional()

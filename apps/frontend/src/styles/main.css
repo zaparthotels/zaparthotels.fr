@@ -56,7 +56,6 @@ a {
 		color: var(--color-accent);
 	}
 
-<<<<<<< HEAD
 	&:active {
 		color: var(--color-accent);
 	}
@@ -70,13 +69,6 @@ a {
 
 code {
 	font-family: var(--font-fira-code);
-=======
-  &:has(> .icon) {
-    display: flex;
-    align-items: center;
-    gap: 0.25em;
-  }
->>>>>>> upstream/develop
 }
 
 @media (prefers-reduced-motion: no-preference) {

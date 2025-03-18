@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { IUser, TRole } from '@tousinclus/types';
+import { IUser, TRole } from '@zaparthotels/types';
 import { Document } from 'mongoose';
 
 @Schema()

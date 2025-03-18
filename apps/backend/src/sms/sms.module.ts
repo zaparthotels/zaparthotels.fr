@@ -1,9 +1,23 @@
 import { Module } from '@nestjs/common';
+import { BullModule } from '@nestjs/bullmq';
 import { SmsService } from './sms.service';
-import { SmsWorker } from './sms.worker';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  providers: [SmsService, SmsWorker],
+  imports: [
+    ConfigModule,
+    BullModule.registerQueue({
+      name: 'sms-queue',
+      defaultJobOptions: {
+        attempts: 7,
+        backoff: {
+          type: 'exponential',
+          delay: 10000,
+        },
+      },
+    }),
+  ],
+  providers: [SmsService],
   exports: [SmsService],
 })
 export class SmsModule {}

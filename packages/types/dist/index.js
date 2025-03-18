@@ -24,4 +24,9 @@ __exportStar(require("./IWebsocket"), exports);
 __exportStar(require("./TRole"), exports);
 __exportStar(require("./TTeam"), exports);
 __exportStar(require("./TWaiting"), exports);
+__exportStar(require("./IBooking"), exports);
+__exportStar(require("./ISms"), exports);
+__exportStar(require("./IEmail"), exports);
+__exportStar(require("./ILockCode"), exports);
+__exportStar(require("./EBookingNotification"), exports);
 //# sourceMappingURL=index.js.map

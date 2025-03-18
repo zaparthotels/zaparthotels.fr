@@ -1,35 +1,56 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { TBooking, TGuest } from '@zaparthotels/types';
 
 @Schema()
-export class Booking extends Document implements Omit<TBooking, 'id'> {
+class Guest {
   @Prop({ required: true })
-  beds24id: TBooking['beds24id'];
+  firstName: string;
 
-  @Prop({ type: Object, required: true })
-  guest: TGuest;
+  @Prop({ required: true })
+  lastName: string;
 
-  @Prop({ type: Object, required: true })
-  dates: {
-    checkIn: TBooking['dates']['checkIn'];
-    checkOut: TBooking['dates']['checkOut'];
-  };
+  @Prop({ required: true, index: true })
+  email: string;
 
-  @Prop({ type: Object })
-  additionalProperties?: TBooking['additionalProperties'];
+  @Prop()
+  phone?: string;
 
-  @Prop({
-    enum: ['confirmed', 'request', 'new', 'cancelled', 'black', 'inquiry'],
-    required: true,
-  })
-  status: TBooking['status'];
-
-  @Prop({ default: Date.now })
-  createdAt: TBooking['createdAt'];
-
-  @Prop({ default: Date.now })
-  updatedAt: TBooking['updatedAt'];
+  @Prop()
+  locale?: string;
 }
 
-export const BookingSchema = SchemaFactory.createForClass(Booking);
+@Schema()
+class Dates {
+  @Prop({ required: true, type: Date })
+  checkIn: Date;
+
+  @Prop({ required: true, type: Date })
+  checkOut: Date;
+}
+
+@Schema()
+export class BookingDocument extends Document {
+  @Prop({ required: true, unique: true })
+  beds24id: string;
+
+  @Prop({ type: Guest, required: true })
+  guest: Guest;
+
+  @Prop({ type: Dates, required: true })
+  dates: Dates;
+
+  @Prop({ type: Object, default: {} })
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  additionalProperties?: Record<string, any>;
+
+  @Prop({ required: true })
+  status: string;
+
+  @Prop({ required: true, type: Date })
+  createdAt: Date;
+
+  @Prop({ required: true, type: Date })
+  updatedAt: Date;
+}
+
+export const BookingSchema = SchemaFactory.createForClass(BookingDocument);

@@ -1,46 +1,50 @@
-import { Controller, Post, Body, UseGuards } from '@nestjs/common';
+import { Controller, Post, Body, HttpCode, Logger } from '@nestjs/common';
 import { BookingsService } from './bookings.service';
-import { CreateBookingDto } from './dto/create-booking.dto';
-import { UpdateBookingDto } from './dto/update-booking.dto';
-import { Beds24AuthGuard } from './guards/beds24-auth.guard';
-import { Beds24BookingDto } from './dto/beds24-booking.dto';
-import { TBooking } from '@zaparthotels/types';
+import { WebhookBeds24PayloadDto } from './dto/create-update-booking.dto';
+import { NotificationsService } from './notifications/notifications.service';
 
 @Controller('bookings')
 export class BookingsController {
-  constructor(private readonly bookingsService: BookingsService) {}
+  private readonly logger = new Logger(BookingsController.name);
 
-  @Post(process.env.WEBHOOK_BED24_REFRESH_ENDPOINT)
-  @UseGuards(Beds24AuthGuard)
-  async handleBeds24Webhook(@Body() data: { booking: Beds24BookingDto }) {
-    const bookingData = data.booking;
+  constructor(
+    private readonly bookingsService: BookingsService,
+    private readonly notificationsService: NotificationsService,
+  ) {}
 
-    const dto: CreateBookingDto | UpdateBookingDto = {
-      beds24id: bookingData.id.toString(),
-      guest: {
-        firstName: bookingData.firstName,
-        lastName: bookingData.lastName,
-        email: bookingData.email,
-        phone: bookingData.phone || bookingData.mobile,
-      },
-      dates: {
-        checkIn: new Date(bookingData.arrival),
-        checkOut: new Date(bookingData.departure),
-      },
-      status: bookingData.status as TBooking['status'],
-    };
-
-    const existingBooking = await this.bookingsService.findOne(
-      bookingData.id.toString(),
+  @Post()
+  @HttpCode(200)
+  async createOrUpdate(@Body() webhookPayload: WebhookBeds24PayloadDto) {
+    this.logger.log(
+      `Received webhook from Bed24: ${webhookPayload.booking.id}`,
     );
 
-    if (existingBooking) {
-      return this.bookingsService.update(
-        bookingData.id.toString(),
-        dto as UpdateBookingDto,
-      );
-    }
+    try {
+      // Transformation des données du webhook en format attendu
+      const transformedData =
+        this.bookingsService.transformWebhookPayload(webhookPayload);
 
-    return this.bookingsService.create(dto as CreateBookingDto);
+      // Création ou mise à jour du booking
+      const booking =
+        await this.bookingsService.createOrUpdate(transformedData);
+
+      this.notificationsService.createOrUpdateNotifications(booking);
+
+      return {
+        success: true,
+        message: 'Booking processed successfully',
+        id: booking.beds24id,
+      };
+    } catch (error) {
+      this.logger.error(
+        `Error processing webhook: ${error.message}`,
+        error.stack,
+      );
+      return {
+        success: false,
+        message: 'Error processing booking data',
+        error: error.message,
+      };
+    }
   }
 }

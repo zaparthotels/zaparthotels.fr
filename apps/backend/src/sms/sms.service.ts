@@ -1,78 +1,80 @@
+import { Injectable, Logger } from '@nestjs/common';
 import {
-  Injectable,
-  Logger,
-  InternalServerErrorException,
-} from '@nestjs/common';
-import { smsClient, smsQueue } from './sms.config';
-import { Queue } from 'bullmq';
-import { SendSmsDto } from './dto/response/send-sms.dto';
+  InjectQueue,
+  Processor,
+  OnWorkerEvent,
+  WorkerHost,
+} from '@nestjs/bullmq';
+import { Queue, Job } from 'bullmq';
+import { ISms } from '@zaparthotels/types';
+import SmsClient from 'android-sms-gateway';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
-export class SmsService {
+@Processor('sms-queue')
+export class SmsService extends WorkerHost {
   private readonly logger = new Logger(SmsService.name);
-  private readonly queue: Queue;
-
-  constructor() {
-    this.queue = new Queue('sms-queue', smsQueue);
-  }
-
-  /**
-   * Envoie immédiatement un SMS via le SDK.
-   *
-   * @param phoneNumber Le numéro de téléphone destinataire.
-   * @param message Le contenu du SMS.
-   */
-  async sendSms(phoneNumber: string, message: string): Promise<SendSmsDto> {
-    try {
-      this.logger.log(
-        `Envoi immédiat de SMS à ${phoneNumber} avec le message : "${message}"`,
-      );
-      const result = await smsClient.send({
-        phoneNumbers: [phoneNumber],
-        message,
-        ttl: 35,
-      });
-      this.logger.log(`SMS envoyé : ${JSON.stringify(result)}`);
-
-      return result;
-    } catch (error) {
-      this.logger.error(
-        `Erreur lors de l'envoi du SMS à ${phoneNumber}`,
-        error.stack,
-      );
-      throw new InternalServerErrorException(
-        `Erreur lors de l'envoi du SMS : ${error.message || 'Erreur inconnue'}`,
-      );
-    }
-  }
-
-  /**
-   * Planifie l'envoi d'un SMS en ajoutant une tâche à la file d'attente.
-   *
-   * @param phoneNumber Le numéro de téléphone destinataire.
-   * @param message Le contenu du SMS.
-   * @param timestamp La date à laquelle le SMS doit être envoyé.
-   */
-  async scheduleSms(
-    phoneNumber: string,
-    message: string,
-    timestamp: Date,
-  ): Promise<void> {
-    const delay = Math.max(0, timestamp.getTime() - Date.now());
-    this.logger.log(
-      `Planification de l'envoi d'un SMS à ${phoneNumber} dans ${delay} ms`,
-    );
-    await this.queue.add(
-      'send-sms',
-      { phoneNumber, message },
-      {
-        delay,
-        attempts: 8,
-        backoff: {
-          type: 'exponential',
-          delay: 10000,
-        },
+  // TODO: replace with nest HttpModule and axios
+  private readonly smsCLient = new SmsClient(
+    this.configService.get<string>('SMS_LOGIN'),
+    this.configService.get<string>('SMS_PASSWORD'),
+    {
+      get: async (url, headers) => {
+        const response = await fetch(url, { method: 'GET', headers });
+        return response.json();
       },
+      post: async (url, body, headers) => {
+        const response = await fetch(url, {
+          method: 'POST',
+          headers,
+          body: JSON.stringify(body),
+        });
+        return response.json();
+      },
+      delete: async (url, headers) => {
+        const response = await fetch(url, { method: 'DELETE', headers });
+        return response.json();
+      },
+    },
+    this.configService.get<string>('SMS_BASE_URL'),
+  );
+
+  constructor(
+    private readonly configService: ConfigService,
+    @InjectQueue('sms-queue') private smsQueue: Queue,
+  ) {
+    super();
+  }
+
+  async sendSms(phoneNumber: string, message: string): Promise<Job<ISms>> {
+    return this.smsQueue.add('send-sms', {
+      phoneNumber,
+      message,
+    });
+  }
+
+  async process(job: Job<ISms>): Promise<void> {
+    const { phoneNumber, message } = job.data;
+    this.logger.log(
+      `Job ${job.id}. Attempt ${job.attemptsMade + 1}. Sending SMS to ${phoneNumber}: "${message}"`,
+    );
+
+    await this.smsCLient.send({
+      phoneNumbers: [phoneNumber],
+      message,
+      ttl: 35,
+    });
+  }
+
+  @OnWorkerEvent('completed')
+  onCompleted(job: Job) {
+    this.logger.log(`Job ${job.id}. SMS sent successfully.`);
+  }
+
+  @OnWorkerEvent('failed')
+  onFailed(job: Job, error: Error) {
+    this.logger.log(
+      `Job ${job.id}. Failed to send SMS, with error ${error.message}.`,
     );
   }
 }

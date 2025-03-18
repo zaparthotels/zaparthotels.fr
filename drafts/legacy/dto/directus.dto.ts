@@ -1,4 +1,4 @@
-import { ICard, IDeck, IGroup, ITranslation } from '@tousinclus/types';
+import { ICard, IDeck, IGroup, ITranslation } from '@zaparthotels/types';
 import { IsString, IsInt, IsNotEmpty } from 'class-validator';
 
 // ========== DTO ==========
