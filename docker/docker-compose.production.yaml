@@ -45,7 +45,7 @@ services:
       - MONGO_PASSWORD=${BACKEND_DB_PASSWORD}
 
   mongo-backend:
-    image: mongo:8.0.4-noble
+    image: mongo:8.0.6-noble
     networks:
       zaparthotels-backend:
     deploy:
@@ -58,7 +58,7 @@ services:
       - mongo-backend:/data/db
 
   valkey-backend:
-    image: valkey/valkey:8.0.1
+    image: valkey/valkey:8.0.2
     networks:
       zaparthotels-backend:
     deploy:
@@ -112,7 +112,7 @@ services:
       - directus-uploads:/directus/uploads
 
   valkey-directus:
-    image: valkey/valkey:8.0.1
+    image: valkey/valkey:8.0.2
     networks:
       directus:
     deploy:
@@ -121,7 +121,7 @@ services:
       - valkey-directus:/data
 
   postgresql-directus:
-    image: postgres:13.16
+    image: postgres:17.4
     networks:
       directus:
     deploy:

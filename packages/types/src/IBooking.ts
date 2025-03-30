@@ -1,6 +1,9 @@
 export interface IBooking {
+  _id?: unknown;
   beds24id: string;
+  propertyId: string;
   guest: {
+    _id?: unknown;
     firstName: string;
     lastName: string;
     email: string;

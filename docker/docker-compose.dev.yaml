@@ -2,7 +2,7 @@
 
 services:
   mongo-backend:
-    image: mongo:8.0.4-noble
+    image: mongo:8.0.6-noble
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${BACKEND_DB_USER}
       - MONGO_INITDB_ROOT_PASSWORD=${BACKEND_DB_PASSWORD}
@@ -13,7 +13,7 @@ services:
       - 3003:27017
   
   valkey-backend:
-    image: valkey/valkey:8.0.1
+    image: valkey/valkey:8.0.2
     networks:
       directus:
     volumes:
@@ -63,14 +63,14 @@ services:
       - 3002:8055
 
   valkey-directus:
-    image: valkey/valkey:8.0.1
+    image: valkey/valkey:8.0.2
     networks:
       directus:
     volumes:
       - valkey-directus:/data
 
   postgresql-directus:
-    image: postgres:13.16
+    image: postgres:17.4
     networks:
       directus:
     environment:

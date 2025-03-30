@@ -8,11 +8,17 @@ import {
   IsNotEmpty,
   ValidateNested,
   IsEnum,
+  IsMongoId,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import { IBooking, TBookingStatus } from '@zaparthotels/types';
+import { ObjectId } from 'mongoose';
 
 class GuestDto {
+  @IsOptional()
+  @IsMongoId()
+  _id?: ObjectId;
+
   @IsString()
   @IsNotEmpty()
   firstName: string;
@@ -44,9 +50,17 @@ class DatesDto {
 }
 
 export class BookingDto implements IBooking {
+  @IsOptional()
+  @IsMongoId()
+  _id?: ObjectId;
+
   @IsString()
   @IsNotEmpty()
   beds24id: string;
+
+  @IsString()
+  @IsNotEmpty()
+  propertyId: string;
 
   @ValidateNested()
   @Type(() => GuestDto)
@@ -58,7 +72,7 @@ export class BookingDto implements IBooking {
 
   @IsOptional()
   @IsObject()
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+  // biome-ignore lint/suspicious/noExplicitAny: unknown
   additionalProperties?: Record<string, any>;
 
   @IsEnum(TBookingStatus)

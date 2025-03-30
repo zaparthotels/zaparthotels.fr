@@ -16,6 +16,10 @@ class WebhookBookingDto {
   @IsNotEmpty()
   id: number;
 
+  @IsNumber()
+  @IsNotEmpty()
+  propertyId: number;
+
   @IsEnum(TBookingStatus)
   @IsNotEmpty()
   status: TBookingStatus;

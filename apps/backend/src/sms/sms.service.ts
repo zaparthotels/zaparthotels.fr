@@ -9,31 +9,34 @@ import { Queue, Job } from 'bullmq';
 import { ISms } from '@zaparthotels/types';
 import SmsClient from 'android-sms-gateway';
 import { ConfigService } from '@nestjs/config';
+import { HttpService } from '@nestjs/axios';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable()
 @Processor('sms-queue')
 export class SmsService extends WorkerHost {
   private readonly logger = new Logger(SmsService.name);
-  // TODO: replace with nest HttpModule and axios
   private readonly smsCLient = new SmsClient(
     this.configService.get<string>('SMS_LOGIN'),
     this.configService.get<string>('SMS_PASSWORD'),
     {
       get: async (url, headers) => {
-        const response = await fetch(url, { method: 'GET', headers });
-        return response.json();
+        const response = await firstValueFrom(
+          this.httpService.get(url, { headers }),
+        );
+        return response.data;
       },
       post: async (url, body, headers) => {
-        const response = await fetch(url, {
-          method: 'POST',
-          headers,
-          body: JSON.stringify(body),
-        });
-        return response.json();
+        const response = await firstValueFrom(
+          this.httpService.post(url, JSON.stringify(body), { headers }),
+        );
+        return response.data;
       },
       delete: async (url, headers) => {
-        const response = await fetch(url, { method: 'DELETE', headers });
-        return response.json();
+        const response = await firstValueFrom(
+          this.httpService.delete(url, { headers }),
+        );
+        return response.data;
       },
     },
     this.configService.get<string>('SMS_BASE_URL'),
@@ -42,11 +45,12 @@ export class SmsService extends WorkerHost {
   constructor(
     private readonly configService: ConfigService,
     @InjectQueue('sms-queue') private smsQueue: Queue,
+    private readonly httpService: HttpService,
   ) {
     super();
   }
 
-  async sendSms(phoneNumber: string, message: string): Promise<Job<ISms>> {
+  async sendSms({ phoneNumber, message }: ISms): Promise<Job<ISms>> {
     return this.smsQueue.add('send-sms', {
       phoneNumber,
       message,

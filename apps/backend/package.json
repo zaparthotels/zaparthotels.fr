@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@directus/sdk": "^19.0.0",
+    "@nestjs/axios": "^4.0.0",
     "@nestjs/bullmq": "^11.0.2",
     "@nestjs/cache-manager": "^3.0.0",
     "@nestjs/common": "^10.0.0",
@@ -34,15 +35,17 @@
     "@types/nodemailer": "^6.4.17",
     "@zaparthotels/types": "workspace:^",
     "android-sms-gateway": "^2.0.0",
+    "axios": "^1.8.4",
     "bullmq": "^5.41.6",
-    "cache-manager": "^6.4.0",
+    "cache-manager": "^6.4.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "ioredis": "^5.4.2",
+    "liquidjs": "^10.21.0",
     "mongoose": "^8.10.0",
     "nodemailer": "^6.10.0",
     "reflect-metadata": "^0.2.0",
-    "rxjs": "^7.8.1",
+    "rxjs": "^7.8.2",
     "socket.io": "^4.8.1"
   },
   "devDependencies": {

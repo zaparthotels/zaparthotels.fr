@@ -1,6 +1,7 @@
 export interface ILockCode {
   lockId: string;
   code?: string;
-  createdAt?: Date;
+  codeId?: string;
+  startsAt: Date;
   expiresAt: Date;
 }

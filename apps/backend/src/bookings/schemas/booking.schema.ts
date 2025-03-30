@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
+import { IBooking, TBookingStatus } from '@zaparthotels/types';
 
 @Schema()
 class Guest {
@@ -29,9 +30,12 @@ class Dates {
 }
 
 @Schema()
-export class BookingDocument extends Document {
+export class BookingDocument extends Document implements IBooking {
   @Prop({ required: true, unique: true })
   beds24id: string;
+
+  @Prop({ required: true, unique: true })
+  propertyId: string;
 
   @Prop({ type: Guest, required: true })
   guest: Guest;
@@ -44,7 +48,7 @@ export class BookingDocument extends Document {
   additionalProperties?: Record<string, any>;
 
   @Prop({ required: true })
-  status: string;
+  status: TBookingStatus;
 
   @Prop({ required: true, type: Date })
   createdAt: Date;

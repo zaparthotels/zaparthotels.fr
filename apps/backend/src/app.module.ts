@@ -3,13 +3,14 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
-import { CacheConfigModule } from './cache/cache.module';
 import { BookingsModule } from './bookings/bookings.module';
 import { BullModule } from '@nestjs/bullmq';
+import { TestModule } from './test/test.module';
+import { WebhooksModule } from './webhooks/webhooks.module';
+import { FlowsModule } from './flows/flows.module';
 
 @Module({
   imports: [
-    CacheConfigModule,
     ConfigModule.forRoot({
       envFilePath: ['../../.env.local', '../../.env.dev'],
     }),
@@ -31,6 +32,9 @@ import { BullModule } from '@nestjs/bullmq';
       }),
     }),
     BookingsModule,
+    WebhooksModule,
+    FlowsModule,
+    TestModule,
   ],
   controllers: [AppController],
   providers: [AppService],
