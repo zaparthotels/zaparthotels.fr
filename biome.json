@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": ["**/dist/**", "**/tsconfig*.json", "tools/style-dictionary/tokens/*"]
+    "ignore": ["**/dist/**", "**/tsconfig*.json", "tools/style-dictionary/tokens/*", "drafts/**/*"]
   },
   "formatter": {
     "enabled": true,
