@@ -2,7 +2,7 @@
 
 services:
   # zaparthotels-frontend:
-  #   image: ghcr.io/equanoria/zaparthotels/zaparthotels-frontend:staging
+  #   image: ghcr.io/zaparthotels/zaparthotels.fr/zaparthotels-frontend:staging
   #   networks:
   #     traefik_traefik:
   #   deploy:
@@ -25,15 +25,18 @@ services:
   #     - DIRECTUS_URL=https://staging.cms.zaparthotels.fr
 
   zaparthotels-backend:
-    image: ghcr.io/equanoria/zaparthotels/zaparthotels-backend:staging
+    image: ghcr.io/zaparthotels/zaparthotels.fr/zaparthotels-backend:staging
     networks:
       zaparthotels-backend:
     deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
       replicas: 1
       labels:
         - traefik.enable=true
         - traefik.http.routers.zaparthotels-backend_staging.entrypoints=websecure
-        - traefik.http.routers.zaparthotels-backend_staging.rule=Host(`staging.api.zaparthotels.fr`)
+        - traefik.http.routers.zaparthotels-backend_staging.rule=Host(`api.staging.zaparthotels.fr`)
         - traefik.http.services.zaparthotels-backend_staging.loadbalancer.server.port=3000
         - traefik.http.routers.zaparthotels-backend_staging.tls=true
         - traefik.http.routers.zaparthotels-backend_staging.tls.certresolver=letsencrypt
@@ -53,6 +56,9 @@ services:
     networks:
       zaparthotels-backend:
     deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
       replicas: 1
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${BACKEND_DB_USER}
@@ -66,21 +72,27 @@ services:
     networks:
       zaparthotels-backend:
     deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
       replicas: 1
     volumes:
       - valkey-backend:/data
 
   directus:
-    image: ghcr.io/equanoria/zaparthotels/directus:staging
+    image: ghcr.io/zaparthotels/zaparthotels.fr/directus:staging
     networks:
       directus:
       traefik_traefik:
     deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
       replicas: 1
       labels:
         - traefik.enable=true
         - traefik.http.routers.zaparthotels-directus_staging.entrypoints=websecure
-        - traefik.http.routers.zaparthotels-directus_staging.rule=Host(`staging.cms.zaparthotels.fr`)
+        - traefik.http.routers.zaparthotels-directus_staging.rule=Host(`cms.staging.zaparthotels.fr`)
         - traefik.http.services.zaparthotels-directus_staging.loadbalancer.server.port=8055
         - traefik.http.routers.zaparthotels-directus_staging.tls=true
         - traefik.http.routers.zaparthotels-directus_staging.tls.certresolver=letsencrypt
@@ -122,6 +134,9 @@ services:
     networks:
       directus:
     deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
       replicas: 1
     volumes:
       - valkey-directus:/data
@@ -131,6 +146,9 @@ services:
     networks:
       directus:
     deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
       replicas: 1
     environment:
       - POSTGRES_USER=${DIRECTUS_DB_USER}
@@ -140,7 +158,7 @@ services:
       - postgresql-directus:/var/lib/postgresql/data
 
   # authentik:
-  #   image: ghcr.io/equanoria/zaparthotels/authentik:staging
+  #   image: ghcr.io/zaparthotels/zaparthotels.fr/authentik:staging
   #   networks:
   #     authentik:
   #     traefik_traefik:

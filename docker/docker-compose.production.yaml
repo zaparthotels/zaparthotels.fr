@@ -2,7 +2,7 @@
 
 services:
   # zaparthotels-frontend:
-  #   image: ghcr.io/equanoria/zaparthotels/zaparthotels-frontend:latest
+  #   image: ghcr.io/zaparthotels/zaparthotels.fr/zaparthotels-frontend:latest
   #   networks:
   #     traefik_traefik:
   #   deploy:
@@ -23,10 +23,13 @@ services:
   #     - DIRECTUS_URL=https://cms.zaparthotels.fr
 
   zaparthotels-backend:
-    image: ghcr.io/equanoria/zaparthotels/zaparthotels-backend:latest
+    image: ghcr.io/zaparthotels/zaparthotels.fr/zaparthotels-backend:latest
     networks:
       zaparthotels-backend:
     deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
       replicas: 1
       labels:
         - traefik.enable=true
@@ -49,6 +52,9 @@ services:
     networks:
       zaparthotels-backend:
     deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
       replicas: 1
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${BACKEND_DB_USER}
@@ -67,11 +73,14 @@ services:
       - valkey-backend:/data
 
   directus:
-    image: ghcr.io/equanoria/zaparthotels/directus:latest
+    image: ghcr.io/zaparthotels/zaparthotels.fr/directus:latest
     networks:
       directus:
       traefik_traefik:
     deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
       replicas: 1
       labels:
         - traefik.enable=true
@@ -116,6 +125,9 @@ services:
     networks:
       directus:
     deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
       replicas: 1
     volumes:
       - valkey-directus:/data
@@ -125,6 +137,9 @@ services:
     networks:
       directus:
     deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
       replicas: 1
     environment:
       - POSTGRES_USER=${DIRECTUS_DB_USER}
@@ -134,7 +149,7 @@ services:
       - postgresql-directus:/var/lib/postgresql/data
 
   # authentik:
-  #   image: ghcr.io/equanoria/zaparthotels/authentik:latest
+  #   image: ghcr.io/zaparthotels/zaparthotels.fr/authentik:latest
   #   networks:
   #     authentik:
   #     traefik_traefik:
