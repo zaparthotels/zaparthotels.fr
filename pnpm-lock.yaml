@@ -15,7 +15,7 @@ importers:
   apps/backend:
     dependencies:
       '@directus/sdk':
-        specifier: ^19.0.0
+        specifier: ^19.0.1
         version: 19.0.1
       '@nestjs/axios':
         specifier: ^4.0.0
@@ -77,6 +77,9 @@ importers:
       ioredis:
         specifier: ^5.4.2
         version: 5.5.0
+      libphonenumber-js:
+        specifier: ^1.12.6
+        version: 1.12.6
       liquidjs:
         specifier: ^10.21.0
         version: 10.21.0
@@ -3291,8 +3294,8 @@ packages:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
 
-  libphonenumber-js@1.12.4:
-    resolution: {integrity: sha512-vLmhg7Gan7idyAKfc6pvCtNzvar4/eIzrVVk3hjNFH5+fGqyjD0gQRovdTrDl20wsmZhBtmZpcsR0tOfquwb8g==}
+  libphonenumber-js@1.12.6:
+    resolution: {integrity: sha512-PJiS4ETaUfCOFLpmtKzAbqZQjCCKVu2OhTV4SVNNE7c2nu/dACvtCqj4L0i/KWNnIgRv7yrILvBj5Lonv5Ncxw==}
 
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
@@ -6939,7 +6942,7 @@ snapshots:
   class-validator@0.14.1:
     dependencies:
       '@types/validator': 13.12.2
-      libphonenumber-js: 1.12.4
+      libphonenumber-js: 1.12.6
       validator: 13.12.0
 
   cli-boxes@3.0.0: {}
@@ -8640,7 +8643,7 @@ snapshots:
       prelude-ls: 1.2.1
       type-check: 0.4.0
 
-  libphonenumber-js@1.12.4: {}
+  libphonenumber-js@1.12.6: {}
 
   lines-and-columns@1.2.4: {}
 

@@ -1,0 +1,10 @@
+export interface IProperty {
+  id: string;
+  beds24id: string;
+  lockId: string;
+  arrivalNotificationTime: string;
+  translations: {
+    subject: string;
+    notification: string;
+  }[];
+}

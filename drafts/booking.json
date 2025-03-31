@@ -12,21 +12,11 @@
     "checkIn": 1746307200,
     "checkOut": 1746885600
   },
-  "additionalProperties": {
-    "lockCodes": [
-      {
-        "lockId": "L101",
-        "code": "123ABC",
-        "createdAt": 1746220800,
-        "expiresAt": 1766220800
-      },
-      {
-        "lockId": "L102",
-        "code": "456DEF",
-        "createdAt": 1746220801,
-        "expiresAt": 1766220801
-      }
-    ]
+  "lockCode": {
+    "lockId": "L101",
+    "code": "123ABC",
+    "createdAt": 1746220800,
+    "expiresAt": 1766220800
   },
   "status": "cancelled",
   "createdAt": 1746220800,

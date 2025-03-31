@@ -20,7 +20,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@directus/sdk": "^19.0.0",
+    "@directus/sdk": "^19.0.1",
     "@nestjs/axios": "^4.0.0",
     "@nestjs/bullmq": "^11.0.2",
     "@nestjs/cache-manager": "^3.0.0",
@@ -41,6 +41,7 @@
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
     "ioredis": "^5.4.2",
+    "libphonenumber-js": "^1.12.6",
     "liquidjs": "^10.21.0",
     "mongoose": "^8.10.0",
     "nodemailer": "^6.10.0",

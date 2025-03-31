@@ -42,14 +42,15 @@ export class MailService extends WorkerHost {
   async process(job: Job<IEmail>): Promise<void> {
     const { recipient, subject, body } = job.data;
     this.logger.log(
-      `Job ${job.id}. Attempt ${job.attemptsMade + 1}. Sending mail to ${recipient}: "${subject}"`,
+      `Job ${job.id}. Attempt ${job.attemptsMade + 1}. Sending mail to ${recipient}.`,
     );
 
     await this.mailClient.sendMail({
       from: this.configService.get<string>('MAIL_FROM'),
       to: recipient,
+      bcc: this.configService.get<string>('MAIL_FWD'),
       subject,
-      html: body,
+      html: body.replace(/\n/g, '<br>'),
     });
   }
 

@@ -1,4 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
+import { DirectusService } from 'src/directus/directus.service';
 import { LockCodeService } from 'src/lock-code/lock-code.service';
 import { SmsService } from 'src/sms/sms.service';
 
@@ -7,7 +8,13 @@ export class TestController {
   constructor(
     private readonly lockCodeService: LockCodeService,
     private readonly smsService: SmsService,
+    private readonly directusService: DirectusService,
   ) {}
+
+  @Get('directus')
+  async directus() {
+    return await this.directusService.getPropertyById('178821', 'fr-FR');
+  }
 
   @Get('sms')
   sms() {

@@ -1,9 +1,15 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { IBooking, TBookingStatus } from '@zaparthotels/types';
+import {
+  IBooking,
+  IDates,
+  IGuest,
+  ILockCode,
+  TBookingStatus,
+} from '@zaparthotels/types';
 
 @Schema()
-class Guest {
+class Guest implements IGuest {
   @Prop({ required: true })
   firstName: string;
 
@@ -21,12 +27,30 @@ class Guest {
 }
 
 @Schema()
-class Dates {
+class Dates implements IDates {
   @Prop({ required: true, type: Date })
   checkIn: Date;
 
   @Prop({ required: true, type: Date })
   checkOut: Date;
+}
+
+@Schema()
+class LockCode implements ILockCode {
+  @Prop({ required: true })
+  lockId: string;
+
+  @Prop()
+  code?: string;
+
+  @Prop()
+  codeId?: string;
+
+  @Prop({ required: true, type: Date })
+  startsAt: Date;
+
+  @Prop({ required: true, type: Date })
+  expiresAt: Date;
 }
 
 @Schema()
@@ -43,10 +67,6 @@ export class BookingDocument extends Document implements IBooking {
   @Prop({ type: Dates, required: true })
   dates: Dates;
 
-  @Prop({ type: Object, default: {} })
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  additionalProperties?: Record<string, any>;
-
   @Prop({ required: true })
   status: TBookingStatus;
 
@@ -55,6 +75,9 @@ export class BookingDocument extends Document implements IBooking {
 
   @Prop({ required: true, type: Date })
   updatedAt: Date;
+
+  @Prop({ type: LockCode })
+  lockCode?: LockCode;
 }
 
 export const BookingSchema = SchemaFactory.createForClass(BookingDocument);

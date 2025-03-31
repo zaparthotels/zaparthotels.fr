@@ -5,6 +5,9 @@ import { BookingDocument } from './schemas/booking.schema';
 import { WebhookBeds24PayloadDto } from './dto/create-update-booking.dto';
 import { BookingDto } from './dto/booking.dto';
 import { plainToClass } from 'class-transformer';
+import { DirectusService } from 'src/directus/directus.service';
+import { DateUtils } from 'src/utils/DateUtils';
+import parsePhoneNumberFromString, { CountryCode } from 'libphonenumber-js';
 
 @Injectable()
 export class BookingsService {
@@ -13,6 +16,7 @@ export class BookingsService {
   constructor(
     @InjectModel('Booking')
     private readonly bookingModel: Model<BookingDocument>,
+    private readonly directusService: DirectusService,
   ) {}
 
   async findOne(_id: string): Promise<BookingDto | null> {
@@ -45,23 +49,45 @@ export class BookingsService {
     return plainToClass(BookingDto, (await result).toObject());
   }
 
-  transformWebhookPayload(payload: WebhookBeds24PayloadDto): BookingDto {
+  async transformWebhookPayload(
+    payload: WebhookBeds24PayloadDto,
+  ): Promise<BookingDto> {
+    const { defaultArrivalTime, defaultDepartureTime } =
+      await this.directusService.getConfig();
+
     const { booking } = payload;
 
     // Conversion des dates ISO en objets Date
-    const checkInDate = new Date(booking.arrival);
-    const checkOutDate = new Date(booking.departure);
+    const checkInDate = new DateUtils(booking.arrival);
+    const checkOutDate = new DateUtils(booking.departure);
     const createdAt = new Date(booking.bookingTime);
     const updatedAt = new Date(booking.modifiedTime);
 
-    // TODO: utiliser valeurs Directus
-    checkInDate.setHours(16);
-    checkOutDate.setHours(11);
+    checkInDate.setTimeFromString(defaultArrivalTime);
+    checkOutDate.setTimeFromString(defaultDepartureTime);
 
-    // Nettoyage du numéro de téléphone (suppression des espaces)
-    const cleanPhone = booking.phone
-      ? booking.phone.replace(/\s+/g, '')
-      : undefined;
+    const getLocaleIntl = (lang: string, country2?: string): Intl.Locale => {
+      let localeIntl: Intl.Locale;
+
+      try {
+        localeIntl = new Intl.Locale(`${lang}-${country2}`).maximize();
+      } catch (error) {
+        this.logger.warn(
+          `Invalid locale format "${lang}-${country2}". Defaulting to "${lang}"`,
+          error.message,
+        );
+        localeIntl = new Intl.Locale(lang).maximize();
+      }
+
+      return localeIntl;
+    };
+
+    const localeIntl = getLocaleIntl(booking.lang, booking.country2);
+
+    const normalizedPhone = parsePhoneNumberFromString(
+      booking.phone,
+      (localeIntl.region as CountryCode) || 'FR',
+    );
 
     // Construction du DTO pour la création/mise à jour
     return {
@@ -71,16 +97,13 @@ export class BookingsService {
         firstName: booking.firstName,
         lastName: booking.lastName,
         email: booking.email,
-        phone: cleanPhone,
-        locale: booking.lang
-          ? `${booking.lang}-${booking.lang.toUpperCase()}`
-          : undefined,
+        phone: normalizedPhone.formatInternational(),
+        locale: `${localeIntl.language}-${localeIntl.region}`,
       },
       dates: {
         checkIn: checkInDate,
         checkOut: checkOutDate,
       },
-      additionalProperties: {},
       status: booking.status,
       createdAt: createdAt,
       updatedAt: updatedAt,

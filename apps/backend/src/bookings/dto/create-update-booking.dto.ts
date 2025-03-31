@@ -52,6 +52,10 @@ class WebhookBookingDto {
   @IsOptional()
   lang: string;
 
+  @IsString()
+  @IsOptional()
+  country2: string;
+
   @IsISO8601()
   @IsNotEmpty()
   bookingTime: string;

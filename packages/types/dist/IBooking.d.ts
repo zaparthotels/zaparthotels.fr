@@ -1,21 +1,14 @@
+import type { IDates } from './IDates';
+import type { IGuest } from './IGuest';
+import type { ILockCode } from './ILockCode';
 export interface IBooking {
     _id?: unknown;
     beds24id: string;
     propertyId: string;
-    guest: {
-        _id?: unknown;
-        firstName: string;
-        lastName: string;
-        email: string;
-        phone?: string;
-        locale?: string;
-    };
-    dates: {
-        checkIn: Date;
-        checkOut: Date;
-    };
-    additionalProperties?: Record<string, any>;
+    guest: IGuest;
+    dates: IDates;
     status: TBookingStatus;
+    lockCode?: ILockCode;
     createdAt: Date;
     updatedAt: Date;
 }

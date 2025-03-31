@@ -1,2 +1,2 @@
 - [ ] Refacto de SMS et MAIL avec des .processor.ts et constants.ts
-- [ ] Typper les additionnalProperties
+- [x] Typper les additionnalProperties

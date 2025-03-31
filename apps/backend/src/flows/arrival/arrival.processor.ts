@@ -9,6 +9,9 @@ import { LockCodeService } from 'src/lock-code/lock-code.service';
 import { SmsService } from 'src/sms/sms.service';
 import { MailService } from 'src/mail/mail.service';
 import { BookingsService } from 'src/bookings/bookings.service';
+import { TBookingStatus } from '@zaparthotels/types';
+import { DirectusService } from 'src/directus/directus.service';
+import { LiquidService } from 'src/liquid/liquid.service';
 
 @Processor(FLOW_ARRIVAL_LOCK_CODE_QUEUE)
 export class ArrivalLockCodeProcessor extends WorkerHost {
@@ -16,6 +19,7 @@ export class ArrivalLockCodeProcessor extends WorkerHost {
 
   constructor(
     private readonly bookingService: BookingsService,
+    private readonly directusService: DirectusService,
     private readonly lockCodeService: LockCodeService,
   ) {
     super();
@@ -29,9 +33,24 @@ export class ArrivalLockCodeProcessor extends WorkerHost {
       throw new Error(`Booking ${job.data} not found.`);
     }
 
+    if (booking.status !== TBookingStatus.CONFIRMED) {
+      this.logger.error(`Booking ${job.data} is not confirmed.`);
+      throw new Error(`Booking ${job.data} is not confirmed.`);
+    }
+
+    const directusProperty = await this.directusService.getPropertyById(
+      booking.propertyId,
+    );
+
+    if (!directusProperty) {
+      this.logger.error(
+        `Property ${booking.propertyId} not found in Directus.`,
+      );
+      throw new Error(`Property ${booking.propertyId} not found in Directus.`);
+    }
+
     const { checkIn, checkOut } = booking.dates;
-    const lockId = 'IGK3091f9efe';
-    // TODO: déduire lock depuis booking + Directus
+    const { lockId } = directusProperty;
 
     const startsAt = new Date(checkIn);
     startsAt.setHours(startsAt.getHours() + 1);
@@ -46,9 +65,7 @@ export class ArrivalLockCodeProcessor extends WorkerHost {
     });
 
     this.bookingService.createOrUpdate({
-      additionalProperties: {
-        lockCodes: [lockCode],
-      },
+      lockCode,
       ...booking,
     });
   }
@@ -72,8 +89,10 @@ export class ArrivalNotificationsProcessor extends WorkerHost {
 
   constructor(
     private readonly bookingService: BookingsService,
+    private readonly directusService: DirectusService,
     private readonly smsService: SmsService,
     private readonly mailService: MailService,
+    private readonly liquidService: LiquidService,
   ) {
     super();
   }
@@ -86,15 +105,59 @@ export class ArrivalNotificationsProcessor extends WorkerHost {
       throw new Error(`Booking ${job.data} not found.`);
     }
 
+    if (booking.status !== TBookingStatus.CONFIRMED) {
+      this.logger.error(`Booking ${job.data} is not confirmed.`);
+      throw new Error(`Booking ${job.data} is not confirmed.`);
+    }
+
+    this.liquidService.setLocale(booking.guest.locale);
+
+    if (!booking.lockCode) {
+      this.logger.error(
+        `Booking ${job.data} has no lockCode generated, fallback to default.`,
+      );
+
+      booking.lockCode = {
+        lockId: 'default',
+        code: 'DIRECTUS_DEFAULT',
+        startsAt: new Date(),
+        expiresAt: new Date(),
+      };
+    }
+
+    const directusProperty = await this.directusService.getPropertyById(
+      booking.propertyId,
+      await this.directusService.getCorrespondingLocale(booking.guest.locale),
+    );
+
+    if (!directusProperty) {
+      this.logger.error(
+        `Property ${booking.propertyId} not found in Directus.`,
+      );
+      throw new Error(`Property ${booking.propertyId} not found in Directus.`);
+    }
+
+    const context = { booking };
+
+    const message = await this.liquidService.parseAndRender(
+      directusProperty.translations[0].notification,
+      context,
+    );
+
+    const subject = await this.liquidService.parseAndRender(
+      directusProperty.translations[0].subject,
+      context,
+    );
+
     this.smsService.sendSms({
       phoneNumber: booking.guest.phone,
-      message: `Hello ${booking.guest.firstName}, your booking is confirmed! ${booking.additionalProperties.lockCodes[0].code}`,
+      message,
     });
 
     this.mailService.sendMail({
       recipient: booking.guest.email,
-      subject: 'Booking Confirmation',
-      body: `Hello ${booking.guest.firstName}, your booking is confirmed! ${booking.additionalProperties.lockCodes[0].code}`,
+      subject,
+      body: message,
     });
 
     this.logger.log(

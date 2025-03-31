@@ -1,53 +1,18 @@
 import {
   IsString,
-  IsEmail,
   IsOptional,
-  IsPhoneNumber,
   IsDate,
-  IsObject,
   IsNotEmpty,
   ValidateNested,
   IsEnum,
   IsMongoId,
 } from 'class-validator';
 import { Type } from 'class-transformer';
-import { IBooking, TBookingStatus } from '@zaparthotels/types';
+import { IBooking, ILockCode, TBookingStatus } from '@zaparthotels/types';
 import { ObjectId } from 'mongoose';
-
-class GuestDto {
-  @IsOptional()
-  @IsMongoId()
-  _id?: ObjectId;
-
-  @IsString()
-  @IsNotEmpty()
-  firstName: string;
-
-  @IsString()
-  @IsNotEmpty()
-  lastName: string;
-
-  @IsEmail()
-  email: string;
-
-  @IsOptional()
-  @IsPhoneNumber(null)
-  phone?: string;
-
-  @IsOptional()
-  @IsString()
-  locale?: string;
-}
-
-class DatesDto {
-  @IsDate()
-  @Type(() => Date)
-  checkIn: Date;
-
-  @IsDate()
-  @Type(() => Date)
-  checkOut: Date;
-}
+import { GuestDto } from './guest.dto';
+import { DatesDto } from './dates.dto';
+import { LockCodeDto } from 'src/lock-code/dto/lock-code.dto';
 
 export class BookingDto implements IBooking {
   @IsOptional()
@@ -70,11 +35,6 @@ export class BookingDto implements IBooking {
   @Type(() => DatesDto)
   dates: DatesDto;
 
-  @IsOptional()
-  @IsObject()
-  // biome-ignore lint/suspicious/noExplicitAny: unknown
-  additionalProperties?: Record<string, any>;
-
   @IsEnum(TBookingStatus)
   @IsNotEmpty()
   status: TBookingStatus;
@@ -86,4 +46,9 @@ export class BookingDto implements IBooking {
   @IsDate()
   @Type(() => Date)
   updatedAt: Date;
+
+  @IsOptional()
+  @ValidateNested()
+  @Type(() => LockCodeDto)
+  lockCode?: ILockCode;
 }

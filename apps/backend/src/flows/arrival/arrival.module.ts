@@ -14,6 +14,8 @@ import {
 import { LockCodeModule } from 'src/lock-code/lock-code.module';
 import { SmsModule } from 'src/sms/sms.module';
 import { MailModule } from 'src/mail/mail.module';
+import { DirectusModule } from 'src/directus/directus.module';
+import { LiquidModule } from 'src/liquid/liquid.module';
 
 @Module({
   imports: [
@@ -41,9 +43,11 @@ import { MailModule } from 'src/mail/mail.module';
       },
     ),
     BookingsModule,
+    DirectusModule,
     LockCodeModule,
     SmsModule,
     MailModule,
+    LiquidModule,
   ],
   providers: [
     ArrivalFlow,

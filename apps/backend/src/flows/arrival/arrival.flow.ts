@@ -8,6 +8,9 @@ import {
   FLOW_ARRIVAL_LOCK_CODE_QUEUE,
   FLOW_ARRIVAL_NOTIFICATIONS_QUEUE,
 } from './constants';
+import { TBookingStatus } from '@zaparthotels/types';
+import { DirectusService } from 'src/directus/directus.service';
+import { DateUtils } from 'src/utils/DateUtils';
 
 @Injectable()
 export class ArrivalFlow implements IFlow {
@@ -19,21 +22,45 @@ export class ArrivalFlow implements IFlow {
     private flowArrivalLockCodeQueue: Queue,
     @InjectQueue(FLOW_ARRIVAL_NOTIFICATIONS_QUEUE)
     private flowArrivalNotificationsQueue: Queue,
+    private readonly directusService: DirectusService,
   ) {}
+
+  private removeFlows(bookingId: string) {
+    this.flowArrivalLockCodeQueue.remove(bookingId);
+    this.flowArrivalNotificationsQueue.remove(bookingId);
+  }
 
   async run(booking: BookingDto) {
     const bookingId = booking._id.toString();
+    this.removeFlows(bookingId);
 
-    this.flowArrivalLockCodeQueue.remove(bookingId);
+    if (booking.status !== TBookingStatus.CONFIRMED) {
+      this.logger.warn('Booking is not confirmed.');
+      return;
+    }
+
+    const directusProperty = await this.directusService.getPropertyById(
+      booking.propertyId,
+    );
+
+    const { arrivalNotificationTime } = directusProperty;
+
+    const notificationTimestamp = new DateUtils(booking.dates.checkIn);
+    notificationTimestamp.setTimeFromString(arrivalNotificationTime);
+
+    const lockCodeTimestamp = new DateUtils(notificationTimestamp);
+    lockCodeTimestamp.setHours(lockCodeTimestamp.getHours() - 1);
+
+    const currentTimestamp = new Date().getTime();
+
     this.flowArrivalLockCodeQueue.add('arrival', bookingId, {
       jobId: bookingId,
-      delay: 1,
+      delay: lockCodeTimestamp.getTime() - currentTimestamp,
     });
 
-    this.flowArrivalNotificationsQueue.remove(bookingId);
     this.flowArrivalNotificationsQueue.add('arrival', bookingId, {
       jobId: bookingId,
-      delay: 10000,
+      delay: notificationTimestamp.getTime() - currentTimestamp,
     });
   }
 }

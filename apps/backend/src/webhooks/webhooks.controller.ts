@@ -31,12 +31,12 @@ export class WebhooksController {
 
     try {
       const transformedData =
-        this.bookingsService.transformWebhookPayload(webhookPayload);
+        await this.bookingsService.transformWebhookPayload(webhookPayload);
 
       const booking =
         await this.bookingsService.createOrUpdate(transformedData);
 
-      this.arrivalFlow.run(booking);
+      await this.arrivalFlow.run(booking);
 
       return booking;
     } catch (error) {

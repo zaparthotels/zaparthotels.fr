@@ -60,7 +60,7 @@ export class SmsService extends WorkerHost {
   async process(job: Job<ISms>): Promise<void> {
     const { phoneNumber, message } = job.data;
     this.logger.log(
-      `Job ${job.id}. Attempt ${job.attemptsMade + 1}. Sending SMS to ${phoneNumber}: "${message}"`,
+      `Job ${job.id}. Attempt ${job.attemptsMade + 1}. Sending SMS to ${phoneNumber}.`,
     );
 
     await this.smsCLient.send({
