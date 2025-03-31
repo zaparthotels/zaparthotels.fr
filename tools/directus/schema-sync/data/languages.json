@@ -1,10 +1,5 @@
 [
   {
-    "code": "en-US",
-    "direction": "ltr",
-    "name": "English"
-  },
-  {
     "code": "fr-FR",
     "direction": "ltr",
     "name": "Français"

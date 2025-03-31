@@ -1,30 +1,31 @@
 ---
 
 services:
-  tousinclus-frontend:
-    image: ghcr.io/equanoria/tousinclus/tousinclus-frontend:latest
-    networks:
-      tousinclus-backend:
-      traefik_traefik:
-    deploy:
-      placement:
-        constraints:
-          - node.hostname == vm01
-      replicas: 1
-      labels:
-        - traefik.enable=true
-        - traefik.http.routers.tousinclus-frontend_production.entrypoints=websecure
-        - traefik.http.routers.tousinclus-frontend_production.rule=Host(`tousinclus.org`)
-        - traefik.http.services.tousinclus-frontend_production.loadbalancer.server.port=3000
-        - traefik.http.routers.tousinclus-frontend_production.tls=true
-        - traefik.http.routers.tousinclus-frontend_production.tls.certresolver=letsencrypt
-    environment:
-      - BACKEND_HOST=/api
+  # zaparthotels-frontend:
+  #   image: ghcr.io/zaparthotels/zaparthotels.fr/zaparthotels-frontend:latest
+  #   networks:
+  #     traefik_traefik:
+  #   deploy:
+  #     placement:
+  #       constraints:
+  #         - node.hostname == vm01
+  #     replicas: 1
+  #     labels:
+  #       - traefik.enable=true
+  #       - traefik.http.routers.zaparthotels-frontend_production.entrypoints=websecure
+  #       - traefik.http.routers.zaparthotels-frontend_production.rule=Host(`zaparthotels.fr`)
+  #       - traefik.http.services.zaparthotels-frontend_production.loadbalancer.server.port=3000
+  #       - traefik.http.routers.zaparthotels-frontend_production.tls=true
+  #       - traefik.http.routers.zaparthotels-frontend_production.tls.certresolver=letsencrypt
+  #   environment:
+  #     - SOCKET_IO_URL=https://api.zaparthotels.fr
+  #     - BACKEND_URL=https://api.zaparthotels.fr
+  #     - DIRECTUS_URL=https://cms.zaparthotels.fr
 
-  tousinclus-backend:
-    image: ghcr.io/equanoria/tousinclus/tousinclus-backend:latest
+  zaparthotels-backend:
+    image: ghcr.io/zaparthotels/zaparthotels.fr/zaparthotels-backend:latest
     networks:
-      tousinclus-backend:
+      zaparthotels-backend:
     deploy:
       placement:
         constraints:
@@ -32,45 +33,47 @@ services:
       replicas: 1
       labels:
         - traefik.enable=true
-        - traefik.http.routers.tousinclus-backend_production.entrypoints=websecure
-        - traefik.http.routers.tousinclus-backend_production.rule=Host(`tousinclus.org`) && PathPrefix(`/api`)
-        - traefik.http.services.tousinclus-backend_production.loadbalancer.server.port=3000
-        - traefik.http.routers.tousinclus-backend_production.tls=true
-        - traefik.http.routers.tousinclus-backend_production.tls.certresolver=letsencrypt
+        - traefik.http.routers.zaparthotels-backend_production.entrypoints=websecure
+        - traefik.http.routers.zaparthotels-backend_production.rule=Host(`api.zaparthotels.fr`)
+        - traefik.http.services.zaparthotels-backend_production.loadbalancer.server.port=3000
+        - traefik.http.routers.zaparthotels-backend_production.tls=true
+        - traefik.http.routers.zaparthotels-backend_production.tls.certresolver=letsencrypt
     environment:
       - REDIS_HOSTNAME=valkey-backend
       - REDIS_PORT=6379
+      - MONGO_HOSTNAME=mongo-backend
+      - MONGO_PORT=27017
+      - MONGO_DATABASE=${BACKEND_DB_NAME}
+      - MONGO_USERNAME=${BACKEND_DB_USER}
+      - MONGO_PASSWORD=${BACKEND_DB_PASSWORD}
 
-  postgresql-backend:
-    image: postgres:13.16
+  mongo-backend:
+    image: mongo:8.0.6-noble
     networks:
-      tousinclus-backend:
+      zaparthotels-backend:
     deploy:
       placement:
         constraints:
           - node.hostname == vm01
       replicas: 1
     environment:
-      - POSTGRES_USER=${BACKEND_DB_USER}
-      - POSTGRES_DB=${BACKEND_DB_NAME}
-      - POSTGRES_PASSWORD=${BACKEND_DB_PASSWORD}
+      - MONGO_INITDB_ROOT_USERNAME=${BACKEND_DB_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${BACKEND_DB_PASSWORD}
+      - MONGO_INITDB_DATABASE=${BACKEND_DB_NAME}
     volumes:
-      - postgresql-backend:/var/lib/postgresql/data
+      - mongo-backend:/data/db
 
   valkey-backend:
-    image: valkey/valkey:8.0.1
+    image: valkey/valkey:8.0.2
     networks:
-      tousinclus-backend:
+      zaparthotels-backend:
     deploy:
-      placement:
-        constraints:
-          - node.hostname == vm01
       replicas: 1
     volumes:
-      - valkey-directus:/data
+      - valkey-backend:/data
 
   directus:
-    image: ghcr.io/equanoria/tousinclus/directus:latest
+    image: ghcr.io/zaparthotels/zaparthotels.fr/directus:latest
     networks:
       directus:
       traefik_traefik:
@@ -81,11 +84,11 @@ services:
       replicas: 1
       labels:
         - traefik.enable=true
-        - traefik.http.routers.tousinclus-directus_production.entrypoints=websecure
-        - traefik.http.routers.tousinclus-directus_production.rule=Host(`directus.tousinclus.org`)
-        - traefik.http.services.tousinclus-directus_production.loadbalancer.server.port=8055
-        - traefik.http.routers.tousinclus-directus_production.tls=true
-        - traefik.http.routers.tousinclus-directus_production.tls.certresolver=letsencrypt
+        - traefik.http.routers.zaparthotels-directus_production.entrypoints=websecure
+        - traefik.http.routers.zaparthotels-directus_production.rule=Host(`cms.zaparthotels.fr`)
+        - traefik.http.services.zaparthotels-directus_production.loadbalancer.server.port=8055
+        - traefik.http.routers.zaparthotels-directus_production.tls=true
+        - traefik.http.routers.zaparthotels-directus_production.tls.certresolver=letsencrypt
     depends_on:
       - postgresql-directus
       - valkey-directus
@@ -112,11 +115,13 @@ services:
       - EMAIL_SMTP_USER=${DIRECTUS_EMAIL_SMTP_USER}
       - EMAIL_SMTP_PASSWORD=${DIRECTUS_EMAIL_SMTP_PASSWORD}
       - SCHEMA_SYNC=IMPORT
+      - CORS_ENABLED=true
+      - CORS_ORIGIN=*
     volumes:
       - directus-uploads:/directus/uploads
 
   valkey-directus:
-    image: valkey/valkey:8.0.1
+    image: valkey/valkey:8.0.2
     networks:
       directus:
     deploy:
@@ -128,7 +133,7 @@ services:
       - valkey-directus:/data
 
   postgresql-directus:
-    image: postgres:13.16
+    image: postgres:17.4
     networks:
       directus:
     deploy:
@@ -143,14 +148,114 @@ services:
     volumes:
       - postgresql-directus:/var/lib/postgresql/data
 
+  # authentik:
+  #   image: ghcr.io/zaparthotels/zaparthotels.fr/authentik:latest
+  #   networks:
+  #     authentik:
+  #     traefik_traefik:
+  #   command: server
+  #   deploy:
+  #     placement:
+  #       constraints:
+  #         - node.hostname == vm01
+  #     replicas: 1
+  #     labels:
+  #       - traefik.enable=true
+  #       - traefik.http.routers.zaparthotels-authentik_production.entrypoints=websecure
+  #       - traefik.http.routers.zaparthotels-authentik_production.rule=Host(`connect.zaparthotels.fr`)
+  #       - traefik.http.services.zaparthotels-authentik_production.loadbalancer.server.port=9000
+  #       - traefik.http.routers.zaparthotels-authentik_production.tls=true
+  #       - traefik.http.routers.zaparthotels-authentik_production.tls.certresolver=letsencrypt
+  #   depends_on:
+  #     - postgresql-authentik
+  #     - valkey-authentik
+  #   environment:
+  #     - AUTHENTIK_REDIS__HOST=valkey-authentik
+  #     - AUTHENTIK_POSTGRESQL__HOST=postgresql-authentik
+  #     - AUTHENTIK_POSTGRESQL__USER=${AUTHENTIK_DB_USER}
+  #     - AUTHENTIK_POSTGRESQL__NAME=${AUTHENTIK_DB_NAME}
+  #     - AUTHENTIK_POSTGRESQL__PASSWORD=${AUTHENTIK_DB_PASSWORD}
+  #     - AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY}
+  #     - AUTHENTIK_BOOTSTRAP_EMAIL=${AUTHENTIK_BOOTSTRAP_EMAIL}
+  #     - AUTHENTIK_BOOTSTRAP_PASSWORD=${AUTHENTIK_BOOTSTRAP_PASSWORD}
+  #   volumes:
+  #     - authentik-blueprints:/blueprints
+  #     - authentik-media:/media
+  #     - authentik-templates:/templates
+  
+  # authentik-worker:
+  #   image: ghcr.io/goauthentik/server:2024.12.3
+  #   networks:
+  #     authentik:
+  #   deploy:
+  #     placement:
+  #       constraints:
+  #         - node.hostname == vm01
+  #     replicas: 1
+  #   command: worker
+  #   environment:
+  #     - AUTHENTIK_REDIS__HOST=valkey-authentik
+  #     - AUTHENTIK_POSTGRESQL__HOST=postgresql-authentik
+  #     - AUTHENTIK_POSTGRESQL__USER=${AUTHENTIK_DB_USER}
+  #     - AUTHENTIK_POSTGRESQL__NAME=${AUTHENTIK_DB_NAME}
+  #     - AUTHENTIK_POSTGRESQL__PASSWORD=${AUTHENTIK_DB_PASSWORD}
+  #     - AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY}
+  #     - AUTHENTIK_BOOTSTRAP_EMAIL=${AUTHENTIK_BOOTSTRAP_EMAIL}
+  #     - AUTHENTIK_BOOTSTRAP_PASSWORD=${AUTHENTIK_BOOTSTRAP_PASSWORD}
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #     - authentik-certs:/certs
+  #     - authentik-blueprints:/blueprints
+  #     - authentik-media:/media
+  #     - authentik-templates:/templates
+  #   depends_on:
+  #     - postgresql-authentik
+  #     - valkey-authentik
+
+  # valkey-authentik:
+  #   image: valkey/valkey:8.0.1
+  #   networks:
+  #     authentik:
+  #   deploy:
+  #     placement:
+  #       constraints:
+  #         - node.hostname == vm01
+  #     replicas: 1
+  #   volumes:
+  #     - valkey-authentik:/data
+
+  # postgresql-authentik:
+  #   image: postgres:13.16
+  #   networks:
+  #     authentik:
+  #   deploy:
+  #     placement:
+  #       constraints:
+  #         - node.hostname == vm01
+  #     replicas: 1
+  #   environment:
+  #     - POSTGRES_USER=${AUTHENTIK_DB_USER}
+  #     - POSTGRES_DB=${AUTHENTIK_DB_NAME}
+  #     - POSTGRES_PASSWORD=${AUTHENTIK_DB_PASSWORD}
+  #   volumes:
+  #     - postgresql-authentik:/var/lib/postgresql/data
+
 volumes:
-  postgresql-directus:
+  mongo-backend:
+  valkey-backend:
   directus-uploads:
+  postgresql-directus:
   valkey-directus:
-  postgresql-backend:
+  # authentik-certs:
+  # authentik-blueprints:
+  # authentik-media:
+  # authentik-templates:
+  # postgresql-authentik:
+  # valkey-authentik:
 
 networks:
   directus:
-  tousinclus-backend:
+  # authentik:
+  zaparthotels-backend:
   traefik_traefik:
     external: true

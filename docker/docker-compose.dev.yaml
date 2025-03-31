@@ -1,23 +1,23 @@
 ---
 
 services:
-  postgresql-backend:
-    image: postgres:13.16
+  mongo-backend:
+    image: mongo:8.0.6-noble
     environment:
-      - POSTGRES_USER=${BACKEND_DB_USER}
-      - POSTGRES_DB=${BACKEND_DB_NAME}
-      - POSTGRES_PASSWORD=${BACKEND_DB_PASSWORD}
+      - MONGO_INITDB_ROOT_USERNAME=${BACKEND_DB_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${BACKEND_DB_PASSWORD}
+      - MONGO_INITDB_DATABASE=${BACKEND_DB_NAME}
     volumes:
-      - postgresql-backend:/var/lib/postgresql/data
+      - mongo-backend:/data/db
     ports:
-      - 3003:5432
+      - 3003:27017
   
   valkey-backend:
-    image: valkey/valkey:8.0.1
+    image: valkey/valkey:8.0.2
     networks:
       directus:
     volumes:
-      - valkey-directus:/data
+      - valkey-backend:/data
     ports:
       - 3004:6379
 
@@ -54,21 +54,23 @@ services:
       - EMAIL_SMTP_USER=${DIRECTUS_EMAIL_SMTP_USER}
       - EMAIL_SMTP_PASSWORD=${DIRECTUS_EMAIL_SMTP_PASSWORD}
       - SCHEMA_SYNC=BOTH
+      - CORS_ENABLED=true
+      - CORS_ORIGIN=*
     volumes:
-      - directus-uploads:/directus/uploads
+      - ../tools/directus/sample-data-uploads:/directus/uploads
       - ../tools/directus/schema-sync:/directus/schema-sync
     ports:
       - 3002:8055
 
   valkey-directus:
-    image: valkey/valkey:8.0.1
+    image: valkey/valkey:8.0.2
     networks:
       directus:
     volumes:
       - valkey-directus:/data
 
   postgresql-directus:
-    image: postgres:13.16
+    image: postgres:17.4
     networks:
       directus:
     environment:
@@ -77,19 +79,118 @@ services:
       - POSTGRES_PASSWORD=${DIRECTUS_DB_PASSWORD}
     volumes:
       - postgresql-directus:/var/lib/postgresql/data
+
+  # authentik:
+  #   build:
+  #     context: ../
+  #     dockerfile: ./tools/authentik/Dockerfile
+  #   pull_policy: build
+  #   networks:
+  #     authentik:
+  #   command: server
+  #   depends_on:
+  #     - postgresql-authentik
+  #     - valkey-authentik
+  #   environment:
+  #     - AUTHENTIK_REDIS__HOST=valkey-authentik
+  #     - AUTHENTIK_POSTGRESQL__HOST=postgresql-authentik
+  #     - AUTHENTIK_POSTGRESQL__USER=${AUTHENTIK_DB_USER}
+  #     - AUTHENTIK_POSTGRESQL__NAME=${AUTHENTIK_DB_NAME}
+  #     - AUTHENTIK_POSTGRESQL__PASSWORD=${AUTHENTIK_DB_PASSWORD}
+  #     - AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY}
+  #     - AUTHENTIK_BOOTSTRAP_EMAIL=${AUTHENTIK_BOOTSTRAP_EMAIL}
+  #     - AUTHENTIK_BOOTSTRAP_PASSWORD=${AUTHENTIK_BOOTSTRAP_PASSWORD}
+  #   volumes:
+  #     - authentik-blueprints:/blueprints
+  #     - authentik-media:/media
+  #     - authentik-templates:/templates
+  #   ports:
+  #     - 3005:9000
+  #   develop:
+  #     watch:
+  #       - action: rebuild
+  #         path: ../tools/authentik/blueprints
+  #       - action: sync
+  #         path: ../tools/authentik/web/dist/custom.css
+  #         target: /web/dist/custom.css
+  
+  # authentik-worker:
+  #   image: ghcr.io/goauthentik/server:2024.12.3
+  #   networks:
+  #     authentik:
+  #   command: worker
+  #   depends_on:
+  #     - postgresql-authentik
+  #     - valkey-authentik
+  #   environment:
+  #     - AUTHENTIK_REDIS__HOST=valkey-authentik
+  #     - AUTHENTIK_POSTGRESQL__HOST=postgresql-authentik
+  #     - AUTHENTIK_POSTGRESQL__USER=${AUTHENTIK_DB_USER}
+  #     - AUTHENTIK_POSTGRESQL__NAME=${AUTHENTIK_DB_NAME}
+  #     - AUTHENTIK_POSTGRESQL__PASSWORD=${AUTHENTIK_DB_PASSWORD}
+  #     - AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY}
+  #     - AUTHENTIK_BOOTSTRAP_EMAIL=${AUTHENTIK_BOOTSTRAP_EMAIL}
+  #     - AUTHENTIK_BOOTSTRAP_PASSWORD=${AUTHENTIK_BOOTSTRAP_PASSWORD}
+  #   volumes:
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #     - authentik-certs:/certs
+  #     - authentik-blueprints:/blueprints
+  #     - authentik-media:/media
+  #     - authentik-templates:/templates
+  
+  # valkey-authentik:
+  #   image: valkey/valkey:8.0.1
+  #   networks:
+  #     authentik:
+  #   volumes:
+  #     - valkey-authentik:/data
+
+  # postgresql-authentik:
+  #   image: postgres:13.16
+  #   networks:
+  #     authentik:
+  #   environment:
+  #     - POSTGRES_USER=${AUTHENTIK_DB_USER}
+  #     - POSTGRES_DB=${AUTHENTIK_DB_NAME}
+  #     - POSTGRES_PASSWORD=${AUTHENTIK_DB_PASSWORD}
+  #   volumes:
+  #     - postgresql-authentik:/var/lib/postgresql/data
   
   adminer:
     image: adminer
     networks:
       directus:
+      # authentik:
+    environment:
+      - ADMINER_DESIGN=hydra
     ports:
       - 3100:8080
+  
+  mongo-express:
+    image: mongo-express
+    environment:
+      ME_CONFIG_MONGODB_AUTH_USERNAME: ${BACKEND_DB_USER}
+      ME_CONFIG_MONGODB_AUTH_PASSWORD: ${BACKEND_DB_PASSWORD}
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: true
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_MONGODB_SERVER: mongo-backend
+      ME_CONFIG_BASICAUTH: false
+    ports:
+      - 3101:8081
 
 volumes:
-  postgresql-backend:
+  mongo-backend:
+  valkey-backend:
   directus-uploads:
   valkey-directus:
   postgresql-directus:
+  # authentik-certs:
+  # authentik-blueprints:
+  # authentik-media:
+  # authentik-templates:
+  # valkey-authentik:
+  # postgresql-authentik:
 
 networks:
   directus:
+  # authentik:

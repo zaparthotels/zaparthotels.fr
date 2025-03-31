@@ -1,0 +1,97 @@
+:root {
+	color-scheme: light dark;
+}
+
+[data-theme="light"] {
+	color-scheme: light;
+}
+
+[data-theme="dark"] {
+	color-scheme: dark;
+}
+
+body {
+	font-family: var(--font-albert-sans);
+	color: var(--color-text);
+	background-color: var(--color-bg);
+	transition: 125ms ease;
+	transition-property: background-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	text-wrap: balance;
+	/* biome-ignore lint/correctness/noUnknownProperty: <explanation> */
+	text-box: trim-both cap alphabetic;
+}
+
+p,
+li,
+figcaption {
+	font-size: var(--scale-03);
+	max-width: 75ch;
+	text-wrap: pretty;
+}
+
+img {
+	max-width: 100%;
+	display: block;
+}
+
+.icon {
+	aspect-ratio: 1 / 1;
+	display: block;
+	width: 1em;
+	height: 1em;
+}
+
+a {
+	color: var(--color-accent);
+
+	&:hover {
+		color: var(--color-accent);
+	}
+
+	&:active {
+		color: var(--color-accent);
+	}
+
+	&:has(> .icon) {
+		display: flex;
+		align-items: center;
+		gap: .25em;
+	}
+}
+
+code {
+	font-family: var(--font-fira-code);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	*:has(:target) {
+		scroll-behavior: smooth;
+		scroll-padding-top: 3rem;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	img {
+		filter: brightness(0.8) contrast(1.2);
+
+		.no-dark-mode {
+			filter: none;
+		}
+	}
+}
+
+@media (prefers-reduced-motion), (update: slow) {
+	*,
+	*::before,
+	*::after {
+		transition-duration: 0s !important;
+	}
+}

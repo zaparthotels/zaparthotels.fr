@@ -1,6 +1,6 @@
 /**
  * This file is used to configure which data from your collections you want to export and eventually import accross environments.
- * 
+ *
  * Schema:
  *  collectionName:
  * 		watch: array of events to watch for changes, eg. 'posts.items',
@@ -14,10 +14,10 @@
  * 		onImport: (optional) (object) => object: Function to parse the data before importing, useful for decoding secrets
  */
 export const syncCustomCollections = {
-	languages: {
-		watch: ['languages.items'],
-	},
-	/*
+  languages: {
+    watch: ['languages.items'],
+  },
+  /*
 	posts: {
 		watch: ['posts.items'],
 		excludeFields: ['user_created', 'user_updated'],
