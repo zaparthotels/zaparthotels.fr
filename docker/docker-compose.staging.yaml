@@ -96,8 +96,6 @@ services:
         - traefik.http.services.zaparthotels-directus_staging.loadbalancer.server.port=8055
         - traefik.http.routers.zaparthotels-directus_staging.tls=true
         - traefik.http.routers.zaparthotels-directus_staging.tls.certresolver=letsencrypt
-        - traefik.http.middlewares.zaparthotels-directus_staging-auth.basicauth.users=${STAGING_USERS}
-        - traefik.http.routers.zaparthotels-directus_staging.middlewares=zaparthotels-directus_staging-auth
     depends_on:
       - postgresql-directus
       - valkey-directus
