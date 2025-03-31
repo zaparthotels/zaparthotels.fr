@@ -17,6 +17,7 @@ RUN pnpm install --frozen-lockfile --prod --filter @zaparthotels/frontend
 COPY --from=assets /app .
 
 ENV PORT=3000
+ENV NODE_ENV=production
 
 EXPOSE 3000
 ENTRYPOINT ["pnpm", "run", "--filter", "@zaparthotels/frontend", "start:prod"]
