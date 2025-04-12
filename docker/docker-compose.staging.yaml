@@ -64,6 +64,7 @@ services:
       - MAIL_FWD=${BACKEND_MAIL_FWD}
       - DIRECTUS_HOSTNAME=directus
       - DIRECTUS_PORT=8055
+      - DIRECTUS_ADMIN_TOKEN=${DIRECTUS_ADMIN_TOKEN}
 
   mongo-backend:
     image: mongo:8.0.6-noble

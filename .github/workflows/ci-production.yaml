@@ -48,6 +48,8 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: ghcr.io/${{ github.repository }}/${{ matrix.image }}:latest
+          cache-from: type=gha
+          cache-to: type=gha
 
   update-stack:
     runs-on: ubuntu-latest
