@@ -1,5 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { DirectusService } from 'src/directus/directus.service';
+import { ArrivalLockCodeProcessor } from 'src/flows/arrival/arrival.processor';
 import { LockCodeService } from 'src/lock-code/lock-code.service';
 import { SmsService } from 'src/sms/sms.service';
 
@@ -7,6 +8,7 @@ import { SmsService } from 'src/sms/sms.service';
 export class TestController {
   constructor(
     private readonly lockCodeService: LockCodeService,
+    private readonly arrivalLockCodeProcessor: ArrivalLockCodeProcessor,
     private readonly smsService: SmsService,
     private readonly directusService: DirectusService,
   ) {}
@@ -31,5 +33,10 @@ export class TestController {
       startsAt: new Date('2025-12-31'),
       expiresAt: new Date('2026-01-01'),
     });
+  }
+
+  @Get('generate-code')
+  gencode() {
+    return await this.arrivalFlow.process()
   }
 }

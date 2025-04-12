@@ -20,6 +20,13 @@ services:
       - valkey-backend:/data
     ports:
       - 3004:6379
+  
+  redisinsight:
+    image: redis/redisinsight:latest
+    networks:
+      directus:
+    ports:
+      - 8082:5540
 
   directus:
     build:

@@ -2,7 +2,7 @@ const { spawn } = require('node:child_process');
 
 const composeFile = 'docker-compose.dev.yaml';
 const projectName = 'zaparthotels';
-const envFile = '../.env.dev';
+const envFile = '.env.development';
 
 const startCompose = () => {
   console.log('Starting Docker Compose...');

@@ -10,9 +10,7 @@ import { Cache } from 'cache-manager';
 export class DirectusService {
   private readonly logger = new Logger(DirectusService.name);
   private readonly FALLBACK_LOCALE = 'fr-FR';
-  private readonly directusClient = createDirectus(
-    this.configService.get<string>('DIRECTUS_HOST'),
-  )
+  private readonly directusClient = createDirectus(this.getDirectusUrl())
     .with(staticToken(this.configService.get<string>('DIRECTUS_ADMIN_TOKEN')))
     .with(rest());
 
@@ -20,6 +18,22 @@ export class DirectusService {
     private readonly configService: ConfigService,
     @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
   ) {}
+
+  private getDirectusUrl(): string {
+    const hostname = this.configService.get<string>('DIRECTUS_HOSTNAME');
+    const port = this.configService.get<string>('DIRECTUS_PORT');
+
+    if (!hostname) {
+      throw new Error('DIRECTUS_HOSTNAME is required');
+    }
+
+    const url = new URL(`http://${hostname}`);
+    if (port) {
+      url.port = port;
+    }
+
+    return url.toString();
+  }
 
   async getConfig(): Promise<IConfig> {
     const cacheKey = 'DEFAULT_BOOKING_TIMES';
@@ -33,7 +47,7 @@ export class DirectusService {
           readItems('config'),
         );
       } catch (error) {
-        this.logger.error(`Error fetching config: ${error}`);
+        this.logger.error('Error fetching config:', error);
         throw error;
       }
     }

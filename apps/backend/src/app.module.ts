@@ -12,7 +12,7 @@ import { FlowsModule } from './flows/flows.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ['../../.env.local', '../../.env.dev'],
+      envFilePath: ['./.env.development', './.env.local'],
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
