@@ -62,7 +62,8 @@ services:
       - MAIL_PASSWORD=${BACKEND_MAIL_PASSWORD}
       - MAIL_FROM=${BACKEND_MAIL_FROM}
       - MAIL_FWD=${BACKEND_MAIL_FWD}
-      - DIRECTUS_HOST=http://directus:8055
+      - DIRECTUS_HOSTNAME=directus
+      - DIRECTUS_PORT=8055
 
   mongo-backend:
     image: mongo:8.0.6-noble

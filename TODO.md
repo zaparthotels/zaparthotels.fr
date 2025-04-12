@@ -1,2 +1,4 @@
 - [ ] Refacto de SMS et MAIL avec des .processor.ts et constants.ts
 - [x] Typper les additionnalProperties
+- [ ] Passer sur des devcontaines
+- [ ] Revue complète code (supprimer tests et drafts de biome.js)

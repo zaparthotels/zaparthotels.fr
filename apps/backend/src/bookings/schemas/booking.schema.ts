@@ -58,7 +58,7 @@ export class BookingDocument extends Document implements IBooking {
   @Prop({ required: true, unique: true })
   beds24id: string;
 
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true })
   propertyId: string;
 
   @Prop({ type: Guest, required: true })
