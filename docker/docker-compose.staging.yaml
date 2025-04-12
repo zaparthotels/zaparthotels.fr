@@ -122,6 +122,8 @@ services:
       - DB_CLIENT=pg
       - DB_HOST=postgresql-directus
       - DB_PORT=5432
+      - DB_POOL__MIN=0
+      - DB_POOL__IDLE_TIMEOUT_MILLIS=3000
       - CACHE_ENABLED=true
       - CACHE_AUTO_PURGE=true
       - CACHE_STORE=redis
