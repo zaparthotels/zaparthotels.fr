@@ -55,10 +55,10 @@ class LockCode implements ILockCode {
 
 @Schema()
 export class BookingDocument extends Document implements IBooking {
-  @Prop({ required: true, unique: true })
+  @Prop({ required: true, index: true })
   beds24id: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, index: true })
   propertyId: string;
 
   @Prop({ type: Guest, required: true })

@@ -9,7 +9,7 @@ import {
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import { IBooking, ILockCode, TBookingStatus } from '@zaparthotels/types';
-import { ObjectId } from 'mongoose';
+import { Types } from 'mongoose';
 import { GuestDto } from './guest.dto';
 import { DatesDto } from './dates.dto';
 import { LockCodeDto } from 'src/lock-code/dto/lock-code.dto';
@@ -17,7 +17,7 @@ import { LockCodeDto } from 'src/lock-code/dto/lock-code.dto';
 export class BookingDto implements IBooking {
   @IsOptional()
   @IsMongoId()
-  _id?: ObjectId;
+  _id?: Types.ObjectId;
 
   @IsString()
   @IsNotEmpty()

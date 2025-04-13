@@ -7,12 +7,12 @@ import {
   IsEmail,
   IsPhoneNumber,
 } from 'class-validator';
-import { ObjectId } from 'mongoose';
+import { Types } from 'mongoose';
 
 export class GuestDto implements IGuest {
   @IsOptional()
   @IsMongoId()
-  _id?: ObjectId;
+  _id?: Types.ObjectId;
 
   @IsString()
   @IsNotEmpty()

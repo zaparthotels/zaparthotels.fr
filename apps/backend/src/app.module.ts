@@ -28,6 +28,10 @@ import { FlowsModule } from './flows/flows.module';
           host: configService.get('REDIS_HOSTNAME', '127.0.0.1'),
           port: configService.get<number>('REDIS_PORT', 3004),
         },
+        defaultJobOptions: {
+          removeOnComplete: 1000,
+          removeOnFail: 5000,
+        },
       }),
     }),
     BookingsModule,

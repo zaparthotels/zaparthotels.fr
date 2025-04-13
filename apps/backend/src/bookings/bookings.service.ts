@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import { BookingDocument } from './schemas/booking.schema';
 import { WebhookBeds24PayloadDto } from './dto/create-update-booking.dto';
 import { BookingDto } from './dto/booking.dto';
@@ -19,7 +19,7 @@ export class BookingsService {
     private readonly directusService: DirectusService,
   ) {}
 
-  async findOne(_id: string): Promise<BookingDto | null> {
+  async findOne(_id: Types.ObjectId): Promise<BookingDto | null> {
     const booking = await this.bookingModel.findById(_id).exec();
     return booking ? plainToClass(BookingDto, booking.toObject()) : null;
   }
@@ -34,19 +34,31 @@ export class BookingsService {
       .exec();
 
     if (existingBooking) {
-      // Mise à jour
-      const booking = this.bookingModel
+      const booking = await this.bookingModel
         .findOneAndUpdate({ beds24id }, createUpdateBookingDto, { new: true })
         .exec();
 
-      return plainToClass(BookingDto, (await booking).toObject());
+      return plainToClass(BookingDto, booking.toObject());
     }
 
-    // Création
     const newBooking = new this.bookingModel(createUpdateBookingDto);
-    const result = newBooking.save();
+    const result = await newBooking.save();
 
-    return plainToClass(BookingDto, (await result).toObject());
+    return plainToClass(BookingDto, result.toObject());
+  }
+
+  async update(bookingDto: BookingDto): Promise<BookingDto> {
+    const booking = await this.bookingModel.findByIdAndUpdate(
+      bookingDto._id,
+      bookingDto,
+      { new: true },
+    );
+
+    if (!booking) {
+      throw new Error('Booking not found');
+    }
+
+    return plainToClass(BookingDto, booking.toObject());
   }
 
   async transformWebhookPayload(

@@ -16,6 +16,7 @@ import { SmsModule } from 'src/sms/sms.module';
 import { MailModule } from 'src/mail/mail.module';
 import { DirectusModule } from 'src/directus/directus.module';
 import { LiquidModule } from 'src/liquid/liquid.module';
+import { MongoIdModule } from 'src/pipes/mongo-id/mongo-id.module';
 
 @Module({
   imports: [
@@ -48,6 +49,7 @@ import { LiquidModule } from 'src/liquid/liquid.module';
     SmsModule,
     MailModule,
     LiquidModule,
+    MongoIdModule,
   ],
   providers: [
     ArrivalFlow,

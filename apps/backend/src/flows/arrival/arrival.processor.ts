@@ -12,6 +12,7 @@ import { BookingsService } from 'src/bookings/bookings.service';
 import { TBookingStatus } from '@zaparthotels/types';
 import { DirectusService } from 'src/directus/directus.service';
 import { LiquidService } from 'src/liquid/liquid.service';
+import { MongoIdPipe } from 'src/pipes/mongo-id/mongo-id.pipe';
 
 @Processor(FLOW_ARRIVAL_LOCK_CODE_QUEUE)
 export class ArrivalLockCodeProcessor extends WorkerHost {
@@ -21,12 +22,15 @@ export class ArrivalLockCodeProcessor extends WorkerHost {
     private readonly bookingService: BookingsService,
     private readonly directusService: DirectusService,
     private readonly lockCodeService: LockCodeService,
+    private readonly mongoIdPipe: MongoIdPipe,
   ) {
     super();
   }
 
   async process(job: Job<string>): Promise<void> {
-    const booking = await this.bookingService.findOne(job.data);
+    const booking = await this.bookingService.findOne(
+      this.mongoIdPipe.transform(job.data),
+    );
 
     if (!booking) {
       this.logger.error(`Booking ${job.data} not found.`);
@@ -64,9 +68,9 @@ export class ArrivalLockCodeProcessor extends WorkerHost {
       expiresAt,
     });
 
-    this.bookingService.createOrUpdate({
-      lockCode,
+    await this.bookingService.update({
       ...booking,
+      lockCode,
     });
   }
 
@@ -93,12 +97,15 @@ export class ArrivalNotificationsProcessor extends WorkerHost {
     private readonly smsService: SmsService,
     private readonly mailService: MailService,
     private readonly liquidService: LiquidService,
+    private readonly mongoIdPipe: MongoIdPipe,
   ) {
     super();
   }
 
   async process(job: Job<string>): Promise<void> {
-    const booking = await this.bookingService.findOne(job.data);
+    const booking = await this.bookingService.findOne(
+      this.mongoIdPipe.transform(job.data),
+    );
 
     if (!booking) {
       this.logger.error(`Booking ${job.data} not found.`);
@@ -149,12 +156,12 @@ export class ArrivalNotificationsProcessor extends WorkerHost {
       context,
     );
 
-    this.smsService.sendSms({
+    await this.smsService.sendSms({
       phoneNumber: booking.guest.phone,
       message,
     });
 
-    this.mailService.sendMail({
+    await this.mailService.sendMail({
       recipient: booking.guest.email,
       subject,
       body: message,
