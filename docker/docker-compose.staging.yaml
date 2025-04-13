@@ -45,6 +45,7 @@ services:
         - traefik.http.middlewares.zaparthotels-backend_staging-auth.basicauth.users=${STAGING_USERS}
         - traefik.http.routers.zaparthotels-backend_staging.middlewares=zaparthotels-backend_staging-auth
     environment:
+      - TZ=${TZ}
       - REDIS_HOSTNAME=valkey-backend
       - REDIS_PORT=6379
       - MONGO_HOSTNAME=mongo-backend
