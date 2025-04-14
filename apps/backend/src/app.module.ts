@@ -1,17 +1,17 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BookingsModule } from './bookings/bookings.module';
 import { BullModule } from '@nestjs/bullmq';
 import { WebhooksModule } from './webhooks/webhooks.module';
 import { FlowsModule } from './flows/flows.module';
+import configuration from 'config/configuration';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ['./.env.development', './.env.local'],
+      envFilePath: ['./.env.local', './env.development'],
+      load: [configuration],
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
@@ -38,7 +38,5 @@ import { FlowsModule } from './flows/flows.module';
     WebhooksModule,
     FlowsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
