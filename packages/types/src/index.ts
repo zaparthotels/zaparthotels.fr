@@ -5,3 +5,4 @@ export * from './ISms';
 export * from './IEmail';
 export * from './ILockCode';
 export * from './IDates';
+export * from './IFlow';

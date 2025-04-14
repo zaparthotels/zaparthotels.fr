@@ -3,9 +3,11 @@ import { Document } from 'mongoose';
 import {
   IBooking,
   IDates,
+  IFlow,
   IGuest,
   ILockCode,
   TBookingStatus,
+  TFlowStatus,
 } from '@zaparthotels/types';
 
 @Schema()
@@ -54,6 +56,21 @@ class LockCode implements ILockCode {
 }
 
 @Schema()
+class Flow implements IFlow {
+  @Prop({ required: true, index: true })
+  name: string;
+
+  @Prop({ required: true })
+  status: TFlowStatus;
+
+  @Prop({ default: Date.now })
+  createdAt: Date;
+
+  @Prop({ required: true, type: Date })
+  updatedAt: Date;
+}
+
+@Schema()
 export class BookingDocument extends Document implements IBooking {
   @Prop({ required: true, index: true })
   beds24id: string;
@@ -78,6 +95,9 @@ export class BookingDocument extends Document implements IBooking {
 
   @Prop({ type: LockCode })
   lockCode?: LockCode;
+
+  @Prop({ type: [Flow] })
+  flows?: Flow[];
 }
 
 export const BookingSchema = SchemaFactory.createForClass(BookingDocument);

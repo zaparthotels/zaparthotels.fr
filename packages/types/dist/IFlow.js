@@ -4,7 +4,8 @@ exports.TFlowStatus = void 0;
 var TFlowStatus;
 (function (TFlowStatus) {
     TFlowStatus["PENDING"] = "pending";
-    TFlowStatus["FAILED"] = "failed";
+    TFlowStatus["RUNNING"] = "running";
     TFlowStatus["COMPLETED"] = "completed";
+    TFlowStatus["FAILED"] = "failed";
 })(TFlowStatus || (exports.TFlowStatus = TFlowStatus = {}));
 //# sourceMappingURL=IFlow.js.map

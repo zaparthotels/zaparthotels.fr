@@ -8,6 +8,7 @@ import { plainToClass } from 'class-transformer';
 import { DirectusService } from 'src/directus/directus.service';
 import { DateUtils } from 'src/utils/DateUtils';
 import parsePhoneNumberFromString, { CountryCode } from 'libphonenumber-js';
+import { IFlow } from '@zaparthotels/types';
 
 @Injectable()
 export class BookingsService {
@@ -48,17 +49,81 @@ export class BookingsService {
   }
 
   async update(bookingDto: BookingDto): Promise<BookingDto> {
-    const booking = await this.bookingModel.findByIdAndUpdate(
-      bookingDto._id,
-      bookingDto,
-      { new: true },
-    );
+    const booking = await this.bookingModel
+      .findByIdAndUpdate(bookingDto._id, bookingDto, { new: true })
+      .exec();
 
     if (!booking) {
       throw new Error('Booking not found');
     }
 
     return plainToClass(BookingDto, booking.toObject());
+  }
+
+  async addFlow(
+    bookingDto: BookingDto,
+    flow: Omit<IFlow, 'createdAt' | 'updatedAt'>,
+  ): Promise<BookingDto> {
+    if (bookingDto.flows.find((f) => f.name === flow.name)) {
+      this.logger.warn(
+        `Flow ${flow.name} already exists for booking ${bookingDto._id}`,
+      );
+      return;
+    }
+
+    const flowWithTimestamps: IFlow = {
+      ...flow,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+
+    bookingDto.flows.push(flowWithTimestamps);
+
+    const booking = await this.bookingModel
+      .findByIdAndUpdate(bookingDto._id, bookingDto, { new: true })
+      .exec();
+
+    return plainToClass(BookingDto, booking.toObject());
+  }
+
+  async updateFlow(
+    bookingDto: BookingDto,
+    flow: Omit<IFlow, 'createdAt' | 'updatedAt'>,
+  ): Promise<BookingDto> {
+    const existingFlow = bookingDto.flows.find((f) => f.name === flow.name);
+
+    const flowWithTimestamps: IFlow = {
+      ...existingFlow,
+      ...flow,
+      updatedAt: new Date(),
+    };
+
+    bookingDto.flows = [
+      ...bookingDto.flows.filter((f) => f.name !== flow.name),
+      flowWithTimestamps,
+    ];
+
+    const booking = await this.bookingModel
+      .findByIdAndUpdate(bookingDto._id, bookingDto, { new: true })
+      .exec();
+
+    return plainToClass(BookingDto, booking.toObject());
+  }
+
+  async getFlowByName(
+    bookingDto: BookingDto,
+    flowName: string,
+  ): Promise<IFlow | null> {
+    const flow = bookingDto.flows.find((f) => f.name === flowName);
+
+    if (!flow) {
+      this.logger.warn(
+        `Flow ${flowName} not found for booking ${bookingDto._id}`,
+      );
+      return null;
+    }
+
+    return flow;
   }
 
   async transformWebhookPayload(
