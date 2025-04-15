@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NodeEnv = void 0;
-var NodeEnv;
-(function (NodeEnv) {
-    NodeEnv["DEVELOPMENT"] = "development";
-    NodeEnv["TEST"] = "test";
-    NodeEnv["STAGING"] = "staging";
-    NodeEnv["PRODUCTION"] = "production";
-})(NodeEnv || (exports.NodeEnv = NodeEnv = {}));
+exports.ENodeEnv = void 0;
+var ENodeEnv;
+(function (ENodeEnv) {
+    ENodeEnv["DEVELOPMENT"] = "development";
+    ENodeEnv["TEST"] = "test";
+    ENodeEnv["STAGING"] = "staging";
+    ENodeEnv["PRODUCTION"] = "production";
+})(ENodeEnv || (exports.ENodeEnv = ENodeEnv = {}));
 //# sourceMappingURL=ENodeEnv.js.map

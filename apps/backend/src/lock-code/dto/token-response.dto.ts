@@ -8,8 +8,4 @@ export class TokenResponseDto {
   @IsNumber()
   @IsNotEmpty()
   expires_in: number;
-
-  @IsString()
-  @IsNotEmpty()
-  token_type: string;
 }

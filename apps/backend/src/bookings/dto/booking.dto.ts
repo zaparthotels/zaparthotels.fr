@@ -8,16 +8,22 @@ import {
   IsMongoId,
 } from 'class-validator';
 import { Type } from 'class-transformer';
-import { IBooking, ILockCode, TBookingStatus } from '@zaparthotels/types';
-import { ObjectId } from 'mongoose';
+import {
+  IBooking,
+  IFlow,
+  ILockCode,
+  TBookingStatus,
+} from '@zaparthotels/types';
+import { Types } from 'mongoose';
 import { GuestDto } from './guest.dto';
 import { DatesDto } from './dates.dto';
 import { LockCodeDto } from 'src/lock-code/dto/lock-code.dto';
+import { FlowDto } from 'src/flows/dto/flow.dto';
 
 export class BookingDto implements IBooking {
   @IsOptional()
   @IsMongoId()
-  _id?: ObjectId;
+  _id?: Types.ObjectId;
 
   @IsString()
   @IsNotEmpty()
@@ -51,4 +57,9 @@ export class BookingDto implements IBooking {
   @ValidateNested()
   @Type(() => LockCodeDto)
   lockCode?: ILockCode;
+
+  @IsOptional()
+  @ValidateNested({ each: true })
+  @Type(() => FlowDto)
+  flows?: IFlow[];
 }
