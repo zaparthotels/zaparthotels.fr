@@ -1,11 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { InjectQueue, Processor } from '@nestjs/bullmq';
+import { InjectQueue } from '@nestjs/bullmq';
 import { Queue, Job } from 'bullmq';
 import { IEmail } from '@zaparthotels/types';
 import { MAIL_QUEUE } from './constants';
 
 @Injectable()
-@Processor('mail-queue')
 export class MailService {
   constructor(@InjectQueue(MAIL_QUEUE) private mailQueue: Queue) {}
 
