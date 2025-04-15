@@ -125,8 +125,8 @@ export class LockCodeService {
     }
 
     return {
-      code: lockCodeData.pin,
       ...lockCode,
+      code: lockCodeData.pin,
     };
   }
 }

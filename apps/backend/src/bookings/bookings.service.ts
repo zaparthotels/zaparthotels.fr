@@ -134,7 +134,6 @@ export class BookingsService {
 
     const { booking } = payload;
 
-    // Conversion des dates ISO en objets Date
     const checkInDate = new DateUtils(booking.arrival);
     const checkOutDate = new DateUtils(booking.departure);
     const createdAt = new Date(booking.bookingTime);
@@ -166,7 +165,6 @@ export class BookingsService {
       (localeIntl.region as CountryCode) || 'FR',
     );
 
-    // Construction du DTO pour la création/mise à jour
     return {
       beds24id: booking.id.toString(),
       propertyId: booking.propertyId.toString(),

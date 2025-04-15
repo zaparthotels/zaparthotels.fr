@@ -81,10 +81,10 @@ export class ArrivalFlow implements IFlow {
           data: bookingId,
           opts: {
             delay: notificationTimestamp.getTime() - currentTimestamp,
-            attempts: 8,
+            attempts: 7,
             backoff: {
               type: 'exponential',
-              delay: 20000,
+              delay: 10000,
             },
           },
           children: [
