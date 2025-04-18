@@ -142,7 +142,6 @@ services:
       - SCHEMA_SYNC=IMPORT
       - CORS_ENABLED=true
       - CORS_ORIGIN=*
-      - LOG_LEVEL=trace
     volumes:
       - directus-uploads:/directus/uploads
 
