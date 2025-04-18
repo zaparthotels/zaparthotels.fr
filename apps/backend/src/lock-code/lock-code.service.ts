@@ -24,7 +24,9 @@ export class LockCodeService {
   ) {}
 
   private getBasicAuthHeaders(): Record<string, string> {
-    const credentials = this.configService.get<string>('IGLOOHOME_CREDENTIALS');
+    const credentials = this.configService.getOrThrow<string>(
+      'IGLOOHOME_CREDENTIALS',
+    );
     return {
       Authorization: `Basic ${credentials}`,
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -43,7 +45,7 @@ export class LockCodeService {
         .pipe(
           retry(3),
           catchError((error) => {
-            this.logger.error('Error fetching token', error.message);
+            this.logger.error('Error fetching token:', error);
             throw error;
           }),
         ),
@@ -52,7 +54,7 @@ export class LockCodeService {
     const tokenData = plainToInstance(TokenResponseDto, response.data);
     const errors = await validate(tokenData);
     if (errors.length) {
-      this.logger.error(`Invalid token response: ${JSON.stringify(errors)}`);
+      this.logger.error('Invalid token response:', errors);
       throw new Error('Invalid token response format');
     }
 
@@ -93,7 +95,7 @@ export class LockCodeService {
         const newToken = await this.getValidToken(true);
         return this.postWithAuth<T>(url, data, newToken);
       }
-      this.logger.error('HTTP request failed', error.message);
+      this.logger.error('HTTP request failed', error);
       throw error;
     }
   }
@@ -117,10 +119,9 @@ export class LockCodeService {
 
     const lockCodeData = plainToInstance(LockCodeResponseDto, responseData);
     const errors = await validate(lockCodeData);
+
     if (errors.length) {
-      this.logger.error(
-        `Invalid lock code response: ${JSON.stringify(errors)}`,
-      );
+      this.logger.error('Invalid lock code response:', errors);
       throw new Error('Invalid lock code response format');
     }
 

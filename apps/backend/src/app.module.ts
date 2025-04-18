@@ -10,7 +10,7 @@ import configuration from 'config/configuration';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ['./.env.local', './env.development'],
+      envFilePath: ['./.env.local', './.env.development'],
       load: [configuration],
     }),
     MongooseModule.forRootAsync({

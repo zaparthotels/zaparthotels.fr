@@ -20,12 +20,8 @@ export class DirectusService {
   ) {}
 
   private getDirectusUrl(): string {
-    const hostname = this.configService.get<string>('DIRECTUS_HOSTNAME');
+    const hostname = this.configService.getOrThrow<string>('DIRECTUS_HOSTNAME');
     const port = this.configService.get<string>('DIRECTUS_PORT');
-
-    if (!hostname) {
-      throw new Error('DIRECTUS_HOSTNAME is required');
-    }
 
     const url = new URL(`http://${hostname}`);
     if (port) {
@@ -70,7 +66,7 @@ export class DirectusService {
         );
         await this.cacheManager.set(cacheKey, languages, ttl);
       } catch (error) {
-        this.logger.error(`Error fetching languages from Directus: ${error}`);
+        this.logger.error('Error fetching languages from Directus:', error);
         throw error;
       }
     }
@@ -133,7 +129,7 @@ export class DirectusService {
 
       return property[0];
     } catch (error) {
-      this.logger.error(`Error fetching property with ID ${id}: ${error}`);
+      this.logger.error(`Error fetching property with ID ${id}:`, error);
       throw error;
     }
   }

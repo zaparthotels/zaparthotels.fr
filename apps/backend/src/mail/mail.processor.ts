@@ -50,8 +50,6 @@ export class MailProcessor extends WorkerHost {
 
   @OnWorkerEvent('failed')
   onFailed(job: Job, error: Error) {
-    this.logger.log(
-      `Job ${job.id}. Failed to send mail, with error ${error.message}.`,
-    );
+    this.logger.log(`Job ${job.id}. Failed to send mail, with error:`, error);
   }
 }

@@ -40,10 +40,7 @@ export class WebhooksController {
 
       return booking;
     } catch (error) {
-      this.logger.error(
-        `Error processing webhook: ${error.message}`,
-        error.stack,
-      );
+      this.logger.error('Error processing webhook:', error);
       throw new BadRequestException('Error processing booking data');
     }
   }
