@@ -11,7 +11,11 @@ export class DirectusService {
   private readonly logger = new Logger(DirectusService.name);
   private readonly FALLBACK_LOCALE = 'fr-FR';
   private readonly directusClient = createDirectus(this.getDirectusUrl())
-    .with(staticToken(this.configService.get<string>('DIRECTUS_ADMIN_TOKEN')))
+    .with(
+      staticToken(
+        this.configService.getOrThrow<string>('DIRECTUS_ADMIN_TOKEN'),
+      ),
+    )
     .with(rest());
 
   constructor(
@@ -43,7 +47,12 @@ export class DirectusService {
           readItems('config'),
         );
       } catch (error) {
-        this.logger.error('Error fetching config:', error, this.directusClient);
+        this.logger.error(
+          'Error fetching config:',
+          error,
+          this.directusClient, // more
+          this.configService.get<string>('DIRECTUS_ADMIN_TOKEN'), // more
+        );
         throw error;
       }
     }
