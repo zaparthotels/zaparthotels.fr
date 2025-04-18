@@ -43,8 +43,6 @@ export class ArrivalProcessor extends WorkerHost {
 
   @OnWorkerEvent('failed')
   onFailed(job: Job, error: Error) {
-    this.logger.log(
-      `Job ${job.id}. Failed to run arrival flow ${error.message}.`,
-    );
+    this.logger.log(`Job ${job.id}. Failed to run arrival flow:`, error);
   }
 }

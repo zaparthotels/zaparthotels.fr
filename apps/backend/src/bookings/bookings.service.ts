@@ -142,23 +142,56 @@ export class BookingsService {
     checkInDate.setTimeFromString(defaultArrivalTime);
     checkOutDate.setTimeFromString(defaultDepartureTime);
 
-    const getLocaleIntl = (lang: string, country2?: string): Intl.Locale => {
+    const getLocaleIntl = (
+      lang?: string,
+      region?: string,
+      phoneNumber?: string,
+    ): Intl.Locale => {
+      if (!lang && !region && phoneNumber) {
+        const phone = parsePhoneNumberFromString(phoneNumber, 'FR');
+        if (phone) {
+          region = phone.country;
+        }
+      }
+
+      if (!lang && region) {
+        try {
+          const locale = new Intl.Locale(`und-${region}`).maximize();
+          lang = locale.language;
+        } catch (error) {
+          this.logger.warn(
+            `Failed to deduce language from region "${region}".`,
+            error.message,
+          );
+        }
+      }
+
       let localeIntl: Intl.Locale;
 
       try {
-        localeIntl = new Intl.Locale(`${lang}-${country2}`).maximize();
+        if (lang && region) {
+          localeIntl = new Intl.Locale(`${lang}-${region}`).maximize();
+        } else if (lang) {
+          localeIntl = new Intl.Locale(lang).maximize();
+        } else {
+          localeIntl = new Intl.Locale('en-US').maximize();
+        }
       } catch (error) {
         this.logger.warn(
-          `Invalid locale format "${lang}-${country2}". Defaulting to "${lang}"`,
+          `Invalid locale format "${lang}-${region}". Defaulting to "en-US"`,
           error.message,
         );
-        localeIntl = new Intl.Locale(lang).maximize();
+        localeIntl = new Intl.Locale('en-US').maximize();
       }
 
       return localeIntl;
     };
 
-    const localeIntl = getLocaleIntl(booking.lang, booking.country2);
+    const localeIntl = getLocaleIntl(
+      booking.lang,
+      booking.country2,
+      booking.phone,
+    );
 
     const normalizedPhone = parsePhoneNumberFromString(
       booking.phone,

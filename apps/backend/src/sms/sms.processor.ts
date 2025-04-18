@@ -23,8 +23,8 @@ export class SmsProcessor extends WorkerHost {
 
   private createSmsClient(): SmsClient {
     return new SmsClient(
-      this.configService.get<string>('SMS_LOGIN'),
-      this.configService.get<string>('SMS_PASSWORD'),
+      this.configService.getOrThrow<string>('SMS_LOGIN'),
+      this.configService.getOrThrow<string>('SMS_PASSWORD'),
       {
         get: async (url, headers) => {
           const response = await firstValueFrom(
@@ -69,8 +69,6 @@ export class SmsProcessor extends WorkerHost {
 
   @OnWorkerEvent('failed')
   onFailed(job: Job, error: Error) {
-    this.logger.log(
-      `Job ${job.id}. Failed to send SMS, with error ${error.message}.`,
-    );
+    this.logger.log(`Job ${job.id}. Failed to send SMS, with error:`, error);
   }
 }
