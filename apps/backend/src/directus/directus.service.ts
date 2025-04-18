@@ -27,7 +27,7 @@ export class DirectusService {
     const hostname = this.configService.getOrThrow<string>('DIRECTUS_HOSTNAME');
     const port = this.configService.get<string>('DIRECTUS_PORT');
 
-    const url = new URL(`https://${hostname}`);
+    const url = new URL(`http://${hostname}`);
     if (port) {
       url.port = port;
     }
