@@ -1,10 +1,4 @@
-import {
-  createDirectus,
-  DirectusClient,
-  readItems,
-  rest,
-  staticToken,
-} from '@directus/sdk';
+import { createDirectus, readItems, rest, staticToken } from '@directus/sdk';
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { IProperty } from './interfaces/IProperty';
@@ -16,22 +10,20 @@ import { Cache } from 'cache-manager';
 export class DirectusService {
   private readonly logger = new Logger(DirectusService.name);
   private readonly FALLBACK_LOCALE = 'fr-FR';
-  private readonly directusClient: DirectusClient<unknown>;
+  private readonly directusClient = createDirectus(this.getDirectusUrl())
+    .with(staticToken(this.configService.get<string>('DIRECTUS_ADMIN_TOKEN')))
+    .with(rest());
 
   constructor(
     private readonly configService: ConfigService,
     @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
-  ) {
-    this.directusClient = createDirectus(this.getDirectusUrl())
-      .with(staticToken(this.configService.get<string>('DIRECTUS_ADMIN_TOKEN')))
-      .with(rest());
-  }
+  ) {}
 
   private getDirectusUrl(): string {
     const hostname = this.configService.getOrThrow<string>('DIRECTUS_HOSTNAME');
     const port = this.configService.get<string>('DIRECTUS_PORT');
 
-    const url = new URL(`http://${hostname}`);
+    const url = new URL(`https://${hostname}`);
     if (port) {
       url.port = port;
     }
@@ -51,7 +43,7 @@ export class DirectusService {
           readItems('config'),
         );
       } catch (error) {
-        this.logger.error('Error fetching config:', error);
+        this.logger.error('Error fetching config:', error, this.directusClient);
         throw error;
       }
     }
