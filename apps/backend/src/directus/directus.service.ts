@@ -28,6 +28,8 @@ export class DirectusService {
       url.port = port;
     }
 
+    console.log('DEBUG DIRECTUS', url, url.toString());
+
     return url.toString();
   }
 
