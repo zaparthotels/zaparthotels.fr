@@ -54,7 +54,7 @@ export class LockCodeService {
     const tokenData = plainToInstance(TokenResponseDto, response.data);
     const errors = await validate(tokenData);
     if (errors.length) {
-      this.logger.error(`Invalid token response:`, errors);
+      this.logger.error('Invalid token response:', errors);
       throw new Error('Invalid token response format');
     }
 
@@ -121,7 +121,7 @@ export class LockCodeService {
     const errors = await validate(lockCodeData);
 
     if (errors.length) {
-      this.logger.error(`Invalid lock code response:`, errors);
+      this.logger.error('Invalid lock code response:', errors);
       throw new Error('Invalid lock code response format');
     }
 

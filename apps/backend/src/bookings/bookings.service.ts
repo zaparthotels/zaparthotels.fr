@@ -143,10 +143,13 @@ export class BookingsService {
     checkOutDate.setTimeFromString(defaultDepartureTime);
 
     const getLocaleIntl = (
-      lang?: string,
-      region?: string,
+      inputLang?: string,
+      inputRegion?: string,
       phoneNumber?: string,
     ): Intl.Locale => {
+      let lang = inputLang;
+      let region = inputRegion;
+
       if (!lang && !region && phoneNumber) {
         const phone = parsePhoneNumberFromString(phoneNumber, 'FR');
         if (phone) {
