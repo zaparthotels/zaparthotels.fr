@@ -78,7 +78,7 @@ export class DirectusService {
     return languages;
   }
 
-  private async validateLocale(locale: string): Promise<string> {
+  private async validateLocale(locale?: string): Promise<string> {
     if (!locale) return this.FALLBACK_LOCALE;
 
     const locales = await this.getLocales();
