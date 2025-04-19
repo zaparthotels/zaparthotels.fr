@@ -47,12 +47,7 @@ export class DirectusService {
           readItems('config'),
         );
       } catch (error) {
-        this.logger.error(
-          'Error fetching config:',
-          error,
-          this.directusClient, // more
-          this.configService.get<string>('DIRECTUS_ADMIN_TOKEN'), // more
-        );
+        this.logger.error('Error fetching config:', error);
         throw error;
       }
     }
