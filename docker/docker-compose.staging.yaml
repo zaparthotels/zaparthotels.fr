@@ -116,6 +116,7 @@ services:
       - postgresql-directus
       - valkey-directus
     environment:
+      - TZ=${TZ}
       - SECRET=${DIRECTUS_SECRET}
       - DB_USER=${DIRECTUS_DB_USER}
       - DB_DATABASE=${DIRECTUS_DB_NAME}
