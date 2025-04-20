@@ -28,10 +28,7 @@ services:
     image: ghcr.io/zaparthotels/zaparthotels.fr/zaparthotels-backend:staging
     networks:
       zaparthotels-backend:
-      directus:
-        aliases:
-            - directus
-      traefik_traefik:
+      traefik_traefik: // traefik + directus
     deploy:
       placement:
         constraints:
