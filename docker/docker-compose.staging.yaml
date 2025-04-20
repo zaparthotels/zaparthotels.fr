@@ -63,7 +63,7 @@ services:
       - MAIL_PASSWORD=${BACKEND_MAIL_PASSWORD}
       - MAIL_FROM=${BACKEND_MAIL_FROM}
       - MAIL_FWD=${BACKEND_MAIL_FWD}
-      - DIRECTUS_HOSTNAME=directus.directus
+      - DIRECTUS_HOSTNAME=directus_zaparthotels-backend
       - DIRECTUS_PORT=8055
       - DIRECTUS_ADMIN_TOKEN=${DIRECTUS_ADMIN_TOKEN}
 
@@ -99,6 +99,8 @@ services:
     image: ghcr.io/zaparthotels/zaparthotels.fr/directus:staging
     networks:
       directus:
+        aliases:
+          - directus_zaparthotels-backend
       traefik_traefik:
     deploy:
       placement:
