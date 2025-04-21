@@ -5,11 +5,13 @@ import {
   HttpCode,
   Logger,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { IBooking } from '@zaparthotels/types';
 import { BookingsService } from 'src/bookings/bookings.service';
 import { WebhookBeds24PayloadDto } from 'src/bookings/dto/create-update-booking.dto';
 import { ArrivalFlow } from 'src/flows/arrival/arrival.flow';
+import { Beds24Guard } from './guards/beds24.guard';
 
 @Controller('webhooks')
 export class WebhooksController {
@@ -21,6 +23,7 @@ export class WebhooksController {
   ) {}
 
   @Post('bookings')
+  @UseGuards(Beds24Guard)
   @HttpCode(200)
   async createOrUpdateBooking(
     @Body() webhookPayload: WebhookBeds24PayloadDto,

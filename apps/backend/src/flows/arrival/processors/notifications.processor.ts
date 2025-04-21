@@ -9,6 +9,7 @@ import { MailService } from 'src/mail/mail.service';
 import { MongoIdPipe } from 'src/pipes/mongo-id/mongo-id.pipe';
 import { SmsService } from 'src/sms/sms.service';
 import { FLOW_ARRIVAL_NOTIFICATIONS_QUEUE } from '../constants';
+import { ConfigService } from '@nestjs/config';
 
 @Processor(FLOW_ARRIVAL_NOTIFICATIONS_QUEUE)
 export class NotificationsProcessor extends WorkerHost {
@@ -21,6 +22,7 @@ export class NotificationsProcessor extends WorkerHost {
     private readonly mailService: MailService,
     private readonly liquidService: LiquidService,
     private readonly mongoIdPipe: MongoIdPipe,
+    private readonly configService: ConfigService,
   ) {
     super();
   }
@@ -42,14 +44,16 @@ export class NotificationsProcessor extends WorkerHost {
 
     this.liquidService.setLocale(booking.guest.locale);
 
+    const config = await this.directusService.getConfig();
+
     if (!booking.lockCode) {
       this.logger.error(
         `Booking ${job.data} has no lockCode generated, fallback to default.`,
       );
 
       booking.lockCode = {
-        lockId: 'default',
-        code: 'DIRECTUS_DEFAULT',
+        lockId: 'failed',
+        code: config.fallbackLockCode,
         startsAt: new Date(),
         expiresAt: new Date(),
       };
@@ -59,13 +63,6 @@ export class NotificationsProcessor extends WorkerHost {
       booking.propertyId,
       await this.directusService.getCorrespondingLocale(booking.guest.locale),
     );
-
-    if (!directusProperty) {
-      this.logger.error(
-        `Property ${booking.propertyId} not found in Directus.`,
-      );
-      throw new Error(`Property ${booking.propertyId} not found in Directus.`);
-    }
 
     const context = { booking };
 
@@ -79,13 +76,16 @@ export class NotificationsProcessor extends WorkerHost {
       context,
     );
 
-    await this.smsService.sendSms({
-      phoneNumber: booking.guest.phone,
-      message,
-    });
+    if (booking.guest.phone) {
+      await this.smsService.sendSms({
+        phoneNumber: booking.guest.phone,
+        message,
+      });
+    }
 
     await this.mailService.sendMail({
-      recipient: booking.guest.email,
+      recipient:
+        booking.guest.email || this.configService.get<string>('MAIL_FWD'),
       subject,
       body: message,
     });
