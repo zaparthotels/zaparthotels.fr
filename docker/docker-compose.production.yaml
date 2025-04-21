@@ -41,6 +41,7 @@ services:
       - DIRECTUS_HOSTNAME=directus_zaparthotels-backend
       - DIRECTUS_PORT=8055
       - DIRECTUS_ADMIN_TOKEN=${DIRECTUS_ADMIN_TOKEN}
+      - WEBHOOK_BEDS24_TOKEN=${BACKEND_WEBHOOK_BEDS24_TOKEN}
 
   mongo-backend:
     image: mongo:8.0.6-noble
