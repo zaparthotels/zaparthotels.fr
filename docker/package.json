@@ -1,10 +1,10 @@
 {
-  "name": "@tousinclus/docker",
+  "name": "@zaparthotels/docker",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "docker compose -f docker-compose.dev.yaml -p tousinclus --env-file ../.env.dev up"
+    "start:dev": "node index.js"
   },
   "keywords": [],
   "author": "",

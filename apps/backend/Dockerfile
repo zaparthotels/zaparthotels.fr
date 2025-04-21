@@ -4,15 +4,20 @@ WORKDIR /app
 COPY . .
 
 FROM base AS build
-RUN pnpm install --filter @tousinclus/backend
-RUN pnpm run --filter @tousinclus/backend build
+RUN pnpm install --frozen-lockfile --filter @zaparthotels/types
+RUN pnpm install --frozen-lockfile --filter @zaparthotels/backend
+RUN pnpm run --filter @zaparthotels/types build
+RUN pnpm run --filter @zaparthotels/backend build
 
 FROM build AS assets
 RUN rm -rf node_modules && pnpm recursive exec -- rm -rf ./node_modules ./src
 
 FROM base AS prod
-RUN pnpm install --prod --filter @tousinclus/backend
+RUN pnpm install --frozen-lockfile --prod --filter @zaparthotels/backend
 COPY --from=assets /app .
 
+ENV PORT=3000
+ENV NODE_ENV=production
+
 EXPOSE 3000
-ENTRYPOINT ["pnpm", "run", "--filter", "@tousinclus/backend", "start:prod"]
+ENTRYPOINT ["pnpm", "run", "--filter", "@zaparthotels/backend", "start:prod"]

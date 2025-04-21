@@ -1,15 +1,20 @@
 {
-  "name": "tousinclus",
+  "name": "zaparthotels",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "pnpm -r run start:dev",
-    "lint": "pnpm -r run lint",
-    "test": "pnpm -r run test"
+    "dev": "pnpm -r --stream --parallel run start:dev",
+    "lint": "pnpm -r run lint && biome lint --write .",
+    "lint:fix": "biome check --write .",
+    "test": "pnpm -r run test",
+    "test:watch": "pnpm -r run test:watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@9.11.0"
+  "packageManager": "pnpm@9.11.0",
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4"
+  }
 }

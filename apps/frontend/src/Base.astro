@@ -1,0 +1,47 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import './index.css';
+
+interface Props {
+	description?: string;
+	title: string;
+}
+
+const { description = '', title } = Astro.props;
+const { currentLocale } = Astro;
+---
+<!doctype html>
+<html lang={currentLocale}>
+	<head>
+		<meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/leo29plns-icon.svg">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content={description}>
+    <meta name="author" content="PLANUS Léo">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title} - leo29plns.fr</title>
+
+		<ClientRouter />
+	</head>
+	<body>
+		<nav class="a11y-skip-content">
+			<ul>
+				<li><a href="#main">Aller au contenu principal</a></li>
+				<li><a href="#main">Aller à un autre endroit</a></li>
+			</ul>
+		</nav>
+		<main id="main">
+			<slot />
+		</main>
+	</body>
+</html>
+
+<script>
+	import { ContrastManager } from "./managers/ContrastManager";
+	import { FontManager } from "./managers/FontManager";
+	import { ThemeManager } from "./managers/ThemeManager";
+
+	window.themeManager = new ThemeManager();
+	window.fontManager = new FontManager();
+	window.contrastManager = new ContrastManager();
+</script>

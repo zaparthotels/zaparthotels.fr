@@ -1,10 +1,42 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
+import { BookingsModule } from './bookings/bookings.module';
+import { BullModule } from '@nestjs/bullmq';
+import { WebhooksModule } from './webhooks/webhooks.module';
+import { FlowsModule } from './flows/flows.module';
+import configuration from 'config/configuration';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({
+      envFilePath: ['./.env.local', './.env.development'],
+      load: [configuration],
+    }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
+        uri: `mongodb://${configService.get('MONGO_USERNAME', 'backend')}:${configService.get('MONGO_PASSWORD', 'RwXHd8Dv9VmhDHBA6mYVqd3HuryQ3P')}@${configService.get('MONGO_HOSTNAME', '127.0.0.1')}:${configService.get('MONGO_PORT', '3003')}/${configService.get('MONGO_DATABASE', 'backend')}?authSource=admin`,
+      }),
+    }),
+    BullModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
+        connection: {
+          host: configService.get('REDIS_HOSTNAME', '127.0.0.1'),
+          port: configService.get<number>('REDIS_PORT', 3004),
+        },
+        defaultJobOptions: {
+          removeOnComplete: 1000,
+          removeOnFail: 5000,
+        },
+      }),
+    }),
+    BookingsModule,
+    WebhooksModule,
+    FlowsModule,
+  ],
 })
 export class AppModule {}

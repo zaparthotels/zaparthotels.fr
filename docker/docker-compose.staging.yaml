@@ -1,57 +1,11 @@
 ---
 
 services:
-  tousinclus-frontend:
-    image: ghcr.io/equanoria/tousinclus/tousinclus-frontend:staging
-    networks:
-      tousinclus-backend:
-      traefik_traefik:
-    deploy:
-      placement:
-        constraints:
-          - node.hostname == vm01
-      replicas: 1
-      labels:
-        - traefik.enable=true
-        - traefik.http.routers.equanoria-tousinclus-frontend_staging.entrypoints=websecure
-        - traefik.http.routers.equanoria-tousinclus-frontend_staging.rule=Host(`staging.tousinclus.org`)
-        - traefik.http.services.equanoria-tousinclus-frontend_staging.loadbalancer.server.port=3000
-        - traefik.http.routers.equanoria-tousinclus-frontend_staging.tls=true
-        - traefik.http.routers.equanoria-tousinclus-frontend_staging.tls.certresolver=letsencrypt
-        - traefik.http.middlewares.equanoria-tousinclus-frontend_staging-auth.basicauth.users=equanoria:$$apr1$$BWTizF2p$$ukAwXw5sWVRmgbcOfZDRV1
-        - traefik.http.routers.equanoria-tousinclus-frontend_staging.middlewares=equanoria-tousinclus-frontend_staging-auth
-    environment:
-      - BACKEND_HOST=tousinclus-backend
 
-  tousinclus-backend:
-    image: ghcr.io/equanoria/tousinclus/tousinclus-backend:staging
+  zaparthotels-backend:
+    image: ghcr.io/zaparthotels/zaparthotels.fr/zaparthotels-backend:staging
     networks:
-      tousinclus-backend:
-    deploy:
-      placement:
-        constraints:
-          - node.hostname == vm01
-      replicas: 1
-
-  postgresql-backend:
-    image: postgres:13.16
-    networks:
-      tousinclus-backend:
-    deploy:
-      placement:
-        constraints:
-          - node.hostname == vm01
-      replicas: 1
-    environment:
-      - POSTGRES_USER=${BACKEND_DB_USER}
-      - POSTGRES_DB=${BACKEND_DB_NAME}
-      - POSTGRES_PASSWORD=${BACKEND_DB_PASSWORD}
-    volumes:
-      - postgresql-backend:/var/lib/postgresql/data
-
-  directus:
-    image: directus/directus:11.2.0
-    networks:
+      zaparthotels-backend:
       directus:
       traefik_traefik:
     deploy:
@@ -61,17 +15,87 @@ services:
       replicas: 1
       labels:
         - traefik.enable=true
-        - traefik.http.routers.equanoria-tousinclus-directus_staging.entrypoints=websecure
-        - traefik.http.routers.equanoria-tousinclus-directus_staging.rule=Host(`staging.directus.tousinclus.org`)
-        - traefik.http.services.equanoria-tousinclus-directus_staging.loadbalancer.server.port=8055
-        - traefik.http.routers.equanoria-tousinclus-directus_staging.tls=true
-        - traefik.http.routers.equanoria-tousinclus-directus_staging.tls.certresolver=letsencrypt
-        - traefik.http.middlewares.equanoria-tousinclus-directus_staging-auth.basicauth.users=equanoria:$$apr1$$BWTizF2p$$ukAwXw5sWVRmgbcOfZDRV1
-        - traefik.http.routers.equanoria-tousinclus-directus_staging.middlewares=equanoria-tousinclus-directus_staging-auth
+        - traefik.http.routers.zaparthotels-backend_staging.entrypoints=websecure
+        - traefik.http.routers.zaparthotels-backend_staging.rule=Host(`api.staging.zaparthotels.fr`)
+        - traefik.http.services.zaparthotels-backend_staging.loadbalancer.server.port=3000
+        - traefik.http.routers.zaparthotels-backend_staging.tls=true
+        - traefik.http.routers.zaparthotels-backend_staging.tls.certresolver=letsencrypt
+        # - traefik.http.middlewares.zaparthotels-backend_staging-auth.basicauth.users=${STAGING_USERS}
+        # - traefik.http.routers.zaparthotels-backend_staging.middlewares=zaparthotels-backend_staging-auth
+    environment:
+      - TZ=${TZ}
+      - REDIS_HOSTNAME=valkey-backend
+      - REDIS_PORT=6379
+      - MONGO_HOSTNAME=mongo-backend
+      - MONGO_PORT=27017
+      - MONGO_DATABASE=${BACKEND_DB_NAME}
+      - MONGO_USERNAME=${BACKEND_DB_USER}
+      - MONGO_PASSWORD=${BACKEND_DB_PASSWORD}
+      - IGLOOHOME_CREDENTIALS=${BACKEND_IGLOOHOME_CREDENTIALS}
+      - SMS_BASE_URL=${BACKEND_SMS_BASE_URL}
+      - SMS_LOGIN=${BACKEND_SMS_LOGIN}
+      - SMS_PASSWORD=${BACKEND_SMS_PASSWORD}
+      - MAIL_HOST=${BACKEND_MAIL_HOST}
+      - MAIL_USER=${BACKEND_MAIL_USER}
+      - MAIL_PASSWORD=${BACKEND_MAIL_PASSWORD}
+      - MAIL_FROM=${BACKEND_MAIL_FROM}
+      - MAIL_FWD=${BACKEND_MAIL_FWD}
+      - DIRECTUS_HOSTNAME=directus_zaparthotels-backend
+      - DIRECTUS_PORT=8055
+      - DIRECTUS_ADMIN_TOKEN=${DIRECTUS_ADMIN_TOKEN}
+      - WEBHOOK_BEDS24_TOKEN=${BACKEND_WEBHOOK_BEDS24_TOKEN}
+
+  mongo-backend:
+    image: mongo:8.0.6-noble
+    networks:
+      zaparthotels-backend:
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
+      replicas: 1
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${BACKEND_DB_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${BACKEND_DB_PASSWORD}
+    volumes:
+      - mongo-backend:/data/db
+
+  valkey-backend:
+    image: valkey/valkey:8.0.2
+    networks:
+      zaparthotels-backend:
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
+      replicas: 1
+    volumes:
+      - valkey-backend:/data
+
+  directus:
+    image: ghcr.io/zaparthotels/zaparthotels.fr/directus:staging
+    networks:
+      directus:
+        aliases:
+          - directus_zaparthotels-backend
+      traefik_traefik:
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == vm01
+      replicas: 1
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.zaparthotels-directus_staging.entrypoints=websecure
+        - traefik.http.routers.zaparthotels-directus_staging.rule=Host(`cms.staging.zaparthotels.fr`)
+        - traefik.http.services.zaparthotels-directus_staging.loadbalancer.server.port=8055
+        - traefik.http.routers.zaparthotels-directus_staging.tls=true
+        - traefik.http.routers.zaparthotels-directus_staging.tls.certresolver=letsencrypt
     depends_on:
       - postgresql-directus
       - valkey-directus
     environment:
+      - TZ=${TZ}
       - SECRET=${DIRECTUS_SECRET}
       - DB_USER=${DIRECTUS_DB_USER}
       - DB_DATABASE=${DIRECTUS_DB_NAME}
@@ -79,6 +103,8 @@ services:
       - DB_CLIENT=pg
       - DB_HOST=postgresql-directus
       - DB_PORT=5432
+      - DB_POOL__MIN=0
+      - DB_POOL__IDLE_TIMEOUT_MILLIS=3000
       - CACHE_ENABLED=true
       - CACHE_AUTO_PURGE=true
       - CACHE_STORE=redis
@@ -93,12 +119,15 @@ services:
       - EMAIL_SMTP_PORT=${DIRECTUS_EMAIL_SMTP_PORT}
       - EMAIL_SMTP_USER=${DIRECTUS_EMAIL_SMTP_USER}
       - EMAIL_SMTP_PASSWORD=${DIRECTUS_EMAIL_SMTP_PASSWORD}
+      - SCHEMA_SYNC=IMPORT
+      - CORS_ENABLED=true
+      - CORS_ORIGIN=*
+      - WEBSOCKETS_ENABLED=true
     volumes:
       - directus-uploads:/directus/uploads
-      - directus-extensions:/directus/extensions
 
   valkey-directus:
-    image: valkey/valkey:8.0.1
+    image: valkey/valkey:8.0.2
     networks:
       directus:
     deploy:
@@ -110,7 +139,7 @@ services:
       - valkey-directus:/data
 
   postgresql-directus:
-    image: postgres:13.16
+    image: postgres:17.4
     networks:
       directus:
     deploy:
@@ -126,14 +155,14 @@ services:
       - postgresql-directus:/var/lib/postgresql/data
 
 volumes:
-  postgresql-backend:
+  mongo-backend:
+  valkey-backend:
   directus-uploads:
-  directus-extensions:
-  valkey-directus:
   postgresql-directus:
+  valkey-directus:
 
 networks:
   directus:
-  tousinclus-backend:
+  zaparthotels-backend:
   traefik_traefik:
     external: true

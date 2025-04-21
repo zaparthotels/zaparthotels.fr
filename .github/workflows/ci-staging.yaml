@@ -14,10 +14,10 @@ jobs:
     strategy:
       matrix:
         include:
-          - image: tousinclus-frontend
-            dockerfile: apps/frontend/Dockerfile
-          - image: tousinclus-backend
+          - image: zaparthotels-backend
             dockerfile: apps/backend/Dockerfile
+          - image: directus
+            dockerfile: tools/directus/Dockerfile
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -36,7 +36,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and Push tousinclus-frontend
+      - name: Build and Push
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -44,6 +44,8 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm64
           tags: ghcr.io/${{ github.repository }}/${{ matrix.image }}:staging
+          cache-from: type=gha
+          cache-to: type=gha
 
   update-stack:
     runs-on: ubuntu-latest

@@ -1,0 +1,11 @@
+{
+  "name": "directus",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "directus-extension-schema-sync": "3.0.7"
+  }
+}
