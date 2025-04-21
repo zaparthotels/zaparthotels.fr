@@ -56,7 +56,6 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${BACKEND_DB_USER}
       - MONGO_INITDB_ROOT_PASSWORD=${BACKEND_DB_PASSWORD}
-      - MONGO_INITDB_DATABASE=${BACKEND_DB_NAME}
     volumes:
       - mongo-backend:/data/db
 
