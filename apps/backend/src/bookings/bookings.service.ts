@@ -208,7 +208,7 @@ export class BookingsService {
         firstName: booking.firstName,
         lastName: booking.lastName,
         email: booking.email,
-        phone: normalizedPhone.formatInternational(),
+        phone: normalizedPhone?.formatInternational(),
         locale: `${localeIntl.language}-${localeIntl.region}`,
       },
       dates: {

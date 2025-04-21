@@ -14,14 +14,10 @@ jobs:
     strategy:
       matrix:
         include:
-          # - image: zaparthotels-frontend
-          #   dockerfile: apps/frontend/Dockerfile
           - image: zaparthotels-backend
             dockerfile: apps/backend/Dockerfile
           - image: directus
             dockerfile: tools/directus/Dockerfile
-          # - image: authentik
-          #   dockerfile: tools/authentik/Dockerfile
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository

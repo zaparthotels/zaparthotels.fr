@@ -1,28 +1,6 @@
 ---
 
 services:
-  # zaparthotels-frontend:
-  #   image: ghcr.io/zaparthotels/zaparthotels.fr/zaparthotels-frontend:staging
-  #   networks:
-  #     traefik_traefik:
-  #   deploy:
-  #     placement:
-  #       constraints:
-  #         - node.hostname == vm01
-  #     replicas: 1
-  #     labels:
-  #       - traefik.enable=true
-  #       - traefik.http.routers.zaparthotels-frontend_staging.entrypoints=websecure
-  #       - traefik.http.routers.zaparthotels-frontend_staging.rule=Host(`staging.zaparthotels.fr`)
-  #       - traefik.http.services.zaparthotels-frontend_staging.loadbalancer.server.port=3000
-  #       - traefik.http.routers.zaparthotels-frontend_staging.tls=true
-  #       - traefik.http.routers.zaparthotels-frontend_staging.tls.certresolver=letsencrypt
-  #       - traefik.http.middlewares.zaparthotels-frontend_staging-auth.basicauth.users=${STAGING_USERS}
-  #       - traefik.http.routers.zaparthotels-frontend_staging.middlewares=zaparthotels-frontend_staging-auth
-  #   environment:
-  #     - SOCKET_IO_URL=https://staging.api.zaparthotels.fr
-  #     - BACKEND_URL=https://staging.api.zaparthotels.fr
-  #     - DIRECTUS_URL=https://staging.cms.zaparthotels.fr
 
   zaparthotels-backend:
     image: ghcr.io/zaparthotels/zaparthotels.fr/zaparthotels-backend:staging
@@ -53,7 +31,6 @@ services:
       - MONGO_DATABASE=${BACKEND_DB_NAME}
       - MONGO_USERNAME=${BACKEND_DB_USER}
       - MONGO_PASSWORD=${BACKEND_DB_PASSWORD}
-      - BEDS24_REFRESH_TOKEN=${BACKEND_BEDS24_REFRESH_TOKEN}
       - IGLOOHOME_CREDENTIALS=${BACKEND_IGLOOHOME_CREDENTIALS}
       - SMS_BASE_URL=${BACKEND_SMS_BASE_URL}
       - SMS_LOGIN=${BACKEND_SMS_LOGIN}
@@ -145,7 +122,6 @@ services:
       - SCHEMA_SYNC=IMPORT
       - CORS_ENABLED=true
       - CORS_ORIGIN=*
-      - LOG_LEVEL=trace
       - WEBSOCKETS_ENABLED=true
     volumes:
       - directus-uploads:/directus/uploads
@@ -178,114 +154,15 @@ services:
     volumes:
       - postgresql-directus:/var/lib/postgresql/data
 
-  # authentik:
-  #   image: ghcr.io/zaparthotels/zaparthotels.fr/authentik:staging
-  #   networks:
-  #     authentik:
-  #     traefik_traefik:
-  #   command: server
-  #   deploy:
-  #     placement:
-  #       constraints:
-  #         - node.hostname == vm01
-  #     replicas: 1
-  #     labels:
-  #       - traefik.enable=true
-  #       - traefik.http.routers.zaparthotels-authentik_staging.entrypoints=websecure
-  #       - traefik.http.routers.zaparthotels-authentik_staging.rule=Host(`staging.connect.zaparthotels.fr`)
-  #       - traefik.http.services.zaparthotels-authentik_staging.loadbalancer.server.port=9000
-  #       - traefik.http.routers.zaparthotels-authentik_staging.tls=true
-  #       - traefik.http.routers.zaparthotels-authentik_staging.tls.certresolver=letsencrypt
-  #   depends_on:
-  #     - postgresql-authentik
-  #     - valkey-authentik
-  #   environment:
-  #     - AUTHENTIK_REDIS__HOST=valkey-authentik
-  #     - AUTHENTIK_POSTGRESQL__HOST=postgresql-authentik
-  #     - AUTHENTIK_POSTGRESQL__USER=${AUTHENTIK_DB_USER}
-  #     - AUTHENTIK_POSTGRESQL__NAME=${AUTHENTIK_DB_NAME}
-  #     - AUTHENTIK_POSTGRESQL__PASSWORD=${AUTHENTIK_DB_PASSWORD}
-  #     - AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY}
-  #     - AUTHENTIK_BOOTSTRAP_EMAIL=${AUTHENTIK_BOOTSTRAP_EMAIL}
-  #     - AUTHENTIK_BOOTSTRAP_PASSWORD=${AUTHENTIK_BOOTSTRAP_PASSWORD}
-  #   volumes:
-  #     - authentik-blueprints:/blueprints
-  #     - authentik-media:/media
-  #     - authentik-templates:/templates
-  
-  # authentik-worker:
-  #   image: ghcr.io/goauthentik/server:2024.12.3
-  #   networks:
-  #     authentik:
-  #   deploy:
-  #     placement:
-  #       constraints:
-  #         - node.hostname == vm01
-  #     replicas: 1
-  #   command: worker
-  #   environment:
-  #     - AUTHENTIK_REDIS__HOST=valkey-authentik
-  #     - AUTHENTIK_POSTGRESQL__HOST=postgresql-authentik
-  #     - AUTHENTIK_POSTGRESQL__USER=${AUTHENTIK_DB_USER}
-  #     - AUTHENTIK_POSTGRESQL__NAME=${AUTHENTIK_DB_NAME}
-  #     - AUTHENTIK_POSTGRESQL__PASSWORD=${AUTHENTIK_DB_PASSWORD}
-  #     - AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY}
-  #     - AUTHENTIK_BOOTSTRAP_EMAIL=${AUTHENTIK_BOOTSTRAP_EMAIL}
-  #     - AUTHENTIK_BOOTSTRAP_PASSWORD=${AUTHENTIK_BOOTSTRAP_PASSWORD}
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
-  #     - authentik-certs:/certs
-  #     - authentik-blueprints:/blueprints
-  #     - authentik-media:/media
-  #     - authentik-templates:/templates
-  #   depends_on:
-  #     - postgresql-authentik
-  #     - valkey-authentik
-
-  # valkey-authentik:
-  #   image: valkey/valkey:8.0.1
-  #   networks:
-  #     authentik:
-  #   deploy:
-  #     placement:
-  #       constraints:
-  #         - node.hostname == vm01
-  #     replicas: 1
-  #   volumes:
-  #     - valkey-authentik:/data
-
-  # postgresql-authentik:
-  #   image: postgres:13.16
-  #   networks:
-  #     authentik:
-  #   deploy:
-  #     placement:
-  #       constraints:
-  #         - node.hostname == vm01
-  #     replicas: 1
-  #   environment:
-  #     - POSTGRES_USER=${AUTHENTIK_DB_USER}
-  #     - POSTGRES_DB=${AUTHENTIK_DB_NAME}
-  #     - POSTGRES_PASSWORD=${AUTHENTIK_DB_PASSWORD}
-  #   volumes:
-  #     - postgresql-authentik:/var/lib/postgresql/data
-
 volumes:
   mongo-backend:
   valkey-backend:
   directus-uploads:
   postgresql-directus:
   valkey-directus:
-  # authentik-certs:
-  # authentik-blueprints:
-  # authentik-media:
-  # authentik-templates:
-  # postgresql-authentik:
-  # valkey-authentik:
 
 networks:
   directus:
-  # authentik:
   zaparthotels-backend:
   traefik_traefik:
     external: true
