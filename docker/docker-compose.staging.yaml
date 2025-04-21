@@ -20,8 +20,8 @@ services:
         - traefik.http.services.zaparthotels-backend_staging.loadbalancer.server.port=3000
         - traefik.http.routers.zaparthotels-backend_staging.tls=true
         - traefik.http.routers.zaparthotels-backend_staging.tls.certresolver=letsencrypt
-        - traefik.http.middlewares.zaparthotels-backend_staging-auth.basicauth.users=${STAGING_USERS}
-        - traefik.http.routers.zaparthotels-backend_staging.middlewares=zaparthotels-backend_staging-auth
+        # - traefik.http.middlewares.zaparthotels-backend_staging-auth.basicauth.users=${STAGING_USERS}
+        # - traefik.http.routers.zaparthotels-backend_staging.middlewares=zaparthotels-backend_staging-auth
     environment:
       - TZ=${TZ}
       - REDIS_HOSTNAME=valkey-backend
