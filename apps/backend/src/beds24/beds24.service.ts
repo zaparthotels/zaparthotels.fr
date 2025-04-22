@@ -9,13 +9,13 @@ import { firstValueFrom, retry, catchError } from 'rxjs';
 import { LockCodeResponseDto } from './dto/response/lock-code.dto';
 import { TokenResponseDto } from './dto/response/token.dto';
 import { Cache } from 'cache-manager';
+import { Cron } from '@nestjs/schedule';
 
 @Injectable()
-export class LockCodeService {
-  private readonly logger = new Logger(LockCodeService.name);
-  private readonly IGLOOHOME_BASE_URL =
-    'https://api.igloodeveloper.co/igloohome';
-  private readonly TOKEN_CACHE_KEY = 'IGLOOHOME_TOKEN';
+export class Beds24Service {
+  private readonly logger = new Logger(Beds24Service.name);
+  private readonly BEDS24_BASE_URL = 'https://beds24.com/api/v2';
+  private readonly TOKEN_CACHE_KEY = 'BEDS24_TOKEN';
 
   constructor(
     private readonly configService: ConfigService,
@@ -23,24 +23,20 @@ export class LockCodeService {
     private readonly httpService: HttpService,
   ) {}
 
-  private getBasicAuthHeaders(): Record<string, string> {
-    const credentials = this.configService.getOrThrow<string>(
-      'IGLOOHOME_CREDENTIALS',
-    );
-    return {
-      Authorization: `Basic ${credentials}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
-    };
-  }
-
   private async fetchAndCacheToken(): Promise<string> {
-    const url = 'https://auth.igloohome.co/oauth2/token';
+    const url = `${this.BEDS24_BASE_URL}/authentication/token`;
+    const ttl = 15 * 24 * 60 * 60; // 15 days
+
+    const headers = {
+      refreshToken: this.configService.getOrThrow<string>(
+        'BEDS24_REFRESH_TOKEN',
+      ),
+    };
 
     const response = await firstValueFrom(
       this.httpService
-        .post<TokenResponseDto>(url, null, {
-          headers: this.getBasicAuthHeaders(),
-          params: { grant_type: 'client_credentials' },
+        .get<TokenResponseDto>(url, {
+          headers,
         })
         .pipe(
           retry(3),
@@ -58,11 +54,12 @@ export class LockCodeService {
       throw new Error('Invalid token response format');
     }
 
-    const { access_token, expires_in } = tokenData;
-    await this.cacheManager.set(this.TOKEN_CACHE_KEY, access_token, expires_in);
-    return access_token;
+    const { token } = tokenData;
+    await this.cacheManager.set(this.TOKEN_CACHE_KEY, token, ttl);
+    return token;
   }
 
+  @Cron('0 3 1,15 * *')
   private async getValidToken(forceRefresh = false): Promise<string> {
     if (forceRefresh) {
       return this.fetchAndCacheToken();
@@ -101,7 +98,7 @@ export class LockCodeService {
   }
 
   async create(lockCode: ILockCode): Promise<ILockCode> {
-    const url = `${this.IGLOOHOME_BASE_URL}/devices/${lockCode.lockId}/algopin/hourly`;
+    const url = `${this.BEDS24_BASE_URL}/devices/${lockCode.lockId}/algopin/hourly`;
 
     const payload = {
       variance: 1,

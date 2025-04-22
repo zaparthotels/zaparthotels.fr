@@ -6,6 +6,7 @@ import { BullModule } from '@nestjs/bullmq';
 import { WebhooksModule } from './webhooks/webhooks.module';
 import { FlowsModule } from './flows/flows.module';
 import configuration from 'config/configuration';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import configuration from 'config/configuration';
         },
       }),
     }),
+    ScheduleModule.forRoot(),
     BookingsModule,
     WebhooksModule,
     FlowsModule,
