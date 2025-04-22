@@ -1,0 +1,49 @@
+:root {
+  /* COLOR a11y */
+  --a11y-50: #eff6ff;
+  --a11y-100: #c7deff;
+  --a11y-200: #9ec5ff;
+  --a11y-300: #74acff;
+  --a11y-400: #4592ff;
+  --a11y-500: #0b76f6;
+  --a11y-600: #0061cf;
+  --a11y-700: #00469a;
+  --a11y-800: #002c65;
+  --a11y-900: #00163a;
+}
+
+.visually-hidden  {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
+.a11y-skip-content {
+  position: absolute;
+  transform: translateY(-100%);
+  color: var(--a11y-900);
+  padding: .75rem 1.25rem;
+  display: flex;
+  gap: 1.25rem;
+
+  a {
+    font-weight: 500;
+    text-decoration: underline;
+  }
+
+  &:focus-within {
+    position: relative;
+    transform: translateY(0);
+    background-color: var(--a11y-50);
+  }
+}
+
+*:focus-visible {
+  outline: .125rem solid var(--a11y-500);
+}

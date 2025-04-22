@@ -59,15 +59,8 @@ export class ArrivalFlow implements IFlow {
 
     const now = new Date();
 
-    const notificationTimestamp = new DateUtils(booking.dates.checkIn);
-    notificationTimestamp.setTimeFromString(arrivalNotificationTime);
-
-    const lockCodeTimestamp = new DateUtils(notificationTimestamp);
-    lockCodeTimestamp.setHours(lockCodeTimestamp.getHours() - 1);
-
-    if (lockCodeTimestamp < now) {
-      lockCodeTimestamp.setTime(now.getTime());
-    }
+    const notificationsTimestamp = new DateUtils(booking.dates.checkIn);
+    notificationsTimestamp.setTimeFromString(arrivalNotificationTime);
 
     await this.flowArrivalProducer.add({
       name: 'flow-arrival_completed',
@@ -82,7 +75,6 @@ export class ArrivalFlow implements IFlow {
           queueName: FLOW_ARRIVAL_NOTIFICATIONS_QUEUE,
           data: bookingId,
           opts: {
-            delay: notificationTimestamp.getTime() - now.getTime(),
             attempts: 7,
             backoff: {
               type: 'exponential',
@@ -108,7 +100,7 @@ export class ArrivalFlow implements IFlow {
                   queueName: FLOW_ARRIVAL_QUEUE,
                   data: { bookingId, status: TFlowStatus.RUNNING },
                   opts: {
-                    delay: lockCodeTimestamp.getTime() - now.getTime(),
+                    delay: notificationsTimestamp.getTime() - now.getTime(),
                   },
                 },
               ],
