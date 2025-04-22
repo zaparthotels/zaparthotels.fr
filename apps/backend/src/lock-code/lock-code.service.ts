@@ -23,23 +23,20 @@ export class LockCodeService {
     private readonly httpService: HttpService,
   ) {}
 
-  private getBasicAuthHeaders(): Record<string, string> {
-    const credentials = this.configService.getOrThrow<string>(
-      'IGLOOHOME_CREDENTIALS',
-    );
-    return {
-      Authorization: `Basic ${credentials}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
-    };
-  }
-
   private async fetchAndCacheToken(): Promise<string> {
     const url = 'https://auth.igloohome.co/oauth2/token';
+
+    const headers = {
+      Authorization: `Basic ${this.configService.getOrThrow<string>(
+        'IGLOOHOME_CREDENTIALS',
+      )}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    };
 
     const response = await firstValueFrom(
       this.httpService
         .post<TokenResponseDto>(url, null, {
-          headers: this.getBasicAuthHeaders(),
+          headers,
           params: { grant_type: 'client_credentials' },
         })
         .pipe(
