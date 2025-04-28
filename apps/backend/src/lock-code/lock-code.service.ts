@@ -87,11 +87,6 @@ export class LockCodeService {
       );
       return response.data;
     } catch (error) {
-      if (error.response?.status === 403) {
-        this.logger.warn('Token expired or invalid, retrying with new token');
-        const newToken = await this.getValidToken(true);
-        return this.postWithAuth<T>(url, data, newToken);
-      }
       this.logger.error('HTTP request failed', error);
       throw error;
     }

@@ -2,11 +2,9 @@ import { HttpService } from '@nestjs/axios';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { Injectable, Logger, Inject } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { ILockCode } from '@zaparthotels/types';
 import { plainToInstance } from 'class-transformer';
 import { validate } from 'class-validator';
 import { firstValueFrom, retry, catchError } from 'rxjs';
-import { LockCodeResponseDto } from './dto/response/lock-code.dto';
 import { TokenResponseDto } from './dto/response/token.dto';
 import { Cache } from 'cache-manager';
 import { Cron } from '@nestjs/schedule';
@@ -59,7 +57,6 @@ export class Beds24Service {
     return token;
   }
 
-  @Cron('0 3 1,15 * *')
   private async getValidToken(forceRefresh = false): Promise<string> {
     if (forceRefresh) {
       return this.fetchAndCacheToken();
@@ -71,13 +68,18 @@ export class Beds24Service {
     return cachedToken || this.fetchAndCacheToken();
   }
 
+  @Cron('0 3 1,15 * *')
+  private async ensureTokenRenewal(): Promise<void> {
+    await this.getValidToken();
+  }
+
   private async postWithAuth<T>(
     url: string,
     data: unknown,
     token: string,
   ): Promise<T> {
     const headers = {
-      Authorization: `Bearer ${token}`,
+      token,
       'Content-Type': 'application/json',
     };
 
@@ -87,44 +89,28 @@ export class Beds24Service {
       );
       return response.data;
     } catch (error) {
-      if (error.response?.status === 403) {
-        this.logger.warn('Token expired or invalid, retrying with new token');
-        const newToken = await this.getValidToken(true);
-        return this.postWithAuth<T>(url, data, newToken);
-      }
       this.logger.error('HTTP request failed', error);
       throw error;
     }
   }
 
-  async create(lockCode: ILockCode): Promise<ILockCode> {
-    const url = `${this.BEDS24_BASE_URL}/devices/${lockCode.lockId}/algopin/hourly`;
+  async sendMessage(beds24id: string, message: string): Promise<void> {
+    const url = `${this.BEDS24_BASE_URL}/bookings/messages`;
 
-    const payload = {
-      variance: 1,
-      startDate: `${lockCode.startsAt.toISOString().split('.')[0]}Z`,
-      endDate: `${lockCode.expiresAt.toISOString().split('.')[0]}Z`,
-      accessName: 'Guest',
-    };
+    const payload = [
+      {
+        bookingId: beds24id,
+        message,
+      },
+    ];
 
     const token = await this.getValidToken();
-    const responseData = await this.postWithAuth<LockCodeResponseDto>(
-      url,
-      payload,
-      token,
-    );
 
-    const lockCodeData = plainToInstance(LockCodeResponseDto, responseData);
-    const errors = await validate(lockCodeData);
-
-    if (errors.length) {
-      this.logger.error('Invalid lock code response:', errors);
-      throw new Error('Invalid lock code response format');
+    try {
+      await this.postWithAuth<void>(url, payload, token);
+    } catch (error) {
+      this.logger.error('Failed to send message', error);
+      throw new Error('Failed to send message');
     }
-
-    return {
-      ...lockCode,
-      code: lockCodeData.pin,
-    };
   }
 }
