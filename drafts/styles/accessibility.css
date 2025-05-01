@@ -29,8 +29,11 @@
   transform: translateY(-100%);
   color: var(--a11y-900);
   padding: .75rem 1.25rem;
-  display: flex;
-  gap: 1.25rem;
+
+  ul {
+    display: flex;
+    gap: 1.25rem;
+  }
 
   a {
     font-weight: 500;
