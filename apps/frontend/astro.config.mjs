@@ -9,5 +9,8 @@ export default defineConfig({
   integrations: [svelte(), sitemap()],
   adapter: node({
     mode: 'standalone',
-  })
+  }),
+  server: {
+    port: 3000
+  },
 });
