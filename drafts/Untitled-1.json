@@ -1,0 +1,442 @@
+{
+  "success": true,
+  "type": "property",
+  "count": 1,
+  "pages": {
+    "nextPageExists": false,
+    "nextPageLink": null
+  },
+  "data": [
+    {
+      "id": 178821,
+      "account": {
+        "ownerId": 80609
+      },
+      "name": "L'Emeraude",
+      "propertyType": "apartment",
+      "currency": "EUR",
+      "address": "2 Rue de Boigneville, 45330 LE MALESHERBOIS",
+      "city": "Le Malesherbois",
+      "state": "Centre-Val de Loire",
+      "country": "FR",
+      "postcode": "45330",
+      "latitude": 48.294126,
+      "longitude": 2.408947,
+      "phone": "+33658129420",
+      "mobile": "",
+      "fax": "+33787433145",
+      "email": "zaparthotels@gmail.com",
+      "web": "https://www.zaparthotels.fr/",
+      "contactFirstName": "Julien",
+      "contactLastName": "ZAPART",
+      "checkInStart": "16:00",
+      "checkInEnd": "24:00",
+      "checkOutEnd": "11:00",
+      "offerType": "perRoom",
+      "controlPriority": 1,
+      "sellPriority": 10,
+      "bookingPageMultiplier": "",
+      "permit": "882889520",
+      "roomChargeDisplay": "onePerBooking",
+      "templates": {
+        "template1": "",
+        "template2": "",
+        "template3": "",
+        "template4": "",
+        "template5": "",
+        "template6": "",
+        "template7": "",
+        "template8": ""
+      },
+      "bookingRules": {
+        "allowGuestCancellation": {
+          "type": "never"
+        },
+        "bookingType": "confirmedWithDepositCollection1",
+        "bookingNearTypeDays": null,
+        "bookingNearType": "autoConfirmed",
+        "bookingExceptionalType": "blackoutPeriod",
+        "bookingExceptionalTypeStart": "2009-01-01",
+        "bookingExceptionalTypeEnd": "2009-01-01",
+        "bookingCutOffHour": 20,
+        "dailyPriceStrategy": "allowLower",
+        "dailyPriceType": "default",
+        "priceRounding": "none",
+        "vatRatePercentage": 0
+      },
+      "paymentCollection": {
+        "depositNonPayment": "request",
+        "depositPayment1": {
+          "fixedAmount": 300,
+          "variableAmount": {
+            "type": "percentage",
+            "percentageValue": 100
+          }
+        },
+        "depositPayment2": {
+          "fixedAmount": 0,
+          "variableAmount": {
+            "type": "percentage",
+            "percentageValue": 100
+          }
+        }
+      },
+      "paymentGateways": {
+        "stripe": {
+          "type": "enable",
+          "priority": 10,
+          "saveAllCards": true,
+          "capture": true,
+          "checkoutVersion": "hosted",
+          "paymentDescription": ""
+        },
+        "asiapay": {
+          "type": "disable"
+        },
+        "authorizenet": {
+          "type": "disable"
+        },
+        "bitpay": {
+          "type": "disable"
+        },
+        "borgun": {
+          "type": "disable"
+        },
+        "creditCard": {
+          "type": "disable"
+        },
+        "customGateway": {
+          "type": "disable"
+        },
+        "globalPayments1": {
+          "type": "disable"
+        },
+        "globalPayments2": {
+          "type": "disable"
+        },
+        "offlinePayment": {
+          "type": "disable"
+        },
+        "paymill": {
+          "type": "disable"
+        },
+        "paypal": {
+          "type": "enable",
+          "priority": 9
+        }
+      },
+      "cardSettings": {
+        "cardRequireCVV": false,
+        "cardAcceptAmex": true,
+        "cardAcceptDiners": false,
+        "cardAcceptDiscover": false,
+        "cardAcceptEnroute": false,
+        "cardAcceptJcb": false,
+        "cardAcceptMaestro": true,
+        "cardAcceptMaster": true,
+        "cardAcceptUnionpay": false,
+        "cardAcceptVisa": true,
+        "cardAcceptVoyager": false
+      },
+      "groupKeywords": [],
+      "oneTimeVouchers": [],
+      "discountVouchers": [
+        {
+          "number": 1,
+          "phrase": "",
+          "discount": 0,
+          "type": "notUsed"
+        },
+        {
+          "number": 2,
+          "phrase": "",
+          "discount": 0,
+          "type": "notUsed"
+        },
+        {
+          "number": 3,
+          "phrase": "",
+          "discount": 0,
+          "type": "notUsed"
+        },
+        {
+          "number": 4,
+          "phrase": "",
+          "discount": 0,
+          "type": "notUsed"
+        },
+        {
+          "number": 5,
+          "phrase": "",
+          "discount": 0,
+          "type": "notUsed"
+        },
+        {
+          "number": 6,
+          "phrase": "",
+          "discount": 0,
+          "type": "notUsed"
+        },
+        {
+          "number": 7,
+          "phrase": "",
+          "discount": 0,
+          "type": "notUsed"
+        },
+        {
+          "number": 8,
+          "phrase": "",
+          "discount": 0,
+          "type": "notUsed"
+        }
+      ],
+      "featureCodes": [
+        [
+          "LIVING_ROOM"
+        ],
+        [
+          "HANGERS"
+        ],
+        [
+          "DRYER"
+        ],
+        [
+          "SMOKE_DETECTOR"
+        ],
+        [
+          "PARKING_INCLUDED"
+        ],
+        [
+          "WASHER"
+        ],
+        [
+          "LINENS"
+        ],
+        [
+          "HEATING"
+        ],
+        [
+          "SHAMPOO"
+        ],
+        [
+          "PRIVATE_ENTRANCE"
+        ],
+        [
+          "HAIR_DRYER"
+        ],
+        [
+          "TOWELS"
+        ],
+        [
+          "FIRST_AID_KIT"
+        ],
+        [
+          "LAPTOP_FRIENDLY"
+        ],
+        [
+          "SATELLITE"
+        ],
+        [
+          "BOOKS"
+        ],
+        [
+          "GAMES"
+        ],
+        [
+          "STEREO"
+        ],
+        [
+          "TV"
+        ],
+        [
+          "INTERNET"
+        ],
+        [
+          "WIFI"
+        ],
+        [
+          "KITCHEN"
+        ],
+        [
+          "FREEZER"
+        ],
+        [
+          "REFRIGERATOR"
+        ],
+        [
+          "DINING_AREA"
+        ],
+        [
+          "KETTLE"
+        ],
+        [
+          "COFFEE_MAKER"
+        ],
+        [
+          "MICROWAVE"
+        ],
+        [
+          "STOVE"
+        ],
+        [
+          "OVEN"
+        ],
+        [
+          "DISHES_UTENSILS"
+        ],
+        [
+          "TOASTER"
+        ],
+        [
+          "DISHWASHER"
+        ],
+        [
+          "TOWN"
+        ],
+        [
+          "PETS_NOT_ALLOWED"
+        ],
+        [
+          "MOUNTAIN_BIKING"
+        ],
+        [
+          "BICYCLE"
+        ],
+        [
+          "CYCLING"
+        ],
+        [
+          "SMOKING_NOT_ALLOWED"
+        ],
+        [
+          "LONG_TERM_RENTERS"
+        ],
+        [
+          "CHILDREN_WELCOME"
+        ]
+      ],
+      "bookingQuestions": {
+        "guestTitle": {
+          "usage": "compulsoryBookingPage",
+          "order": 1
+        },
+        "guestFirstName": {
+          "usage": "compulsoryBookingPage",
+          "order": 2
+        },
+        "guestLastName": {
+          "usage": "compulsoryBookingPage",
+          "order": 3
+        },
+        "guestEmail": {
+          "usage": "compulsoryBookingPage",
+          "order": 4
+        },
+        "guestPhone": {
+          "usage": "optional",
+          "order": 5
+        },
+        "guestMobile": {
+          "usage": "optional",
+          "order": 6
+        },
+        "guestFax": {
+          "usage": "internal",
+          "order": 7
+        },
+        "guestCompany": {
+          "usage": "notUsed",
+          "order": null
+        },
+        "guestAddress": {
+          "usage": "optional",
+          "order": 8
+        },
+        "guestCity": {
+          "usage": "optional",
+          "order": 9
+        },
+        "guestState": {
+          "usage": "notUsed",
+          "order": null
+        },
+        "guestPostcode": {
+          "usage": "optional",
+          "order": 10
+        },
+        "guestCountryText": {
+          "usage": "notUsed",
+          "order": 11
+        },
+        "guestCountrySelect": {
+          "usage": "compulsoryBookingPage",
+          "order": 12
+        },
+        "guestArrivalTime": {
+          "usage": "optional",
+          "order": 13
+        },
+        "guestComments": {
+          "usage": "optional",
+          "order": 14
+        },
+        "customQuestion1": {
+          "usage": "notUsed",
+          "order": 19,
+          "type": "singleLineField"
+        },
+        "customQuestion2": {
+          "usage": "notUsed",
+          "order": 20,
+          "type": "singleLineField"
+        },
+        "customQuestion3": {
+          "usage": "notUsed",
+          "order": 21,
+          "type": "singleLineField"
+        },
+        "customQuestion4": {
+          "usage": "notUsed",
+          "order": 22,
+          "type": "singleLineField"
+        },
+        "customQuestion5": {
+          "usage": "notUsed",
+          "order": 23,
+          "type": "singleLineField"
+        },
+        "customQuestion6": {
+          "usage": "notUsed",
+          "order": 24,
+          "type": "singleLineField"
+        },
+        "customQuestion7": {
+          "usage": "notUsed",
+          "order": 25,
+          "type": "singleLineField"
+        },
+        "customQuestion8": {
+          "usage": "notUsed",
+          "order": 26,
+          "type": "singleLineField"
+        },
+        "customQuestion9": {
+          "usage": "notUsed",
+          "order": 27,
+          "type": "singleLineField"
+        },
+        "customQuestion10": {
+          "usage": "notUsed",
+          "order": 28,
+          "type": "singleLineField"
+        }
+      },
+      "webhooks": {
+        "version": "twoWithPersonalData",
+        "url": "https://api.zaparthotels.fr/webhooks/bookings",
+        "additionalData": "none",
+        "customHeader": "Authorization: Bearer Yi2KKwio6LNPsv6rhkwaFA6mV5QL5f\r\n"
+      }
+    }
+  ]
+}

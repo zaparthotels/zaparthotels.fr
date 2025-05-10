@@ -6,6 +6,7 @@ import { BullModule } from '@nestjs/bullmq';
 import { WebhooksModule } from './webhooks/webhooks.module';
 import { FlowsModule } from './flows/flows.module';
 import configuration from 'config/configuration';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import configuration from 'config/configuration';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
-        uri: `mongodb://${configService.get('MONGO_USERNAME', 'backend')}:${configService.get('MONGO_PASSWORD', 'RwXHd8Dv9VmhDHBA6mYVqd3HuryQ3P')}@${configService.get('MONGO_HOSTNAME', '127.0.0.1')}:${configService.get('MONGO_PORT', '3003')}/${configService.get('MONGO_DATABASE', 'backend')}?authSource=admin`,
+        uri: `mongodb://${configService.getOrThrow('MONGO_USERNAME')}:${configService.getOrThrow('MONGO_PASSWORD')}@${configService.getOrThrow('MONGO_HOSTNAME')}:${configService.getOrThrow('MONGO_PORT')}/${configService.getOrThrow('MONGO_DATABASE')}?authSource=admin`,
       }),
     }),
     BullModule.forRootAsync({
@@ -25,8 +26,8 @@ import configuration from 'config/configuration';
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         connection: {
-          host: configService.get('REDIS_HOSTNAME', '127.0.0.1'),
-          port: configService.get<number>('REDIS_PORT', 3004),
+          host: configService.getOrThrow('REDIS_HOSTNAME'),
+          port: configService.getOrThrow<number>('REDIS_PORT'),
         },
         defaultJobOptions: {
           removeOnComplete: 1000,
@@ -34,6 +35,7 @@ import configuration from 'config/configuration';
         },
       }),
     }),
+    ScheduleModule.forRoot(),
     BookingsModule,
     WebhooksModule,
     FlowsModule,

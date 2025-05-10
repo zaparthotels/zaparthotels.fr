@@ -5,10 +5,10 @@ import { BookingDocument } from './schemas/booking.schema';
 import { WebhookBeds24PayloadDto } from './dto/create-update-booking.dto';
 import { BookingDto } from './dto/booking.dto';
 import { plainToClass } from 'class-transformer';
-import { DirectusService } from 'src/directus/directus.service';
 import { DateUtils } from 'src/utils/DateUtils';
 import parsePhoneNumberFromString, { CountryCode } from 'libphonenumber-js';
 import { IFlow } from '@zaparthotels/types';
+import { Beds24Service } from 'src/beds24/beds24.service';
 
 @Injectable()
 export class BookingsService {
@@ -17,7 +17,7 @@ export class BookingsService {
   constructor(
     @InjectModel('Booking')
     private readonly bookingModel: Model<BookingDocument>,
-    private readonly directusService: DirectusService,
+    private readonly beds24Service: Beds24Service,
   ) {}
 
   async findOne(_id: Types.ObjectId): Promise<BookingDto | null> {
@@ -129,9 +129,6 @@ export class BookingsService {
   async transformWebhookPayload(
     payload: WebhookBeds24PayloadDto,
   ): Promise<BookingDto> {
-    const { defaultArrivalTime, defaultDepartureTime } =
-      await this.directusService.getConfig();
-
     const { booking } = payload;
 
     const checkInDate = new DateUtils(booking.arrival);
@@ -139,8 +136,17 @@ export class BookingsService {
     const createdAt = new Date(booking.bookingTime);
     const updatedAt = new Date(booking.modifiedTime);
 
-    checkInDate.setTimeFromString(defaultArrivalTime);
-    checkOutDate.setTimeFromString(defaultDepartureTime);
+    const beds24property = await this.beds24Service.getProperty(
+      booking.propertyId.toString(),
+    );
+
+    const [arrivalTime, departureTime] = [
+      beds24property.checkInStart,
+      beds24property.checkOutEnd,
+    ];
+
+    checkInDate.setTimeFromString(arrivalTime);
+    checkOutDate.setTimeFromString(departureTime);
 
     const getLocaleIntl = (
       inputLang?: string,

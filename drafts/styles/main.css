@@ -14,6 +14,11 @@ body {
 
   &.no-scroll {
     overflow: hidden;
+    position: fixed;
+
+    #root {
+      overflow-y: scroll;
+    }
   }
 }
 
