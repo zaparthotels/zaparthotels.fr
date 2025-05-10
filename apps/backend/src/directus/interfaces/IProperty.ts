@@ -3,6 +3,7 @@ export interface IProperty {
   beds24id: string;
   lockId: string;
   arrivalNotificationTime: string;
+  fallbackLockCode?: string;
   translations: {
     subject: string;
     notification: string;

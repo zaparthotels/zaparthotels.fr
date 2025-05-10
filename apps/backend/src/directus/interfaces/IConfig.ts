@@ -1,3 +1,3 @@
 export interface IConfig {
-  fallbackLockCode: string;
+  todo: string;
 }
