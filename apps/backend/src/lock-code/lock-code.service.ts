@@ -6,8 +6,8 @@ import { ILockCode } from '@zaparthotels/types';
 import { plainToInstance } from 'class-transformer';
 import { validate } from 'class-validator';
 import { firstValueFrom, retry, catchError } from 'rxjs';
-import { LockCodeResponseDto } from './dto/lock-code-response.dto';
-import { TokenResponseDto } from './dto/token-response.dto';
+import { LockCodeResponseDto } from './dto/response/lock-code.dto';
+import { TokenResponseDto } from './dto/response/token.dto';
 import { Cache } from 'cache-manager';
 
 @Injectable()
@@ -23,23 +23,20 @@ export class LockCodeService {
     private readonly httpService: HttpService,
   ) {}
 
-  private getBasicAuthHeaders(): Record<string, string> {
-    const credentials = this.configService.getOrThrow<string>(
-      'IGLOOHOME_CREDENTIALS',
-    );
-    return {
-      Authorization: `Basic ${credentials}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
-    };
-  }
-
   private async fetchAndCacheToken(): Promise<string> {
     const url = 'https://auth.igloohome.co/oauth2/token';
+
+    const headers = {
+      Authorization: `Basic ${this.configService.getOrThrow<string>(
+        'IGLOOHOME_CREDENTIALS',
+      )}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    };
 
     const response = await firstValueFrom(
       this.httpService
         .post<TokenResponseDto>(url, null, {
-          headers: this.getBasicAuthHeaders(),
+          headers,
           params: { grant_type: 'client_credentials' },
         })
         .pipe(
@@ -90,11 +87,6 @@ export class LockCodeService {
       );
       return response.data;
     } catch (error) {
-      if (error.response?.status === 403) {
-        this.logger.warn('Token expired or invalid, retrying with new token');
-        const newToken = await this.getValidToken(true);
-        return this.postWithAuth<T>(url, data, newToken);
-      }
       this.logger.error('HTTP request failed', error);
       throw error;
     }

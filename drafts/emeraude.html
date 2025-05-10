@@ -24,142 +24,136 @@
   <title>L'Émeraude - Zapart'Hôtels</title>
 </head>
 <body>
-    <nav className="a11y-skip-content">
-      <ul>
-        <li>
-          <a href="#main">Aller au contenu principal</a>
-        </li>
-        <li>
-          <a href="#main">Aller à un autre endroit</a>
-        </li>
-      </ul>
-    </nav>
-
-    <!-- astro component -->
-    <bnb-header>
-      <header>
-        <nav>
-          <a href="#"><img src="images/logo.svg" alt="Accueil" class="logo"></a>
-          <bnb-header-panel>
-            <ul class="start">
-              <li><a href="#">Contact</a></li>
-            </ul>
-            <ul class="end">
-              <li>
-                <!-- web component -->
-                <bnb-search collapsed="true" size="40">
-                  <search class="collapsed">
-                    <form action="#">
-                      <label for="search"><span class="visually-hidden ">Rechercher</span></label>
-                      <div>
-                        <input type="search" id="search" name="q" placeholder="Rechercher" size="40" required>
-                        <button type="reset">
-                          <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><line x1="160" y1="96" x2="96" y2="160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="96" y1="96" x2="160" y2="160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
-                          <span class="visually-hidden ">Réinitialiser la recherche</span>
-                        </button>
-                        <bnb-button variant="tertiary">
-                          <button type="submit" class="tertiary">
-                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><circle cx="112" cy="112" r="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="168.57" y1="168.57" x2="224" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
-                            <span class="visually-hidden ">Rechercher</span>
+    <div id="root">
+      <nav class="a11y-skip-content">
+        <ul>
+          <li>
+            <a href="#main">Aller au contenu principal</a>
+          </li>
+          <li>
+            <a href="#main">Aller à un autre endroit</a>
+          </li>
+        </ul>
+      </nav>
+      <!-- astro component -->
+      <!-- TODO Trap focus -->
+      <bnb-header>
+        <header>
+          <nav>
+            <a href="#"><img src="images/logo.svg" alt="Accueil" class="logo"></a>
+            <bnb-header-panel>
+              <ul class="start">
+                <li><a href="#">Contact</a></li>
+              </ul>
+              <ul class="end">
+                <li>
+                  <!-- web component -->
+                  <bnb-search collapsed="true" size="40">
+                    <search class="collapsed">
+                      <form action="#">
+                        <label for="search"><span class="visually-hidden">Rechercher</span></label>
+                        <div>
+                          <input type="search" id="search" name="q" placeholder="Rechercher" size="40" required>
+                          <button type="reset">
+                            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><line x1="160" y1="96" x2="96" y2="160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="96" y1="96" x2="160" y2="160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                            <span class="visually-hidden">Réinitialiser la recherche</span>
                           </button>
-                        </bnb-button>
-                      </div>
-                    </form>
-                  </search>
-                </bnb-search>
-              </li>
-              <li><bnb-button href="#" variant="primary"><a href="#" class="primary">Connexion</a></bnb-button></li>
-            </ul>
-          </bnb-header-panel>
-          <bnb-button variant="primary" data-toggle-bnb-header-panel>
-            <button class="secondary">
-              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="40" y1="64" x2="216" y2="64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="40" y1="192" x2="216" y2="192" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
-              <span class="visually-hidden ">Menu</span>
-            </button>
-          </bnb-button>
-        </nav>
-      </header>
-    </bnb-header>
-
-    <main class="grid-content">
-      <section class="hero grid-full-width">
-        <div class="box">
-          <div class="wrapper">
-            <div class="text">
-              <h1>L'Émeraude</h1>
-              <p>Lorem ipsum dolor sit adipisicing elit. Corporis facere neque iste perferendis.</p>
-            </div>
-            <bnb-button variant="primary">
-              <a href="#" class="primary">
-                Réserver une nuit
-              </a>
+                          <bnb-button variant="tertiary">
+                            <button type="submit" class="tertiary">
+                              <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><circle cx="112" cy="112" r="80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="168.57" y1="168.57" x2="224" y2="224" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                              <span class="visually-hidden">Rechercher</span>
+                            </button>
+                          </bnb-button>
+                        </div>
+                      </form>
+                    </search>
+                  </bnb-search>
+                </li>
+                <li><bnb-button href="#" variant="primary"><a href="#" class="primary">Connexion</a></bnb-button></li>
+              </ul>
+            </bnb-header-panel>
+            <bnb-button variant="primary" data-toggle-bnb-header-panel>
+              <button class="secondary">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"/><line x1="40" y1="128" x2="216" y2="128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="40" y1="64" x2="216" y2="64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><line x1="40" y1="192" x2="216" y2="192" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+                <span class="visually-hidden">Menu</span>
+              </button>
             </bnb-button>
+          </nav>
+        </header>
+      </bnb-header>
+      <main class="grid-content">
+        <section class="hero grid-full-width">
+          <div class="box">
+            <div class="wrapper">
+              <div class="text">
+                <h1>L'Émeraude</h1>
+                <p>Lorem ipsum dolor sit adipisicing elit. Corporis facere neque iste perferendis.</p>
+              </div>
+              <bnb-button variant="primary">
+                <a href="#" class="primary">
+                  Réserver une nuit
+                </a>
+              </bnb-button>
+            </div>
           </div>
-        </div>
-      </section>
-
-      <section class="home">
-        <div class="wrapper">
-          <div class="description">
-            <h1>Réservez une nuit</h1>
+        </section>
+        <section class="home">
+          <div class="wrapper">
+            <div class="description">
+              <h1>Réservez une nuit</h1>
+            </div>
+            <div class="gallery">
+              <img src="./images/img1.webp" alt="">
+              <img src="./images/img2.webp" alt="">
+              <img src="./images/img3.webp" alt="">
+              <img src="./images/img4.webp" alt="">
+            </div>
           </div>
-          <div class="gallery">
-            <img src="./images/img1.webp" alt="">
-            <img src="./images/img2.webp" alt="">
-            <img src="./images/img3.webp" alt="">
-            <img src="./images/img4.webp" alt="">
-          </div>
-        </div>
-      </section>
-
-      <section class="activities"></section>
-
-      <section class="map grid-breakout" id="map"></section>
+        </section>
+        <section class="activities"></section>
+        <section class="map grid-breakout" id="map"></section>
       
-      <section class="who-are-we"></section>
-
-      <section class="faq">
-        <div class="wrapper">
-          <div class="title">
-            <h1>Réservez une nuit</h1>
+        <section class="who-are-we"></section>
+        <section class="faq">
+          <div class="wrapper">
+            <div class="title">
+              <h1>Réservez une nuit</h1>
+            </div>
+            <div class="questions">
+              <bnb-accordions>
+                <details>
+                  <summary>Règles de séjour</summary>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut fugit sunt aliquid. Aspernatur perspiciatis repellat soluta? Sint esse molestias natus at officia voluptatum dolor asperiores, itaque maxime, blanditiis labore assumenda. Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto porro nemo numquam asperiores officiis deleniti qui dicta tempore, velit animi vero impedit illum soluta dignissimos distinctio ea vitae dolore commodi.
+                </details>
+                <details>
+                  <summary>Pack de bienvenue</summary>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut fugit sunt aliquid. Aspernatur perspiciatis repellat soluta? Sint esse molestias natus at officia voluptatum dolor asperiores, itaque maxime, blanditiis labore assumenda. Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto porro nemo numquam asperiores officiis deleniti qui dicta tempore, velit animi vero impedit illum soluta dignissimos distinctio ea vitae dolore commodi.
+                </details>
+                <details>
+                  <summary>Plateau de bienvenue</summary>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut fugit sunt aliquid. Aspernatur perspiciatis repellat soluta? Sint esse molestias natus at officia voluptatum dolor asperiores, itaque maxime, blanditiis labore assumenda. Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto porro nemo numquam asperiores officiis deleniti qui dicta tempore, velit animi vero impedit illum soluta dignissimos distinctio ea vitae dolore commodi.
+                </details>
+                <details>
+                  <summary>Voyagez fiers, nous promouvons l'inclusion</summary>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut fugit sunt aliquid. Aspernatur perspiciatis repellat soluta? Sint esse molestias natus at officia voluptatum dolor asperiores, itaque maxime, blanditiis labore assumenda. Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto porro nemo numquam asperiores officiis deleniti qui dicta tempore, velit animi vero impedit illum soluta dignissimos distinctio ea vitae dolore commodi.
+                </details>
+                <details>
+                  <summary>Lieux à proximité</summary>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut fugit sunt aliquid. Aspernatur perspiciatis repellat soluta? Sint esse molestias natus at officia voluptatum dolor asperiores, itaque maxime, blanditiis labore assumenda. Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto porro nemo numquam asperiores officiis deleniti qui dicta tempore, velit animi vero impedit illum soluta dignissimos distinctio ea vitae dolore commodi.
+                </details>
+              </bnb-accordions>
+            </div>
           </div>
-          <div class="questions">
-            <bnb-accordions>
-              <details>
-                <summary>Règles de séjour</summary>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut fugit sunt aliquid. Aspernatur perspiciatis repellat soluta? Sint esse molestias natus at officia voluptatum dolor asperiores, itaque maxime, blanditiis labore assumenda. Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto porro nemo numquam asperiores officiis deleniti qui dicta tempore, velit animi vero impedit illum soluta dignissimos distinctio ea vitae dolore commodi.
-              </details>
-              <details>
-                <summary>Pack de bienvenue</summary>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut fugit sunt aliquid. Aspernatur perspiciatis repellat soluta? Sint esse molestias natus at officia voluptatum dolor asperiores, itaque maxime, blanditiis labore assumenda. Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto porro nemo numquam asperiores officiis deleniti qui dicta tempore, velit animi vero impedit illum soluta dignissimos distinctio ea vitae dolore commodi.
-              </details>
-              <details>
-                <summary>Plateau de bienvenue</summary>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut fugit sunt aliquid. Aspernatur perspiciatis repellat soluta? Sint esse molestias natus at officia voluptatum dolor asperiores, itaque maxime, blanditiis labore assumenda. Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto porro nemo numquam asperiores officiis deleniti qui dicta tempore, velit animi vero impedit illum soluta dignissimos distinctio ea vitae dolore commodi.
-              </details>
-              <details>
-                <summary>Voyagez fiers, nous promouvons l'inclusion</summary>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut fugit sunt aliquid. Aspernatur perspiciatis repellat soluta? Sint esse molestias natus at officia voluptatum dolor asperiores, itaque maxime, blanditiis labore assumenda. Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto porro nemo numquam asperiores officiis deleniti qui dicta tempore, velit animi vero impedit illum soluta dignissimos distinctio ea vitae dolore commodi.
-              </details>
-              <details>
-                <summary>Lieux à proximité</summary>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut fugit sunt aliquid. Aspernatur perspiciatis repellat soluta? Sint esse molestias natus at officia voluptatum dolor asperiores, itaque maxime, blanditiis labore assumenda. Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto porro nemo numquam asperiores officiis deleniti qui dicta tempore, velit animi vero impedit illum soluta dignissimos distinctio ea vitae dolore commodi.
-              </details>
-            </bnb-accordions>
+        </section>
+        <section class="how-to-book"></section>
+        <section class="our-apartments"></section>
+      </main>
+      <footer>
+          <div>
+            <p>© 2024 Zapart'Hôtels</p>
           </div>
-        </div>
-      </section>
-
-      <section class="how-to-book"></section>
-
-      <section class="our-apartments"></section>
-    </main>
-
-    <footer>
-        <div>
-          <p>© 2024 Zapart'Hôtels</p>
-        </div>
-    </footer>
+      </footer>
+    </div>
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -167,11 +161,13 @@
         // bnb-search
         const addBnbSearchFocus = (bnbSearch) => {
           const input = bnbSearch.querySelector('input[type="search"]');
-          const buttonReset = bnbSearch.querySelector('button[type="reset"]');
+          const resetButton = bnbSearch.querySelector('button[type="reset"]');
 
-          buttonReset.addEventListener('click', () => {
+          resetButton.addEventListener('click', () => {
             input.focus();
           });
+          
+          // TODO: remove tab focus on resetbutton
         };
 
         const bnbSearches = document.querySelectorAll('bnb-search');

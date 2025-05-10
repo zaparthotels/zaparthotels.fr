@@ -87,7 +87,7 @@ export class ArrivalFlow implements IFlow {
               queueName: FLOW_ARRIVAL_LOCK_CODE_QUEUE,
               data: bookingId,
               opts: {
-                attempts: 7,
+                attempts: 1,
                 removeDependencyOnFailure: true,
                 backoff: {
                   type: 'exponential',

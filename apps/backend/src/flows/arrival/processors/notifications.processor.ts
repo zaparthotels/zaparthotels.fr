@@ -44,7 +44,10 @@ export class NotificationsProcessor extends WorkerHost {
 
     this.liquidService.setLocale(booking.guest.locale);
 
-    const config = await this.directusService.getConfig();
+    const directusProperty = await this.directusService.getPropertyById(
+      booking.propertyId,
+      await this.directusService.getCorrespondingLocale(booking.guest.locale),
+    );
 
     if (!booking.lockCode) {
       this.logger.error(
@@ -53,16 +56,11 @@ export class NotificationsProcessor extends WorkerHost {
 
       booking.lockCode = {
         lockId: 'failed',
-        code: config.fallbackLockCode,
+        code: directusProperty.fallbackLockCode,
         startsAt: new Date(),
         expiresAt: new Date(),
       };
     }
-
-    const directusProperty = await this.directusService.getPropertyById(
-      booking.propertyId,
-      await this.directusService.getCorrespondingLocale(booking.guest.locale),
-    );
 
     const context = { booking };
 

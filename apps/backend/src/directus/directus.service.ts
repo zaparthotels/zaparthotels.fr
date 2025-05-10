@@ -23,7 +23,7 @@ export class DirectusService {
     @Inject(CACHE_MANAGER) private readonly cacheManager: Cache,
   ) {}
 
-  private getDirectusUrl(): string {
+  getDirectusUrl(): string {
     const hostname = this.configService.getOrThrow<string>('DIRECTUS_HOSTNAME');
     const port = this.configService.get<string>('DIRECTUS_PORT');
 
