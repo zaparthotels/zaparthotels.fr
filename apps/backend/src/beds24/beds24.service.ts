@@ -8,6 +8,10 @@ import { firstValueFrom, retry, catchError } from 'rxjs';
 import { TokenResponseDto } from './dto/response/token.dto';
 import { Cache } from 'cache-manager';
 import { Cron } from '@nestjs/schedule';
+import {
+  GetPropertyDto,
+  GetPropertyPayloadDto,
+} from './dto/response/get-property.dto';
 
 @Injectable()
 export class Beds24Service {
@@ -75,8 +79,8 @@ export class Beds24Service {
 
   private async postWithAuth<T>(
     url: string,
-    data: unknown,
     token: string,
+    data: unknown,
   ): Promise<T> {
     const headers = {
       token,
@@ -94,6 +98,27 @@ export class Beds24Service {
     }
   }
 
+  private async getWithAuth<T>(
+    url: string,
+    token: string,
+    params?: Record<string, unknown>,
+  ): Promise<T> {
+    const headers = {
+      token,
+      'Content-Type': 'application/json',
+    };
+
+    try {
+      const response = await firstValueFrom(
+        this.httpService.get<T>(url, { headers, params }).pipe(retry(3)),
+      );
+      return response.data;
+    } catch (error) {
+      this.logger.error('HTTP GET request failed', error);
+      throw error;
+    }
+  }
+
   async sendMessage(beds24id: string, message: string): Promise<void> {
     const url = `${this.BEDS24_BASE_URL}/bookings/messages`;
 
@@ -107,10 +132,31 @@ export class Beds24Service {
     const token = await this.getValidToken();
 
     try {
-      await this.postWithAuth<void>(url, payload, token);
+      await this.postWithAuth<void>(url, token, payload);
     } catch (error) {
       this.logger.error('Failed to send message', error);
       throw new Error('Failed to send message');
+    }
+  }
+
+  async getProperty(beds24id: string): Promise<GetPropertyDto> {
+    const url = `${this.BEDS24_BASE_URL}/properties`;
+
+    const token = await this.getValidToken();
+
+    try {
+      const response = await this.getWithAuth<GetPropertyPayloadDto>(
+        url,
+        token,
+        {
+          id: beds24id,
+        },
+      );
+
+      return response.data[0];
+    } catch (error) {
+      this.logger.error('Failed to get property', error);
+      throw new Error('Failed to get property');
     }
   }
 }

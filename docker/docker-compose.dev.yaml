@@ -83,88 +83,11 @@ services:
       - POSTGRES_PASSWORD=${DIRECTUS_DB_PASSWORD}
     volumes:
       - postgresql-directus:/var/lib/postgresql/data
-
-  # authentik:
-  #   build:
-  #     context: ../
-  #     dockerfile: ./tools/authentik/Dockerfile
-  #   pull_policy: build
-  #   networks:
-  #     authentik:
-  #   command: server
-  #   depends_on:
-  #     - postgresql-authentik
-  #     - valkey-authentik
-  #   environment:
-  #     - AUTHENTIK_REDIS__HOST=valkey-authentik
-  #     - AUTHENTIK_POSTGRESQL__HOST=postgresql-authentik
-  #     - AUTHENTIK_POSTGRESQL__USER=${AUTHENTIK_DB_USER}
-  #     - AUTHENTIK_POSTGRESQL__NAME=${AUTHENTIK_DB_NAME}
-  #     - AUTHENTIK_POSTGRESQL__PASSWORD=${AUTHENTIK_DB_PASSWORD}
-  #     - AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY}
-  #     - AUTHENTIK_BOOTSTRAP_EMAIL=${AUTHENTIK_BOOTSTRAP_EMAIL}
-  #     - AUTHENTIK_BOOTSTRAP_PASSWORD=${AUTHENTIK_BOOTSTRAP_PASSWORD}
-  #   volumes:
-  #     - authentik-blueprints:/blueprints
-  #     - authentik-media:/media
-  #     - authentik-templates:/templates
-  #   ports:
-  #     - 3005:9000
-  #   develop:
-  #     watch:
-  #       - action: rebuild
-  #         path: ../tools/authentik/blueprints
-  #       - action: sync
-  #         path: ../tools/authentik/web/dist/custom.css
-  #         target: /web/dist/custom.css
-  
-  # authentik-worker:
-  #   image: ghcr.io/goauthentik/server:2024.12.3
-  #   networks:
-  #     authentik:
-  #   command: worker
-  #   depends_on:
-  #     - postgresql-authentik
-  #     - valkey-authentik
-  #   environment:
-  #     - AUTHENTIK_REDIS__HOST=valkey-authentik
-  #     - AUTHENTIK_POSTGRESQL__HOST=postgresql-authentik
-  #     - AUTHENTIK_POSTGRESQL__USER=${AUTHENTIK_DB_USER}
-  #     - AUTHENTIK_POSTGRESQL__NAME=${AUTHENTIK_DB_NAME}
-  #     - AUTHENTIK_POSTGRESQL__PASSWORD=${AUTHENTIK_DB_PASSWORD}
-  #     - AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY}
-  #     - AUTHENTIK_BOOTSTRAP_EMAIL=${AUTHENTIK_BOOTSTRAP_EMAIL}
-  #     - AUTHENTIK_BOOTSTRAP_PASSWORD=${AUTHENTIK_BOOTSTRAP_PASSWORD}
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
-  #     - authentik-certs:/certs
-  #     - authentik-blueprints:/blueprints
-  #     - authentik-media:/media
-  #     - authentik-templates:/templates
-  
-  # valkey-authentik:
-  #   image: valkey/valkey:8.0.1
-  #   networks:
-  #     authentik:
-  #   volumes:
-  #     - valkey-authentik:/data
-
-  # postgresql-authentik:
-  #   image: postgres:13.16
-  #   networks:
-  #     authentik:
-  #   environment:
-  #     - POSTGRES_USER=${AUTHENTIK_DB_USER}
-  #     - POSTGRES_DB=${AUTHENTIK_DB_NAME}
-  #     - POSTGRES_PASSWORD=${AUTHENTIK_DB_PASSWORD}
-  #   volumes:
-  #     - postgresql-authentik:/var/lib/postgresql/data
   
   adminer:
     image: adminer
     networks:
       directus:
-      # authentik:
     environment:
       - ADMINER_DESIGN=hydra
     ports:
@@ -188,13 +111,6 @@ volumes:
   directus-uploads:
   valkey-directus:
   postgresql-directus:
-  # authentik-certs:
-  # authentik-blueprints:
-  # authentik-media:
-  # authentik-templates:
-  # valkey-authentik:
-  # postgresql-authentik:
 
 networks:
   directus:
-  # authentik:

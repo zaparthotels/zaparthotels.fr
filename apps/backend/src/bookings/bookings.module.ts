@@ -2,12 +2,12 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BookingsService } from './bookings.service';
 import { BookingSchema } from './schemas/booking.schema';
-import { DirectusModule } from 'src/directus/directus.module';
+import { Beds24Module } from 'src/beds24/beds24.module';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: 'Booking', schema: BookingSchema }]),
-    DirectusModule,
+    Beds24Module,
   ],
   providers: [BookingsService],
   exports: [BookingsService],
