@@ -33,7 +33,7 @@ export const syncDirectusCollections = {
     watch: ['roles'],
     query: {
       filter: {
-        admin_access: { _neq: true },
+        name: { _neq: 'Administrator' },
       },
       sort: ['name'],
     },

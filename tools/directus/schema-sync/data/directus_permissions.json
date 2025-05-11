@@ -1,1 +1,62 @@
-[]
+[
+  {
+    "action": "read",
+    "collection": "languages",
+    "fields": [
+      "*"
+    ],
+    "permissions": null,
+    "policy": "b0419949-57bd-4b2b-bf56-83c8c70ae501",
+    "presets": null,
+    "validation": null
+  },
+  {
+    "action": "read",
+    "collection": "properties",
+    "fields": [
+      "*"
+    ],
+    "permissions": null,
+    "policy": "b0419949-57bd-4b2b-bf56-83c8c70ae501",
+    "presets": null,
+    "validation": null
+  },
+  {
+    "action": "update",
+    "collection": "properties",
+    "fields": [
+      "arrivalNotificationTime",
+      "fallbackLockCode",
+      "translations"
+    ],
+    "permissions": null,
+    "policy": "b0419949-57bd-4b2b-bf56-83c8c70ae501",
+    "presets": null,
+    "validation": null
+  },
+  {
+    "action": "read",
+    "collection": "properties_translations",
+    "fields": [
+      "*"
+    ],
+    "permissions": null,
+    "policy": "b0419949-57bd-4b2b-bf56-83c8c70ae501",
+    "presets": null,
+    "validation": null
+  },
+  {
+    "action": "update",
+    "collection": "properties_translations",
+    "fields": [
+      "languages_code",
+      "notification",
+      "subject",
+      "arrival"
+    ],
+    "permissions": null,
+    "policy": "b0419949-57bd-4b2b-bf56-83c8c70ae501",
+    "presets": null,
+    "validation": null
+  }
+]
