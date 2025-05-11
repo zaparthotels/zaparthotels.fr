@@ -1,7 +1,32 @@
 [
   {
+    "code": "de-DE",
+    "direction": "ltr",
+    "name": "Deutsch"
+  },
+  {
+    "code": "en-US",
+    "direction": "ltr",
+    "name": "English"
+  },
+  {
+    "code": "es-ES",
+    "direction": "ltr",
+    "name": "Español"
+  },
+  {
     "code": "fr-FR",
     "direction": "ltr",
     "name": "Français"
+  },
+  {
+    "code": "it-IT",
+    "direction": "ltr",
+    "name": "Italiano"
+  },
+  {
+    "code": "pt-PT",
+    "direction": "ltr",
+    "name": "Português"
   }
 ]
