@@ -6,6 +6,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "directus-extension-schema-sync": "3.0.8"
+    "directus-extension-schema-sync": "3.0.5"
   }
 }
