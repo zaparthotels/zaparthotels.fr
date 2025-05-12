@@ -1,7 +1,7 @@
 {
-  "hash": "07ae893062571ce16faab1fc5115800c4769461d",
+  "hash": "9782ec451afd12b678e04904d6f71c0fd57b83e0",
   "partial": true,
   "version": 1,
-  "directus": "11.6.0",
+  "directus": "11.7.2",
   "vendor": "postgres"
 }
