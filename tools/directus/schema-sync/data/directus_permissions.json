@@ -6,7 +6,7 @@
       "*"
     ],
     "permissions": null,
-    "policy": "b0419949-57bd-4b2b-bf56-83c8c70ae501",
+    "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",
     "presets": null,
     "validation": null
   },
@@ -17,7 +17,7 @@
       "*"
     ],
     "permissions": null,
-    "policy": "b0419949-57bd-4b2b-bf56-83c8c70ae501",
+    "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",
     "presets": null,
     "validation": null
   },
@@ -26,11 +26,10 @@
     "collection": "properties",
     "fields": [
       "arrivalNotificationTime",
-      "fallbackLockCode",
-      "translations"
+      "fallbackLockCode"
     ],
     "permissions": null,
-    "policy": "b0419949-57bd-4b2b-bf56-83c8c70ae501",
+    "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",
     "presets": null,
     "validation": null
   },
@@ -41,7 +40,7 @@
       "*"
     ],
     "permissions": null,
-    "policy": "b0419949-57bd-4b2b-bf56-83c8c70ae501",
+    "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",
     "presets": null,
     "validation": null
   },
@@ -55,7 +54,7 @@
       "arrival"
     ],
     "permissions": null,
-    "policy": "b0419949-57bd-4b2b-bf56-83c8c70ae501",
+    "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",
     "presets": null,
     "validation": null
   }
