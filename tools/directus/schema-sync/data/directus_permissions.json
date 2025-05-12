@@ -1,1 +1,61 @@
-[]
+[
+  {
+    "action": "read",
+    "collection": "languages",
+    "fields": [
+      "*"
+    ],
+    "permissions": null,
+    "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",
+    "presets": null,
+    "validation": null
+  },
+  {
+    "action": "read",
+    "collection": "properties",
+    "fields": [
+      "*"
+    ],
+    "permissions": null,
+    "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",
+    "presets": null,
+    "validation": null
+  },
+  {
+    "action": "update",
+    "collection": "properties",
+    "fields": [
+      "arrivalNotificationTime",
+      "fallbackLockCode"
+    ],
+    "permissions": null,
+    "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",
+    "presets": null,
+    "validation": null
+  },
+  {
+    "action": "read",
+    "collection": "properties_translations",
+    "fields": [
+      "*"
+    ],
+    "permissions": null,
+    "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",
+    "presets": null,
+    "validation": null
+  },
+  {
+    "action": "update",
+    "collection": "properties_translations",
+    "fields": [
+      "languages_code",
+      "notification",
+      "subject",
+      "arrival"
+    ],
+    "permissions": null,
+    "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",
+    "presets": null,
+    "validation": null
+  }
+]
