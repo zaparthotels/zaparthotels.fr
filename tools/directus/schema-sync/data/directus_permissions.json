@@ -26,7 +26,8 @@
     "collection": "properties",
     "fields": [
       "arrivalNotificationTime",
-      "fallbackLockCode"
+      "fallbackLockCode",
+      "translations"
     ],
     "permissions": null,
     "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",
