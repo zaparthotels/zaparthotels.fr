@@ -8,6 +8,8 @@ if (process.env.NODE_ENV !== ENodeEnv.PRODUCTION) {
   mockServer.listen({
     onUnhandledRequest: 'warn',
   });
+
+  console.warn('[WARN] Mock server is running');
 }
 
 async function bootstrap() {
