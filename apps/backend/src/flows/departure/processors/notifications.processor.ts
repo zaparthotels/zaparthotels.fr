@@ -7,10 +7,10 @@ import { DirectusService } from 'src/directus/directus.service';
 import { LiquidService } from 'src/liquid/liquid.service';
 import { MongoIdPipe } from 'src/pipes/mongo-id/mongo-id.pipe';
 import { SmsService } from 'src/sms/sms.service';
-import { FLOW_ARRIVAL_NOTIFICATIONS_QUEUE } from '../constants';
+import { FLOW_DEPARTURE_NOTIFICATIONS_QUEUE } from '../constants';
 import { MessageService } from 'src/message/message.service';
 
-@Processor(FLOW_ARRIVAL_NOTIFICATIONS_QUEUE)
+@Processor(FLOW_DEPARTURE_NOTIFICATIONS_QUEUE)
 export class NotificationsProcessor extends WorkerHost {
   private readonly logger = new Logger(NotificationsProcessor.name);
 
@@ -47,23 +47,10 @@ export class NotificationsProcessor extends WorkerHost {
       await this.directusService.getCorrespondingLocale(booking.guest.locale),
     );
 
-    if (!booking.lockCode) {
-      this.logger.error(
-        `Booking ${job.data} has no lockCode generated, fallback to default.`,
-      );
-
-      booking.lockCode = {
-        lockId: 'failed',
-        code: directusProperty.fallbackLockCode,
-        startsAt: new Date(),
-        expiresAt: new Date(),
-      };
-    }
-
     const context = { booking };
 
     const message = await this.liquidService.parseAndRender(
-      directusProperty.translations[0].notification_arrival,
+      directusProperty.translations[0].notification_departure,
       context,
     );
 
@@ -86,11 +73,11 @@ export class NotificationsProcessor extends WorkerHost {
 
   @OnWorkerEvent('completed')
   onCompleted(job: Job) {
-    this.logger.log(`Job ${job.id}. Arrival flow executed successfully.`);
+    this.logger.log(`Job ${job.id}. Departure flow executed successfully.`);
   }
 
   @OnWorkerEvent('failed')
   onFailed(job: Job, error: Error) {
-    this.logger.log(`Job ${job.id}. Failed to run arrival flow:`, error);
+    this.logger.log(`Job ${job.id}. Failed to run departure flow:`, error);
   }
 }

@@ -23,10 +23,11 @@ export class GuestDto implements IGuest {
   lastName: string;
 
   @IsEmail()
-  email: string;
+  @IsOptional()
+  email?: string;
 
   @IsOptional()
-  @IsPhoneNumber(null)
+  @IsPhoneNumber()
   phone?: string;
 
   @IsOptional()
