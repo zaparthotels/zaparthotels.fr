@@ -112,11 +112,11 @@ export class DirectusService {
     const validatedLocale = await this.validateLocale(locale);
 
     try {
-      const property = await this.directusClient.request<IProperty>(
+      const rawProperty = await this.directusClient.request<IProperty>(
         readItems('properties', {
           filter: { beds24id: { _eq: id } },
           limit: 1,
-          fields: ['*', { translations: ['*'] }],
+          fields: ['*', { translations: ['*'] }, { locks: ['locks_id.*'] }],
           deep: {
             translations: {
               _filter: {
@@ -131,7 +131,12 @@ export class DirectusService {
         }),
       );
 
-      return property[0];
+      const property = rawProperty[0];
+      property.locks = property.locks.map(
+        (entry: { locks_id: IProperty['locks'] }) => entry.locks_id,
+      );
+
+      return property;
     } catch (error) {
       this.logger.error(`Error fetching property with ID ${id}:`, error);
       throw error;

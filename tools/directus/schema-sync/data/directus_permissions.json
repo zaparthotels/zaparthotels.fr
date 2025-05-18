@@ -12,6 +12,28 @@
   },
   {
     "action": "read",
+    "collection": "locks",
+    "fields": [
+      "*"
+    ],
+    "permissions": null,
+    "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",
+    "presets": null,
+    "validation": null
+  },
+  {
+    "action": "update",
+    "collection": "locks",
+    "fields": [
+      "fallbackLockCode"
+    ],
+    "permissions": null,
+    "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",
+    "presets": null,
+    "validation": null
+  },
+  {
+    "action": "read",
     "collection": "properties",
     "fields": [
       "*"
@@ -27,7 +49,19 @@
     "fields": [
       "arrivalNotificationTime",
       "fallbackLockCode",
-      "translations"
+      "translations",
+      "departureNotificationTime"
+    ],
+    "permissions": null,
+    "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",
+    "presets": null,
+    "validation": null
+  },
+  {
+    "action": "read",
+    "collection": "properties_locks",
+    "fields": [
+      "*"
     ],
     "permissions": null,
     "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",
@@ -49,13 +83,15 @@
     "action": "update",
     "collection": "properties_translations",
     "fields": [
-      "languages_code",
       "notification",
       "subject",
-      "arrival",
       "notification_arrival",
       "departure",
-      "notification_departure"
+      "notification_departure",
+      "languages_code",
+      "arrival",
+      "notificationDeparture",
+      "notificationArrival"
     ],
     "permissions": null,
     "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",

@@ -47,24 +47,26 @@ export class NotificationsProcessor extends WorkerHost {
       await this.directusService.getCorrespondingLocale(booking.guest.locale),
     );
 
-    if (!booking.lockCode) {
+    if (!booking.lockCodes || booking.lockCodes.length === 0) {
       this.logger.error(
         `Booking ${job.data} has no lockCode generated, fallback to default.`,
       );
 
-      booking.lockCode = {
-        lockId: 'failed',
-        code: directusProperty.fallbackLockCode,
+      const { locks } = directusProperty;
+
+      booking.lockCodes = locks.map(({ lockId, fallbackLockCode }) => ({
+        lockId,
+        code: fallbackLockCode,
         startsAt: new Date(),
         expiresAt: new Date(),
-      };
+      }));
     }
 
-    const context = { booking };
-
     const message = await this.liquidService.parseAndRender(
-      directusProperty.translations[0].notification_arrival,
-      context,
+      directusProperty.translations[0].notificationArrival,
+      {
+        booking: LiquidService.bookingContext(booking),
+      },
     );
 
     await this.messageService.sendMessage({

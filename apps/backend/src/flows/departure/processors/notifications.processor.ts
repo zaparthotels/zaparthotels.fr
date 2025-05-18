@@ -47,11 +47,11 @@ export class NotificationsProcessor extends WorkerHost {
       await this.directusService.getCorrespondingLocale(booking.guest.locale),
     );
 
-    const context = { booking };
-
     const message = await this.liquidService.parseAndRender(
-      directusProperty.translations[0].notification_departure,
-      context,
+      directusProperty.translations[0].notificationDeparture,
+      {
+        booking: LiquidService.bookingContext(booking),
+      },
     );
 
     await this.messageService.sendMessage({
