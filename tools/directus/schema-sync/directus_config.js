@@ -59,16 +59,6 @@ export const syncDirectusCollections = {
       sort: ['policy'],
     },
   },
-  directus_settings: {
-    watch: ['settings'],
-    excludeFields: [
-      'project_url',
-      // always keep these 3 excluded
-      'mv_hash',
-      'mv_ts',
-      'mv_locked',
-    ],
-  },
   directus_dashboards: {
     watch: ['dashboards'],
     excludeFields: ['user_created', 'panels'],

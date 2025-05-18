@@ -93,8 +93,8 @@ export class BookingDocument extends Document implements IBooking {
   @Prop({ required: true, type: Date })
   updatedAt: Date;
 
-  @Prop({ type: LockCode })
-  lockCode?: LockCode;
+  @Prop({ type: [LockCode] })
+  lockCodes?: LockCode[];
 
   @Prop({ type: [Flow] })
   flows?: Flow[];

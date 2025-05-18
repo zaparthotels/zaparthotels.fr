@@ -1,4 +1,5 @@
 import { http, HttpResponse } from 'msw';
+import { faker } from '@faker-js/faker';
 
 export const igloohomeHandlers = [
   http.post('https://auth.igloohome.co/oauth2/token', async ({ request }) => {
@@ -31,7 +32,7 @@ export const igloohomeHandlers = [
       console.log('Received payload:', body);
 
       return HttpResponse.json({
-        pin: '123456',
+        pin: faker.string.numeric({ length: 6 }),
         pinId: 'abc123',
       });
     },

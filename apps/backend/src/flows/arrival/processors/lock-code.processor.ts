@@ -48,7 +48,7 @@ export class LockCodeProcessor extends WorkerHost {
     }
 
     const { checkIn, checkOut } = booking.dates;
-    const { lockId } = directusProperty;
+    const { locks } = directusProperty;
 
     const now = new Date();
     now.setMinutes(0, 0, 0);
@@ -64,15 +64,19 @@ export class LockCodeProcessor extends WorkerHost {
     const expiresAt = new Date(checkOut);
     expiresAt.setHours(expiresAt.getHours() - 1);
 
-    const lockCode = await this.lockCodeService.create({
-      lockId,
-      startsAt,
-      expiresAt,
-    });
+    const lockCodes = await Promise.all(
+      locks.map(({ lockId }) => {
+        return this.lockCodeService.create({
+          lockId,
+          startsAt,
+          expiresAt,
+        });
+      }),
+    );
 
     await this.bookingService.update({
       ...booking,
-      lockCode,
+      lockCodes,
     });
   }
 

@@ -167,14 +167,14 @@
       }
     },
     {
-      "field": "notification_arrival",
+      "field": "notificationArrival",
       "type": "text",
       "meta": {
         "collection": "properties_translations",
         "conditions": null,
         "display": null,
         "display_options": null,
-        "field": "notification_arrival",
+        "field": "notificationArrival",
         "group": "arrival",
         "hidden": false,
         "interface": "input-multiline",
@@ -190,7 +190,7 @@
         "width": "full"
       },
       "schema": {
-        "name": "notification_arrival",
+        "name": "notificationArrival",
         "table": "properties_translations",
         "data_type": "text",
         "default_value": null,
@@ -209,14 +209,14 @@
       }
     },
     {
-      "field": "notification_departure",
+      "field": "notificationDeparture",
       "type": "text",
       "meta": {
         "collection": "properties_translations",
         "conditions": null,
         "display": null,
         "display_options": null,
-        "field": "notification_departure",
+        "field": "notificationDeparture",
         "group": "departure",
         "hidden": false,
         "interface": "input-multiline",
@@ -224,7 +224,7 @@
         "options": null,
         "readonly": false,
         "required": true,
-        "sort": 1,
+        "sort": 2,
         "special": null,
         "translations": null,
         "validation": null,
@@ -232,7 +232,7 @@
         "width": "full"
       },
       "schema": {
-        "name": "notification_departure",
+        "name": "notificationDeparture",
         "table": "properties_translations",
         "data_type": "text",
         "default_value": null,
