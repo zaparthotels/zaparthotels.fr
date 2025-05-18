@@ -8,7 +8,7 @@
     "collapse": "open",
     "collection": "locks",
     "color": null,
-    "display_template": null,
+    "display_template": "{{lockId}}",
     "group": null,
     "hidden": false,
     "icon": null,
@@ -196,34 +196,6 @@
         "has_auto_increment": false,
         "foreign_key_table": null,
         "foreign_key_column": null
-      }
-    },
-    {
-      "field": "properties",
-      "type": "alias",
-      "meta": {
-        "collection": "locks",
-        "conditions": null,
-        "display": null,
-        "display_options": null,
-        "field": "properties",
-        "group": null,
-        "hidden": false,
-        "interface": "list-m2m",
-        "note": null,
-        "options": {
-          "template": null
-        },
-        "readonly": false,
-        "required": true,
-        "sort": 5,
-        "special": [
-          "m2m"
-        ],
-        "translations": null,
-        "validation": null,
-        "validation_message": null,
-        "width": "full"
       }
     },
     {

@@ -1,5 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
+import { ILockCode } from '@zaparthotels/types';
 import { Liquid } from 'liquidjs';
+import { BookingDto } from 'src/bookings/dto/booking.dto';
 
 @Injectable()
 export class LiquidService extends Liquid {
@@ -11,5 +13,22 @@ export class LiquidService extends Liquid {
     });
 
     return this;
+  }
+
+  static bookingContext(booking: BookingDto) {
+    const { lockCodes } = booking;
+
+    const lockCodesByLockId = lockCodes.reduce(
+      (acc, lockCode) => {
+        acc[lockCode.lockId] = lockCode;
+        return acc;
+      },
+      {} as Record<string, ILockCode>,
+    );
+
+    return {
+      ...booking,
+      lockCodes: lockCodesByLockId,
+    };
   }
 }

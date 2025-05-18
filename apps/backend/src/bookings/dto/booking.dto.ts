@@ -54,9 +54,9 @@ export class BookingDto implements IBooking {
   updatedAt: Date;
 
   @IsOptional()
-  @ValidateNested()
+  @ValidateNested({ each: true })
   @Type(() => LockCodeDto)
-  lockCode?: ILockCode;
+  lockCodes?: ILockCode[];
 
   @IsOptional()
   @ValidateNested({ each: true })

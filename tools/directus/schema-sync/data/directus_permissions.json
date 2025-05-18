@@ -12,6 +12,17 @@
   },
   {
     "action": "read",
+    "collection": "locks",
+    "fields": [
+      "*"
+    ],
+    "permissions": null,
+    "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",
+    "presets": null,
+    "validation": null
+  },
+  {
+    "action": "read",
     "collection": "properties",
     "fields": [
       "*"
@@ -29,6 +40,17 @@
       "fallbackLockCode",
       "translations",
       "departureNotificationTime"
+    ],
+    "permissions": null,
+    "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",
+    "presets": null,
+    "validation": null
+  },
+  {
+    "action": "read",
+    "collection": "properties_locks",
+    "fields": [
+      "*"
     ],
     "permissions": null,
     "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",

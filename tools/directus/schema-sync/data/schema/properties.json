@@ -42,7 +42,7 @@
         "options": null,
         "readonly": false,
         "required": true,
-        "sort": 7,
+        "sort": 6,
         "special": null,
         "translations": null,
         "validation": null,
@@ -172,7 +172,7 @@
         "options": null,
         "readonly": false,
         "required": true,
-        "sort": 8,
+        "sort": 7,
         "special": null,
         "translations": null,
         "validation": null,
@@ -241,6 +241,32 @@
       }
     },
     {
+      "field": "locks",
+      "type": "alias",
+      "meta": {
+        "collection": "properties",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "locks",
+        "group": null,
+        "hidden": false,
+        "interface": "list-m2m",
+        "note": null,
+        "options": null,
+        "readonly": false,
+        "required": true,
+        "sort": 10,
+        "special": [
+          "m2m"
+        ],
+        "translations": null,
+        "validation": null,
+        "validation_message": null,
+        "width": "full"
+      }
+    },
+    {
       "field": "name",
       "type": "string",
       "meta": {
@@ -298,7 +324,7 @@
         "options": null,
         "readonly": false,
         "required": false,
-        "sort": 10,
+        "sort": 9,
         "special": [
           "translations"
         ],

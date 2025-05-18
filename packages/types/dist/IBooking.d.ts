@@ -8,7 +8,7 @@ export interface IBooking {
     guest: IGuest;
     dates: IDates;
     status: TBookingStatus;
-    lockCode?: ILockCode;
+    lockCodes?: ILockCode[];
     createdAt: Date;
     updatedAt: Date;
 }
