@@ -52,7 +52,10 @@
       "languages_code",
       "notification",
       "subject",
-      "arrival"
+      "arrival",
+      "notification_arrival",
+      "departure",
+      "notification_departure"
     ],
     "permissions": null,
     "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",
