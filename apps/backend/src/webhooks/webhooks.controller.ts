@@ -12,6 +12,7 @@ import { BookingsService } from 'src/bookings/bookings.service';
 import { WebhookBeds24PayloadDto } from 'src/bookings/dto/create-update-booking.dto';
 import { ArrivalFlow } from 'src/flows/arrival/arrival.flow';
 import { Beds24Guard } from './guards/beds24.guard';
+import { DepartureFlow } from 'src/flows/departure/departure.flow';
 
 @Controller('webhooks')
 export class WebhooksController {
@@ -20,6 +21,7 @@ export class WebhooksController {
   constructor(
     private readonly bookingsService: BookingsService,
     private readonly arrivalFlow: ArrivalFlow,
+    private readonly departureFlow: DepartureFlow,
   ) {}
 
   @Post('bookings')
@@ -40,6 +42,7 @@ export class WebhooksController {
         await this.bookingsService.createOrUpdate(transformedData);
 
       await this.arrivalFlow.run(booking);
+      await this.departureFlow.run(booking);
 
       return booking;
     } catch (error) {

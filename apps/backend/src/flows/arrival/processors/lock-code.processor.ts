@@ -51,8 +51,10 @@ export class LockCodeProcessor extends WorkerHost {
     const { lockId } = directusProperty;
 
     const now = new Date();
+    now.setMinutes(0, 0, 0);
 
     const startsAt = new Date(checkIn);
+    startsAt.setMinutes(0, 0, 0);
     startsAt.setHours(startsAt.getHours() + 1);
 
     if (startsAt < now) {

@@ -157,6 +157,48 @@
       }
     },
     {
+      "field": "departureNotificationTime",
+      "type": "time",
+      "meta": {
+        "collection": "properties",
+        "conditions": null,
+        "display": null,
+        "display_options": null,
+        "field": "departureNotificationTime",
+        "group": null,
+        "hidden": false,
+        "interface": "datetime",
+        "note": null,
+        "options": null,
+        "readonly": false,
+        "required": true,
+        "sort": 8,
+        "special": null,
+        "translations": null,
+        "validation": null,
+        "validation_message": null,
+        "width": "full"
+      },
+      "schema": {
+        "name": "departureNotificationTime",
+        "table": "properties",
+        "data_type": "time without time zone",
+        "default_value": null,
+        "max_length": null,
+        "numeric_precision": null,
+        "numeric_scale": null,
+        "is_nullable": true,
+        "is_unique": false,
+        "is_indexed": false,
+        "is_primary_key": false,
+        "is_generated": false,
+        "generation_expression": null,
+        "has_auto_increment": false,
+        "foreign_key_table": null,
+        "foreign_key_column": null
+      }
+    },
+    {
       "field": "fallbackLockCode",
       "type": "string",
       "meta": {
@@ -172,7 +214,7 @@
         "options": null,
         "readonly": false,
         "required": false,
-        "sort": 8,
+        "sort": 9,
         "special": null,
         "translations": null,
         "validation": null,
@@ -340,7 +382,7 @@
         "options": null,
         "readonly": false,
         "required": false,
-        "sort": 9,
+        "sort": 10,
         "special": [
           "translations"
         ],

@@ -41,20 +41,20 @@ class WebhookBookingDto {
   lastName: string;
 
   @IsEmail()
-  @IsNotEmpty()
-  email: string;
+  @IsOptional()
+  email?: string;
 
   @IsString()
   @IsOptional()
-  phone: string;
+  phone?: string;
 
   @IsString()
   @IsOptional()
-  lang: string;
+  lang?: string;
 
   @IsString()
   @IsOptional()
-  country2: string;
+  country2?: string;
 
   @IsISO8601()
   @IsNotEmpty()

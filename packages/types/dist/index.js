@@ -18,7 +18,7 @@ __exportStar(require("./IGuest"), exports);
 __exportStar(require("./TLanguage"), exports);
 __exportStar(require("./IBooking"), exports);
 __exportStar(require("./ISms"), exports);
-__exportStar(require("./IEmail"), exports);
+__exportStar(require("./IMessage"), exports);
 __exportStar(require("./ILockCode"), exports);
 __exportStar(require("./IDates"), exports);
 __exportStar(require("./IFlow"), exports);

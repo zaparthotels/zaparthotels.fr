@@ -2,3 +2,4 @@
 - [x] Typper les additionnalProperties
 - [ ] Passer sur des devcontaines
 - [ ] Revue complète code (supprimer tests et drafts de biome.js)
+- [ ] on ne rerun pas après j+1
