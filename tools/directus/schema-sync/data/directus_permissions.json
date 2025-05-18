@@ -22,6 +22,17 @@
     "validation": null
   },
   {
+    "action": "update",
+    "collection": "locks",
+    "fields": [
+      "fallbackLockCode"
+    ],
+    "permissions": null,
+    "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",
+    "presets": null,
+    "validation": null
+  },
+  {
     "action": "read",
     "collection": "properties",
     "fields": [
@@ -78,7 +89,9 @@
       "departure",
       "notification_departure",
       "languages_code",
-      "arrival"
+      "arrival",
+      "notificationDeparture",
+      "notificationArrival"
     ],
     "permissions": null,
     "policy": "0a430f6c-5001-4c0c-a208-4a64fd4976c1",

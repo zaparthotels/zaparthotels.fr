@@ -18,7 +18,12 @@
     "singleton": false,
     "sort": null,
     "sort_field": null,
-    "translations": null,
+    "translations": [
+      {
+        "language": "fr-FR",
+        "translation": "Boîtes à clefs"
+      }
+    ],
     "unarchive_value": null,
     "versioning": false
   },
@@ -90,7 +95,12 @@
         "required": true,
         "sort": 6,
         "special": null,
-        "translations": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Code de secours"
+          }
+        ],
         "validation": null,
         "validation_message": null,
         "width": "full"

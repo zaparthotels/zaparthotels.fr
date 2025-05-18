@@ -18,7 +18,14 @@
     "singleton": false,
     "sort": null,
     "sort_field": null,
-    "translations": null,
+    "translations": [
+      {
+        "language": "fr-FR",
+        "plural": null,
+        "singular": null,
+        "translation": "Propriétés"
+      }
+    ],
     "unarchive_value": null,
     "versioning": false
   },
@@ -44,7 +51,12 @@
         "required": true,
         "sort": 6,
         "special": null,
-        "translations": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Horaire de la notification d'arrivée"
+          }
+        ],
         "validation": null,
         "validation_message": null,
         "width": "full"
@@ -174,7 +186,12 @@
         "required": true,
         "sort": 7,
         "special": null,
-        "translations": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Horaire de la notification de départ"
+          }
+        ],
         "validation": null,
         "validation_message": null,
         "width": "full"
@@ -260,7 +277,12 @@
         "special": [
           "m2m"
         ],
-        "translations": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Boîtes à clefs"
+          }
+        ],
         "validation": null,
         "validation_message": null,
         "width": "full"
@@ -284,7 +306,12 @@
         "required": true,
         "sort": 4,
         "special": null,
-        "translations": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Nom"
+          }
+        ],
         "validation": null,
         "validation_message": null,
         "width": "full"
@@ -328,7 +355,12 @@
         "special": [
           "translations"
         ],
-        "translations": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Traductions"
+          }
+        ],
         "validation": null,
         "validation_message": null,
         "width": "full"

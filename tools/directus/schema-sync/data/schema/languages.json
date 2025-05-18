@@ -18,7 +18,12 @@
     "singleton": false,
     "sort": null,
     "sort_field": null,
-    "translations": null,
+    "translations": [
+      {
+        "language": "fr-FR",
+        "translation": "Langues"
+      }
+    ],
     "unarchive_value": null,
     "versioning": false
   },
@@ -109,7 +114,12 @@
         "required": false,
         "sort": 3,
         "special": null,
-        "translations": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Direction"
+          }
+        ],
         "validation": null,
         "validation_message": null,
         "width": "full"
@@ -151,7 +161,12 @@
         "required": false,
         "sort": 2,
         "special": null,
-        "translations": null,
+        "translations": [
+          {
+            "language": "fr-FR",
+            "translation": "Nom"
+          }
+        ],
         "validation": null,
         "validation_message": null,
         "width": "full"
