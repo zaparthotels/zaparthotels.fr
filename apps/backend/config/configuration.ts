@@ -15,7 +15,7 @@ export const setupEnv = (): void => {
   process.env.NODE_ENV = ENodeEnv.DEVELOPMENT;
 
   console.warn(
-    `Invalid or missing NODE_ENV value: ${nodeEnv}. Defaulting to 'development'.`,
+    `[WARN] Invalid or missing NODE_ENV value: ${nodeEnv}. Defaulting to 'development'.`,
   );
 };
 
