@@ -5,8 +5,8 @@ export interface IProperty {
   departureNotificationTime: string;
   translations: {
     subject: string;
-    notification_arrival: string;
-    notification_departure: string;
+    notificationArrival: string;
+    notificationDeparture: string;
   }[];
   locks: {
     lockId: string;

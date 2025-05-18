@@ -50,7 +50,7 @@ export class NotificationsProcessor extends WorkerHost {
     const context = { booking };
 
     const message = await this.liquidService.parseAndRender(
-      directusProperty.translations[0].notification_departure,
+      directusProperty.translations[0].notificationDeparture,
       context,
     );
 
