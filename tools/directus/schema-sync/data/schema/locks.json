@@ -1,14 +1,14 @@
 {
-  "collection": "properties",
+  "collection": "locks",
   "meta": {
     "accountability": "all",
     "archive_app_filter": true,
     "archive_field": null,
     "archive_value": null,
     "collapse": "open",
-    "collection": "properties",
+    "collection": "locks",
     "color": null,
-    "display_template": "{{name}}",
+    "display_template": null,
     "group": null,
     "hidden": false,
     "icon": null,
@@ -23,98 +23,14 @@
     "versioning": false
   },
   "schema": {
-    "name": "properties"
+    "name": "locks"
   },
   "fields": [
-    {
-      "field": "arrivalNotificationTime",
-      "type": "time",
-      "meta": {
-        "collection": "properties",
-        "conditions": null,
-        "display": null,
-        "display_options": null,
-        "field": "arrivalNotificationTime",
-        "group": null,
-        "hidden": false,
-        "interface": "datetime",
-        "note": null,
-        "options": null,
-        "readonly": false,
-        "required": true,
-        "sort": 7,
-        "special": null,
-        "translations": null,
-        "validation": null,
-        "validation_message": null,
-        "width": "full"
-      },
-      "schema": {
-        "name": "arrivalNotificationTime",
-        "table": "properties",
-        "data_type": "time without time zone",
-        "default_value": null,
-        "max_length": null,
-        "numeric_precision": null,
-        "numeric_scale": null,
-        "is_nullable": true,
-        "is_unique": false,
-        "is_indexed": false,
-        "is_primary_key": false,
-        "is_generated": false,
-        "generation_expression": null,
-        "has_auto_increment": false,
-        "foreign_key_table": null,
-        "foreign_key_column": null
-      }
-    },
-    {
-      "field": "beds24id",
-      "type": "string",
-      "meta": {
-        "collection": "properties",
-        "conditions": null,
-        "display": null,
-        "display_options": null,
-        "field": "beds24id",
-        "group": null,
-        "hidden": false,
-        "interface": "input",
-        "note": null,
-        "options": null,
-        "readonly": false,
-        "required": true,
-        "sort": 5,
-        "special": null,
-        "translations": null,
-        "validation": null,
-        "validation_message": null,
-        "width": "full"
-      },
-      "schema": {
-        "name": "beds24id",
-        "table": "properties",
-        "data_type": "character varying",
-        "default_value": null,
-        "max_length": 255,
-        "numeric_precision": null,
-        "numeric_scale": null,
-        "is_nullable": true,
-        "is_unique": false,
-        "is_indexed": false,
-        "is_primary_key": false,
-        "is_generated": false,
-        "generation_expression": null,
-        "has_auto_increment": false,
-        "foreign_key_table": null,
-        "foreign_key_column": null
-      }
-    },
     {
       "field": "date_updated",
       "type": "timestamp",
       "meta": {
-        "collection": "properties",
+        "collection": "locks",
         "conditions": null,
         "display": "datetime",
         "display_options": {
@@ -139,7 +55,7 @@
       },
       "schema": {
         "name": "date_updated",
-        "table": "properties",
+        "table": "locks",
         "data_type": "timestamp with time zone",
         "default_value": null,
         "max_length": null,
@@ -157,22 +73,22 @@
       }
     },
     {
-      "field": "departureNotificationTime",
-      "type": "time",
+      "field": "fallbackLockCode",
+      "type": "string",
       "meta": {
-        "collection": "properties",
+        "collection": "locks",
         "conditions": null,
         "display": null,
         "display_options": null,
-        "field": "departureNotificationTime",
+        "field": "fallbackLockCode",
         "group": null,
         "hidden": false,
-        "interface": "datetime",
+        "interface": "input",
         "note": null,
         "options": null,
         "readonly": false,
         "required": true,
-        "sort": 8,
+        "sort": 6,
         "special": null,
         "translations": null,
         "validation": null,
@@ -180,11 +96,11 @@
         "width": "full"
       },
       "schema": {
-        "name": "departureNotificationTime",
-        "table": "properties",
-        "data_type": "time without time zone",
+        "name": "fallbackLockCode",
+        "table": "locks",
+        "data_type": "character varying",
         "default_value": null,
-        "max_length": null,
+        "max_length": 255,
         "numeric_precision": null,
         "numeric_scale": null,
         "is_nullable": true,
@@ -202,7 +118,7 @@
       "field": "id",
       "type": "integer",
       "meta": {
-        "collection": "properties",
+        "collection": "locks",
         "conditions": null,
         "display": null,
         "display_options": null,
@@ -223,7 +139,7 @@
       },
       "schema": {
         "name": "id",
-        "table": "properties",
+        "table": "locks",
         "data_type": "integer",
         "default_value": null,
         "max_length": null,
@@ -241,14 +157,14 @@
       }
     },
     {
-      "field": "name",
+      "field": "lockId",
       "type": "string",
       "meta": {
-        "collection": "properties",
+        "collection": "locks",
         "conditions": null,
         "display": null,
         "display_options": null,
-        "field": "name",
+        "field": "lockId",
         "group": null,
         "hidden": false,
         "interface": "input",
@@ -264,8 +180,8 @@
         "width": "full"
       },
       "schema": {
-        "name": "name",
-        "table": "properties",
+        "name": "lockId",
+        "table": "locks",
         "data_type": "character varying",
         "default_value": null,
         "max_length": 255,
@@ -283,24 +199,26 @@
       }
     },
     {
-      "field": "translations",
+      "field": "properties",
       "type": "alias",
       "meta": {
-        "collection": "properties",
+        "collection": "locks",
         "conditions": null,
         "display": null,
         "display_options": null,
-        "field": "translations",
+        "field": "properties",
         "group": null,
         "hidden": false,
-        "interface": "translations",
+        "interface": "list-m2m",
         "note": null,
-        "options": null,
+        "options": {
+          "template": null
+        },
         "readonly": false,
-        "required": false,
-        "sort": 10,
+        "required": true,
+        "sort": 5,
         "special": [
-          "translations"
+          "m2m"
         ],
         "translations": null,
         "validation": null,
@@ -312,7 +230,7 @@
       "field": "user_updated",
       "type": "uuid",
       "meta": {
-        "collection": "properties",
+        "collection": "locks",
         "conditions": null,
         "display": "user",
         "display_options": null,
@@ -337,7 +255,7 @@
       },
       "schema": {
         "name": "user_updated",
-        "table": "properties",
+        "table": "locks",
         "data_type": "uuid",
         "default_value": null,
         "max_length": null,
@@ -361,7 +279,7 @@
       "related_collection": "directus_users",
       "meta": {
         "junction_field": null,
-        "many_collection": "properties",
+        "many_collection": "locks",
         "many_field": "user_updated",
         "one_allowed_collections": null,
         "one_collection": "directus_users",
@@ -371,11 +289,11 @@
         "sort_field": null
       },
       "schema": {
-        "table": "properties",
+        "table": "locks",
         "column": "user_updated",
         "foreign_key_table": "directus_users",
         "foreign_key_column": "id",
-        "constraint_name": "properties_user_updated_foreign",
+        "constraint_name": "locks_user_updated_foreign",
         "on_update": "NO ACTION",
         "on_delete": "NO ACTION"
       }
