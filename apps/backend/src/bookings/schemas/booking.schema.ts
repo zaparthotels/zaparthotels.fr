@@ -12,11 +12,11 @@ import {
 
 @Schema()
 class Guest implements IGuest {
-  @Prop({ required: true })
-  firstName: string;
+  @Prop()
+  firstName?: string;
 
-  @Prop({ required: true })
-  lastName: string;
+  @Prop()
+  lastName?: string;
 
   @Prop()
   email: string;

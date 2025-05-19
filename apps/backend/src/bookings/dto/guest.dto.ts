@@ -3,7 +3,6 @@ import {
   IsOptional,
   IsMongoId,
   IsString,
-  IsNotEmpty,
   IsEmail,
   IsPhoneNumber,
 } from 'class-validator';
@@ -15,12 +14,12 @@ export class GuestDto implements IGuest {
   _id?: Types.ObjectId;
 
   @IsString()
-  @IsNotEmpty()
-  firstName: string;
+  @IsOptional()
+  firstName?: string;
 
   @IsString()
-  @IsNotEmpty()
-  lastName: string;
+  @IsOptional()
+  lastName?: string;
 
   @IsEmail()
   @IsOptional()

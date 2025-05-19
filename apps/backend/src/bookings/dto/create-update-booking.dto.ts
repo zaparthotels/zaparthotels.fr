@@ -34,12 +34,12 @@ class WebhookBookingDto {
   departure: string;
 
   @IsString()
-  @IsNotEmpty()
-  firstName: string;
+  @IsOptional()
+  firstName?: string;
 
   @IsString()
-  @IsNotEmpty()
-  lastName: string;
+  @IsOptional()
+  lastName?: string;
 
   @EmptyToUndefined()
   @IsEmail()
