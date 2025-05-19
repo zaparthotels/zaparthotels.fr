@@ -18,7 +18,7 @@ class Guest implements IGuest {
   @Prop({ required: true })
   lastName: string;
 
-  @Prop({ required: true, index: true })
+  @Prop()
   email: string;
 
   @Prop()
