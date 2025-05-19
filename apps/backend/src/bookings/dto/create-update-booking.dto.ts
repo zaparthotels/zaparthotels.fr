@@ -10,6 +10,7 @@ import {
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import { TBookingStatus } from '@zaparthotels/types';
+import { EmptyToUndefined } from 'src/utils/decorators/empty-to-undefined.decorator';
 
 class WebhookBookingDto {
   @IsNumber()
@@ -40,6 +41,7 @@ class WebhookBookingDto {
   @IsNotEmpty()
   lastName: string;
 
+  @EmptyToUndefined()
   @IsEmail()
   @IsOptional()
   email?: string;

@@ -33,7 +33,6 @@
     "@nestjs/platform-socket.io": "^10.4.12",
     "@nestjs/schedule": "^6.0.0",
     "@nestjs/websockets": "^10.4.12",
-    "@types/nodemailer": "^6.4.17",
     "@zaparthotels/types": "workspace:^",
     "android-sms-gateway": "^2.0.0",
     "axios": "^1.8.4",
@@ -46,7 +45,6 @@
     "libphonenumber-js": "^1.12.6",
     "liquidjs": "^10.21.0",
     "mongoose": "^8.10.0",
-    "nodemailer": "^6.10.0",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.2",
     "socket.io": "^4.8.1"
