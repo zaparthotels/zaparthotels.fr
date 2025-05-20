@@ -59,6 +59,7 @@ export class DepartureFlow implements IFlow {
     const now = new Date();
 
     const notificationsTimestamp = new DateUtils(booking.dates.checkOut);
+    notificationsTimestamp.setDate(notificationsTimestamp.getDate() - 1);
     notificationsTimestamp.setTimeFromString(departureNotificationTime);
 
     await this.flowDepartureProducer.add({
