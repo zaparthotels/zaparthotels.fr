@@ -22,6 +22,8 @@ export class LockCodeProcessor extends WorkerHost {
   }
 
   async process(job: Job<string>): Promise<void> {
+    const HOURS_OFFSET = 1;
+
     const booking = await this.bookingService.findOne(
       this.mongoIdPipe.transform(job.data),
     );
@@ -55,14 +57,14 @@ export class LockCodeProcessor extends WorkerHost {
 
     const startsAt = new Date(checkIn);
     startsAt.setMinutes(0, 0, 0);
-    startsAt.setHours(startsAt.getHours() + 1);
+    startsAt.setHours(startsAt.getHours() - HOURS_OFFSET);
 
     if (startsAt < now) {
       startsAt.setTime(now.getTime());
     }
 
     const expiresAt = new Date(checkOut);
-    expiresAt.setHours(expiresAt.getHours() - 1);
+    expiresAt.setHours(expiresAt.getHours() + HOURS_OFFSET);
 
     const lockCodes = await Promise.all(
       locks.map(({ lockId }) => {

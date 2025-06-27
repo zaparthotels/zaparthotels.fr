@@ -4,13 +4,12 @@ import svelte from '@astrojs/svelte';
 import sitemap from '@astrojs/sitemap';
 import node from '@astrojs/node';
 
-// https://astro.build/config
 export default defineConfig({
   integrations: [svelte(), sitemap()],
   adapter: node({
     mode: 'standalone',
   }),
   server: {
-    port: 3000
+    port: 3000,
   },
 });
