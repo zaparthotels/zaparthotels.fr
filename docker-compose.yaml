@@ -1,0 +1,121 @@
+---
+
+networks:
+  dokploy-network:
+    external: true
+  directus:
+  zaparthotels-backend:
+
+services:
+
+  zaparthotels-backend:
+    image: ghcr.io/zaparthotels/zaparthotels.fr/zaparthotels-backend:latest
+    networks:
+      zaparthotels-backend:
+      directus:
+    environment:
+      - TZ=${TZ}
+      - REDIS_HOSTNAME=valkey-backend
+      - REDIS_PORT=6379
+      - MONGO_HOSTNAME=mongo-backend
+      - MONGO_PORT=27017
+      - MONGO_DATABASE=mongo-backend
+      - MONGO_USERNAME=mongo-backend
+      - MONGO_PASSWORD=${BACKEND_DB_PASSWORD}
+      - IGLOOHOME_CREDENTIALS=${BACKEND_IGLOOHOME_CREDENTIALS}
+      - SMS_BASE_URL=${BACKEND_SMS_BASE_URL}
+      - SMS_LOGIN=${BACKEND_SMS_LOGIN}
+      - SMS_PASSWORD=${BACKEND_SMS_PASSWORD}
+      - MAIL_HOST=${BACKEND_MAIL_HOST}
+      - MAIL_USER=${BACKEND_MAIL_USER}
+      - MAIL_PASSWORD=${BACKEND_MAIL_PASSWORD}
+      - MAIL_FROM=${BACKEND_MAIL_FROM}
+      - MAIL_FWD=${BACKEND_MAIL_FWD}
+      - DIRECTUS_HOSTNAME=directus_zaparthotels-backend
+      - DIRECTUS_PORT=8055
+      - DIRECTUS_ADMIN_TOKEN=${DIRECTUS_ADMIN_TOKEN}
+      - WEBHOOK_BEDS24_TOKEN=${BACKEND_WEBHOOK_BEDS24_TOKEN}
+      - BEDS24_REFRESH_TOKEN=${BACKEND_BEDS24_REFRESH_TOKEN}
+
+  mongo-backend:
+    image: mongo:8.2.2
+    networks:
+      zaparthotels-backend:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongo-backend
+      - MONGO_INITDB_ROOT_PASSWORD=${BACKEND_DB_PASSWORD}
+    volumes:
+      - mongo-backend:/data/db
+
+  valkey-backend:
+    image: valkey/valkey:9.0.1-trixie
+    networks:
+      zaparthotels-backend:
+    volumes:
+      - valkey-backend:/data
+
+  directus:
+    image: ghcr.io/zaparthotels/zaparthotels.fr/directus:11.14.0
+    networks:
+      directus:
+        aliases:
+          - directus_zaparthotels-backend
+    depends_on:
+      - postgresql-directus
+      - valkey-directus
+    environment:
+      - TZ=${TZ}
+      - SECRET=${DIRECTUS_SECRET}
+      - DB_USER=postgresql-directus
+      - DB_DATABASE=postgresql-directus
+      - DB_PASSWORD=${DIRECTUS_DB_PASSWORD}
+      - DB_CLIENT=pg
+      - DB_HOST=postgresql-directus
+      - DB_PORT=5432
+      - DB_POOL__MIN=0
+      - DB_POOL__IDLE_TIMEOUT_MILLIS=3000
+      - CACHE_ENABLED=true
+      - CACHE_AUTO_PURGE=true
+      - CACHE_STORE=redis
+      - PUBLIC_URL=${DIRECTUS_PUBLIC_URL}
+      - REDIS=redis://valkey-directus:6379
+      - ADMIN_EMAIL=${DIRECTUS_ADMIN_EMAIL}
+      - ADMIN_PASSWORD=${DIRECTUS_ADMIN_PASSWORD}
+      - ADMIN_TOKEN=${DIRECTUS_ADMIN_TOKEN}
+      - EMAIL_TRANSPORT=smtp
+      - EMAIL_FROM=${DIRECTUS_EMAIL_FROM}
+      - EMAIL_SMTP_HOST=${DIRECTUS_EMAIL_SMTP_HOST}
+      - EMAIL_SMTP_PORT=${DIRECTUS_EMAIL_SMTP_PORT}
+      - EMAIL_SMTP_USER=${DIRECTUS_EMAIL_SMTP_USER}
+      - EMAIL_SMTP_PASSWORD=${DIRECTUS_EMAIL_SMTP_PASSWORD}
+      - SCHEMA_SYNC=IMPORT
+      - CORS_ENABLED=true
+      - CORS_ORIGIN=*
+      - WEBSOCKETS_ENABLED=true
+    volumes:
+      - directus-uploads:/directus/uploads
+
+  valkey-directus:
+    image: valkey/valkey:9.0.1-trixie
+    networks:
+      directus:
+    volumes:
+      - valkey-directus:/data
+
+  postgresql-directus:
+    image: postgres:18.1-trixie
+    networks:
+      directus:
+    environment:
+      - POSTGRES_USER=postgresql-directus
+      - POSTGRES_DB=postgresql-directus
+      - POSTGRES_PASSWORD=${DIRECTUS_DB_PASSWORD}
+    volumes:
+      - postgresql-directus:/var/lib/postgresql
+
+volumes:
+  mongo-backend:
+  valkey-backend:
+  directus-uploads:
+  postgresql-directus:
+  valkey-directus:
