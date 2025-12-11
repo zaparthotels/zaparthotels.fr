@@ -55,7 +55,7 @@ services:
       - valkey-backend:/data
 
   directus:
-    image: ghcr.io/zaparthotels/zaparthotels.fr/directus:11.14.0
+    image: ghcr.io/zaparthotels/zaparthotels.fr/directus:latest
     networks:
       directus:
         aliases:
